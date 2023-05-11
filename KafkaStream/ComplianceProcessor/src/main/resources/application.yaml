@@ -1,0 +1,39 @@
+spring.cloud.stream:
+  function:
+    definition: complianceValidator
+  bindings:
+    complianceValidator-in-0:
+      group: compliancemsgin
+      destination: compliance.msg.in.new
+    complianceValidator-out-0:
+      group: compliancemsgout
+      destination: compliance.msg.out
+  kafka:
+    streams:
+      binder:
+        brokers: ${dev.${env}}
+        deserializationExceptionHandler: logAndContinue
+        functions:
+          complianceValidator:
+            applicationId: compliance-processor
+
+
+
+
+spring:
+  kafka:
+    streams:
+      properties:
+        spring:
+          json:
+            value:
+              default:
+                type: com.refinitiv.stream.compliance.processor.ComplianceProcessor.dto.Message
+
+
+server:
+  port: 80
+
+dev:
+  se: localhost:9092
+
