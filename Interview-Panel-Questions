@@ -1,0 +1,4149 @@
+1) Concepts to learn
+-- CHange detection strategy
+-- How to unsubscribe from observales in best way
+-- How Authenication and Authorization works in Angular
+-- How to setup ESLint and other linting tools in Angular
+
+
+
+---------------------------------------------------------Basic questions:
+
+1) How CI/CD works in your project?
+2) Branching strategy? What if you have to do hot fix and deployment?
+3) How micro services works?
+4) Unit Testing
+5) Code quality? How do you do code review? Lint
+6) Did you do code review or pull request?
+7) Design patterns you used in this project?
+8) TDD?
+9) Do you follow code coverage? How do you ensure in your project? 
+10)How you are implementing security to your applications?
+10)Real time logical thinking? How do you ensure security, performance, memory leakages?
+11)Customer says sometimes application hosted loading slowly and sometimes it is better? What steps you follow to investigate this scenario?
+12)SDLC methodology? Agile or Scrum questions?
+13)CSS, SCSS difference, ViewEncapsulation
+
+------------------------------------Websites common-------------------------
+
+https://www.w3schools.com/Js/js_es6.asp
+https://www.edureka.co/blog/interview-questions/react-interview-questions/
+https://github.com/sudheerj/reactjs-interview-questions#what-is-react-router
+https://codecraft.tv/courses/angular/components/viewchildren-and-contentchildren/
+https://www.sitepoint.com/practical-guide-angular-directives/
+https://www.concretepage.com/angular-2/angular-2-custom-pipe-example
+https://www.angularminds.com/blog/article/what-is-angular-ivy.html
+https://blog.bitsrc.io/6-ways-to-unsubscribe-from-observables-in-angular-ab912819a78f
+https://citrusbug.com/blog/angular-9-and-angular-10-comparison
+
+
+Angular Questions to cover :
+Lifecycle hooks, directives example, Lazy loading example,  
+
+
+Interview Questions:
+
+1) Micro servies Load balancer questions in micro services
+2) Distributed Transaction management?
+3) How you are good at Core Java, 
+OOPS Concepts?
+Difference between Abstraction and Encapsulation?
+Java Memory Model
+Tree Map Hash Map
+equals and hashcode contract
+Comparator and Compar
+Java 1.8
+spring boot
+Hibernate
+JUnit Mockito
+Design Patterns
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------- ANGULAR ---------------------------------------------------------------
+
+3. What are some features of Angular?
+
+Accessibility Applications: Angular allows creating accessible applications using ARIA-enabled components, built-in a11y test infrastructure, and developer guides.
+Angular CLI: Angular provides support for command-line interface tools. These tools can be used for adding components, testing, and instant deploying, among other things.
+Animation Support: Angular’s intuitive API allows the creation of high-performance, complex animation timelines with very little code.
+Cross-Platform App Development: Angular can be used for building desktop, native, and progressive web apps. It provides support for building native app development using Cordova, Ionic, or NativeScript. It can also be used to build desktop apps for Linux, macOS, and Windows.
+Code Generation: Angular is able to convert templates into highly-optimized code for modern JavaScript virtual machines.
+Code Splitting: The Component Router offers automatic code-splitting so that only the code required to render the view that is requested by a user is loaded.
+Synergy with Popular Code Editors and IDEs: Angular offers code completion and instant error spotting with popular source code editors and IDEs.
+Templates: Allows creating UI views with a simple and powerful template syntax.
+Testing: Angular lets you carry out frequent unit tests using Karma. The Protractor allows running scenario tests faster while being stable.
+
+----------------------
+
+What is Single Page Application and how it is different from conventional programming? And how we are achieving it in Angular application?
+
+Single-page applications are web applications that load once with new features just being mere additions to the user interface. 
+It does not load new HTML pages to display the new page's content, instead generated dynamically. 
+This is made possible through JavaScript's ability to manipulate the DOM elements on the existing page itself. 
+A SPA approach is faster, thus providing a seamless user experience. 
+
+--------------------------------
+Directives: 
+directives are functions that are executed by the Angular compiler when the same finds them in the DOM. Directives are of three types:
+Attribute Directives
+Component Directives
+Structural Directives
+
+How to create a custom directive?
+
+We’re going to create an attribute directive:
+
+In the command terminal, navigate to the directory of the angular app and type the following command to generate a directive: ng g directive blueBackground
+
+The following directive will be generated. Manipulate the directive to look like this:
+
+      import { Directive, ElementRef } from '@angular/core';
+
+      @Directive({
+       selector: '[appBlueBackground]'
+      })
+      export class BlueBackgroundDirective {
+       constructor(el:ElementRef) {
+         el.nativeElement.style.backgroundColor = "blue";
+       }
+      }
+Now we can apply the above directive to any DOM element:  <p appBlueBackground>Hello World!</p>
+
+
+
+---- 
+
+
+------------------ What is index property in ngFor directive?
+The index property of the NgFor directive is used to return the zero-based index of the item in each iteration. 
+You can capture the index in a template input variable and use it in the template.
+
+For example, you can capture the index in a variable named indexVar and displays it with the todo's name using ngFor directive as below.
+
+<div *ngFor="let todo of todos; let i=index">{{i + 1}} - {{todo.name}}</div>
+⬆ Back to Top
+
+-----What is the purpose of ngFor trackBy?
+The main purpose of using *ngFor with trackBy option is performance optimization. Normally if you use NgFor with large data sets, 
+a small change to one item by removing or adding an item, can trigger a cascade of DOM manipulations. In this case,
+ Angular sees only a fresh list of new object references and to replace the old DOM elements with all new DOM elements. 
+ You can help Angular to track which items added or removed by providing a trackBy function which takes the index and 
+ the current item as arguments and needs to return the unique identifier for this item.
+
+For example, lets set trackBy to the trackByTodos() method
+
+<div *ngFor="let todo of todos; trackBy: trackByTodos">
+  ({{todo.id}}) {{todo.name}}
+</div>
+and define the trackByTodos method,
+
+trackByTodos(index: number, item: Todo): number { return todo.id; }
+
+
+
+https://www.sitepoint.com/practical-guide-angular-directives/
+
+------------------------------------
+Demonstrate navigating between different routes in an Angular application.
+--------------------------------------
+
+How does an Angular application work?
+The working of Angular is based on its components. So the working of the Angular application starts with the configuration file ANGULAR.JSON. 
+The builder refers to this file to find the paths, configurations and the main file. Now the process finally starts. 
+Next comes the MAIN.TS file that acts as the entry point for the configuration file. 
+It basically helps in creating the browser environment that enables it to run the application. 
+Now, the bootstrapping of the Angular application is done through the APP.MODULE.TS. 
+Now the app component that gets bootstrapped is stored in the APP.COMPONENT.TS file. 
+Now the INDEX.HTML file is called and is used to ask Angular to load the application component.
+ After the component is loaded, the content gets displayed from the APP.COMPONENT.HTML file. 
+ This is how the Angular application works and the components discussed here help to achieve so.
+ 
+ -----------------------------------------------
+ 
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ 
+ What is an entry component?
+An entry component is any component that Angular loads imperatively(i.e, not referencing it in the template) by type. 
+Due to this behavior, they can’t be found by the Angular compiler during compilation. These components created dynamically 
+with ComponentFactoryResolver.
+
+Basically, there are two main kinds of entry components which are following -
+
+The bootstrapped root component
+A component you specify in a route
+
+is it necessary for bootstrapped component to be entry component?
+Yes, the bootstrapped component needs to be an entry component. This is because the bootstrapping process is an imperative process.
+ 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+What happens if browserModule used in feature module?
+If you do import BrowserModule into a lazy loaded feature module, Angular returns an error telling you to use CommonModule instead. 
+Because BrowserModule’s providers are for the entire app so it should only be in the root module, not in feature module. 
+Whereas Feature modules only need the common directives in CommonModule.
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+How do you restrict provider scope to a module?
+It is possible to restrict service provider scope to a specific module instead making available to entire application. 
+There are two possible ways to do it.
+
+Using providedIn in service:
+import { Injectable } from '@angular/core';
+import { SomeModule } from './some.module';
+
+@Injectable({
+  providedIn: SomeModule,
+})
+export class SomeService {
+}
+Declare provider for the service in module:
+import { NgModule } from '@angular/core';
+
+import { SomeService } from './some.service';
+
+@NgModule({
+  providers: [SomeService],
+})
+export class SomeModule {
+}
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Child to parent communication using @Output and @ViewChild
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+What happens when you use the script tag within a template?
+Angular detects the value as unsafe and sanitizes it automatically, removing the script tag but retaining safe material such as 
+the script tag's text content. This reduces the potential of script injection attacks. If you continue to use it, it will be disregarded, 
+and a warning will display in the browser console.
+
+Example: Consider the case of innerHtml property binding, which results in an XSS vulnerability.
+
+export class InnerHtmlBindingComponent {
+    // For example, a attacker-controlled value from a URL using malicious scripts.
+    htmlSnippet = 'Template <script>alert("You are hacked !!!!")</script> <b>Syntax</b>';
+}
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+What is a bootstrapping module?
+Every application has at least one Angular module, the root module that you bootstrap to launch the application is called as bootstrapping module. 
+It is commonly known as AppModule.
+bootstrap: [AppComponent]
+
+
+Angular 9,10,11 differences, How you build beautiful Grid in Angular what you use?
+How you can declare CSS in your Angular files?
+What is the difference between 
+How to share data between components in Angular 9
+
+1) What is difference between "declarations", "providers" and "import" in NgModule? What is difference between "declarations", "providers" and "import" in NgModule?
+
+Answer
+imports makes the exported declarations of other modules available in the current module
+declarations are to make directives (including components and pipes) from the current module available to other directives in the current module. Selectors of directives, components or pipes are only matched against the HTML if they are declared or imported.
+providers are to make services and values known to DI. They are added to the root scope and they are injected to other services or directives that have them as dependency.
+
+2) Explain the difference between "Constructor" and "ngOnInit" Explain the difference between "Constructor" and "ngOnInit"
+
+Answer
+The Constructor is a default method of the class that is executed when the class is instantiated and ensures proper initialization of fields in the class and its subclasses.
+ngOnInit is a life cycle hook called by Angular to indicate that Angular is done creating the component. We have to import OnInit in order to use like this (actually implementing OnInit is not mandatory but considered good practice).
+Mostly we use ngOnInit for all the initialization/declaration and avoid stuff to work in the constructor. The constructor should only be used to initialize class members but shouldn't do actual "work".
+
+3) Question: Please explain the digest cycle in Angular?
+Answer: The process of monitoring the watchlist in order to track changes in the value of the watch variable is termed the digest cycle in Angular. The previous and present versions of the scope model values are compared in each digest cycle.
+
+Although the digest cycle process gets triggered implicitly, it is possible to start it manually by using the $apply() function.
+
+4) What is transpiling? Which file we mention about this transpiling -- tsconfig.json
+
+5) What is the difference between dependencies and devdependencies in package.json?
+Dev dependencies are for development like eslint, build manager, chrome launcher for unit testing or for code quality, -- dev flag
+
+6) what is the use of @Injectable in service? are services singleton in Angular?
+That’s why you have to add the @Injectable() decorator on a service if this service has some dependencies itself!
+https://blog.ninja-squad.com/2016/12/08/angular-injectable/
+
+A singleton service is a service for which only one instance exists in an app.
+kakf
+7) There are two ways to make a service a singleton in Angular:
+
+-------------------------------------->compilers in Angular
+
+Why do we need compilation process?
+The Angular components and templates cannot be understood by the browser directly. Due to that Angular applications require a compilation
+ process before they can run in a browser. For example, In AOT compilation, both Angular HTML and TypeScript code converted into efficient 
+ JavaScript code during the build phase before browser runs it.
+ 
+ 
+----->
+
+How do you specify angular template compiler options?
+The angular template compiler options are specified as members of the angularCompilerOptions object in the tsconfig.json file.
+ These options will be specified adjecent to typescript compiler options.
+
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+              ...
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "preserveWhitespaces": true,
+              ...
+  }
+}
+
+
+------------------------------>
+
+How do you enable binding expression validation?
+You can enable binding expression validation explicitly by adding the compiler option fullTemplateTypeCheck in the "angularCompilerOptions" 
+of the project's tsconfig.json. It produces error messages when a type error is detected in a template binding expression.
+
+For example, consider the following component:
+
+@Component({
+  selector: 'my-component',
+  template: '{{user.contacts.email}}'
+})
+class MyComponent {
+  user?: User;
+}
+
+-- ****** What is webpack? Static module builder for modern java applications and does like minification, uglification etc
+So, angular CLI uses a tool called webpack which is a build automation tool it gets all our scripts and stylesheets combines them outs them 
+in a bundle and minifies that bundle and this is for optimization.
+
+The change in code will appear in browser without even refreshing the page — this is the feature of webpack called hot module replacement 
+or hot module reloading so whenever the source file is modified webpack automatically refreshes our browser.
+
+8) What is grunt? How it is different from webpack? gulp vs grunt vs webpack
+What are the basic steps required to set up Gulp?
+
+What are the different types of streams available in Node.js?
+There are four different types of streams available in Node.js: readable, writable, duplex, and transform. 
+Readable streams are used for data that is being read from a source, writable streams are used for data that is being written to a destination, 
+duplex streams are used for data that is being read from and written to a destination, and transform streams are used for data that is being 
+transformed as it is being read or written.
+
+The main difference between Gulp and Grunt is that Gulp is a streaming build system, whereas Grunt is a task-based build system. 
+This means that Gulp takes advantage of node.js streams, which makes it much faster than Grunt. 
+In addition, Gulp is much easier to use, as it uses code over configuration.
+
+8) What happens when we do ng build or ng serve like suppose when we run application, http:google.com what happens?
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&> What is dependency injection?
+
+What is an optional dependency?
+The optional dependency is a parameter decorator to be used on constructor parameters, which marks the parameter as being an optional dependency. 
+Due to this, the DI framework provides null if the dependency is not found. 
+For example, If you don't register a logger provider anywhere, the injector sets the value of logger(or logger service) to null in the below class.
+
+import { Optional } from '@angular/core';
+
+constructor(@Optional() private logger?: Logger) {
+  if (this.logger) {
+    this.logger.log('This is an optional dependency message');
+  } else {
+    console.log('The logger is not registered');
+  }
+}
+
+Set the providedIn property of the @Injectable() to "root".
+Include the service in the AppModule or in a module that is only imported by the AppModule
+
+8) What are prodcution Optimizations in Angular when you build the application?
+Ahead-of-Time (AOT) Compilation: pre-compiles Angular component templates.
+Production mode: deploys the production environment which enables production mode.
+Bundling: concatenates your many application and library files into a few bundles.
+Minification: removes excess whitespace, comments, and optional tokens.
+Uglification: rewrites code to use short, cryptic variable and function names.
+Dead code elimination: removes unreferenced modules and much unused code.
+
+9)How to unsubscribe Observables in Angular?
+takeUntil,takeUntil(1)
+Components communication in Angular?
+
+What is multicasting? 
+Using the HttpClient module, you can communicate with a backend service and fetch data. Multitasking allows you to broadcast this fetched data 
+to multiple subscribers in one execution. It is beneficial when we have multiple application parts waiting for some data. 
+You require an RxJS subject to use the multicasting feature. 
+
+10)What is the difference between @ViewChild and @ContentChild
+<joke *ngFor="let j of jokes" [joke]="j"></joke>
+To this:
+
+HTML
+<joke *ngFor="let j of jokes" [joke]="j">
+  <h1>{{ j.punchline }}</h1> (1)
+</joke>
+In-between the opening and closing joke tags we’ve added some HTML to describe how we want the punchline to be presented on the screen, with a <h1> tag.
+The <h1>{{ j.punchline }}</h1> defined in the parent JokeListComponent, replaces the <ng-content></ng-content> tag in the JokeComponent.
+
+11)what is package-lock.json file used?
+
+package-lock.json: It contains the exact version details that is currently installed for your Application.
+What is difference between symbols in package.json? Caret (Major version is same, minor and patch can be updated) and Tide(major and minor same but patches
+can be updated)?
+
+12) What is base --href and --deploy-url
+To put my scripts inside the "/test/app1/script/" folder, I use this command:
+
+ng build --prod --base-href /test/app1/ --deploy-url /test/app1/script/
+Thus my app is accessible at https://example.com/test/app1/ but my JS scripts and CSS are in the https://example.com/test/app1/script/ directory.
+
+13) If we want to move our application in different environments and we build it and give artifacts. So what is the process we have to do?
+
+14) Do you have an idea how can we improve the angular application performance?
+
+What are some points to consider when optimizing an Angular 6 application for performance?
+Requirement: Application performance optimization
+
+Answer: There are many ways, some ideas include:
+
+AOT compilation, bundling and uglifying the application, tree shaking, lazy loading, separating dependencies and devDependencies, 
+Using OnPush and TrackBy, removing unnecessary 3rd party libraries and import statements, avoid computing values within the template.
+
+Lazy Loading, AOT, Change Detection Strategy, Unsubscribing Observables, remove unnecessary third party packages, pure pipes
+
+15) Pure pipes/impure pipes
+
+16) Unit Testing
+
+17) Change detecttion strategy -- default and On Push(For Component's input references or one of its children)
+
+When should change detection happen?
+The simple answer to this question would be “as soon as an application’s state changes”. But when does the application’s state can change? 🤔
+
+Event Callback
+Network Call (XHR)
+Timers (setTimeout, setInterval)
+
+What is zone?
+A Zone is an execution context that persists across async tasks. Angular relies on zone.js to run Angular's change detection processes 
+when native JavaScript operations raise events
+
+ZoneJS monkey patches the function. Basically, it helps to keep an eye on all async tasks, and provide 
+an ability to call code before or after a task has been completed.So Angular uses the power of Zones to fire change detection
+What happens is, if any asynchronous call happens, ZoneJS API emits data to the onMicrotaskEmpty observable, 
+and angular calls the detectChanges method based on the same.
+
+In total angular has two flavours of change detection.
+
+The problem with the default strategy is, changes that have been detected in on any component lead to firing change detection on all the components 
+(if all component are set to Default strategy. But most of the time we don’t need such behavior,
+ it would eventually affect the performance of an application by running multiple unnecessary change detection cycle.
+
+Default
+OnPush
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+How can you read full response?
+The response body doesn't may not return full response data because sometimes servers also return special headers or status code which 
+which are important for the application workflow. Inorder to get full response, you should use observe option from HttpClient,
+
+getUserResponse(): Observable<HttpResponse<User>> {
+  return this.http.get<User>(
+    this.userUrl, { observe: 'response' });
+}
+Now HttpClient.get() method returns an Observable of typed HttpResponse rather than just the JSON data.
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+How do you perform Error handling?
+If the request fails on the server or failed to reach the server due to network issues then HttpClient will return an error object instead 
+of a successful reponse. In this case, you need to handle in the component by passing error object as a second callback to subscribe() method.
+
+Let's see how it can be handled in the component with an example,
+
+fetchUser() {
+  this.userService.getProfile()
+    .subscribe(
+      (data: User) => this.userProfile = { ...data }, // success path
+      error => this.error = error // error path
+    );
+}
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+What is multicasting?
+Multi-casting is the practice of broadcasting to a list of multiple subscribers in a single execution.
+
+Let's demonstrate the multi-casting feature,
+
+var source = Rx.Observable.from([1, 2, 3]);
+var subject = new Rx.Subject();
+var multicasted = source.multicast(subject);
+
+// These are, under the hood, `subject.subscribe({...})`:
+multicasted.subscribe({
+  next: (v) => console.log('observerA: ' + v)
+});
+multicasted.subscribe({
+  next: (v) => console.log('observerB: ' + v)
+});
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+what is an rxjs subject in Angular
+An RxJS Subject is a special type of Observable that allows values to be multicasted to many Observers. 
+While plain Observables are unicast (each subscribed Observer owns an independent execution of the Observable), Subjects are multicast.
+
+A Subject is like an Observable, but can multicast to many Observers. Subjects are like EventEmitters: they maintain a registry of many listeners.
+
+ import { Subject } from 'rxjs';
+
+   const subject = new Subject<number>();
+
+   subject.subscribe({
+     next: (v) => console.log(`observerA: ${v}`)
+   });
+   subject.subscribe({
+     next: (v) => console.log(`observerB: ${v}`)
+   });
+
+   subject.next(1);
+   subject.next(2);
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+What is the purpose of base href tag?
+The routing application should add element to the index.html as the first child in the tag in order to indicate how to compose navigation URLs. 
+If app folder is the application root then you can set the href value as below
+
+<base href="/">
+
+
+18) different ways to unsubscribe rxjs
+-- unsubscribe, async, 
+take(n) --This operator makes a subscription happen once. This operator makes a source subscription happen 
+          the number of ntimes specified and completes.
+		  this.subscription$ = observable$.pipe(take(1)).
+        subscribe(x => console.log(x))
+takeUntil(notifier):
+             observable$.pipe(takeUntil(this.notifier)).subscribe(x => console.log(x));
+			 We have an extra notifier Subject, this is what will emit to make the this.subscription unsubscribe. 
+			 See, we pipe the observable to takeUntil before we subscribe. The takeUntil will emit the values emitted by the interval 
+			 until the notifier Subject emits, it will then unsubscribe the observable$. The best place to make the notifier to emit so 
+			 the observable$ is canceled is in the ngOnDestroy hook.
+takeWhile(predicate): observable$.pipe(takeWhile(value => value < 10))
+Use RxJS first operator
+This operator is like the concatenation of take(1) and takeWhile 😁
+
+If called with no value, it emits the first value emitted by the source Observable and completes. 
+If it is called with a predicate function, it emits the first value of the source Observable that pass the test condition 
+of the predicate function and complete.
+
+--> Use Decorator to automate Unsubscription
+function AutoUnsub() {
+return function(constructor) {
+        const orig = constructor.prototype.ngOnDestroy
+        constructor.prototype.ngOnDestroy = function() {
+            for(const prop in this) {
+                const property = this[prop]
+                if(typeof property.subscribe === "function") {
+                    property.unsubscribe()
+                }
+            }
+            orig.apply()
+        }
+    }
+	}
+	
+	@Component({
+    ...
+})
+@AutoUnsub
+export class AppComponent implements OnInit {
+    observable$
+    ngOnInit () {
+        this.observable$ = Rx.Observable.interval(1000);
+        this.observable$.subscribe(x => console.log(x))
+    }
+}
+
+
+
+
+
+
+------------------------  What is safe navigation operator?
+The safe navigation operator(?)(or known as Elvis Operator) is used to guard against null and undefined values in property paths when you are 
+not aware 
+whether a path exists or not. i.e. It returns value of the object path if it exists, else it returns the null value.
+
+For example, you can access nested properties of a user profile easily without null reference errors as below,
+
+<p>The user firstName is: {{user?.fullName.firstName}}</p>
+Using this safe navigation operator, Angular framework stops evaluating the expression when it hits the first null value and renders the
+ view without any errors.
+ 
+ 
+ 
+ 
+ ------------- Is mandatory to pass static flag for ViewChild?
+In Angular 8, the static flag is required for ViewChild. Whereas in Angular9, you no longer need to pass this property.
+ Once you updated to Angular9 using ng update, the migration will remove { static: false } script everywhere.
+
+@ViewChild(ChildDirective) child: ChildDirective; // Angular9 usage
+@ViewChild(ChildDirective, { static: false }) child: ChildDirective; //Angular8 usage
+
+
+
+---------------- What is the precedence between pipe and ternary operators?
+The pipe operator has a higher precedence than the ternary operator (?:). For example, the expression first ? second : third | fourth is parsed 
+as first ? second : (third | fourth).
+
+
+
+
+
+
+
+
+
+ 
+ 
+Angular Router
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+What are active router links?
+RouterLinkActive is a directive that toggles css classes for active RouterLink bindings based on the current RouterState. 
+i.e, The Router will add CSS classes when this link is active and remove when the link is inactive.
+ For example, you can add them to RouterLinks as below.
+
+<h1>Angular Router</h1>
+<nav>
+  <a routerLink="/todosList" routerLinkActive="active">List of todos</a>
+  <a routerLink="/completed" routerLinkActive="active">Completed todos</a>
+</nav>
+<router-outlet></router-outlet>
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+What is activated route?
+ActivatedRoute contains the information about a route associated with a component loaded in an outlet.
+ It can also be used to traverse the router state tree. The ActivatedRoute will be injected as a router service to access the information. 
+ In the below example, you can access route path and parameters,
+
+@Component({...})
+class MyComponent {
+  constructor(route: ActivatedRoute) {
+    const id: Observable<string> = route.params.pipe(map(p => p.id));
+    const url: Observable<string> = route.url.pipe(map(segments => segments.join('')));
+    // route.data includes both `data` and `resolve`
+    const user = route.data.pipe(map(d => d.user));
+  }
+}
+
+
+----- What is a virtual scroll in Angular?
+Here Interviewer wants to check if you have updated knowledge of the latest angular features.
+
+The main concept behind virtual scrolling is rendering only visible items.
+
+For example, if there are thousands of alerts in an application, an efficient way would be to load only the elements that are visible 
+and unload them when they are not by replacing them with new ones.
+and unload them when they are not by replacing them with new ones.
+
+
+----------Explain different routing params in Angular.
+We do use routing parameters to maintain the data or sometimes pass data when navigating from one route to another route.
+
+Angular does support the following routing parameters.
+
+Required Parameters
+Optional Parameters
+Query Parameters
+NavigationExtras
+
+
+-------------- What is the difference between route param vs query param?
+The main difference between query and route param is route param is mandatory to determine the route while query param is optional.
+
+Let’s understand some of the basics of Routing in Angular.
+
+Declaring Route Parameters
+export const routes: Routes = [
+{ path: '', redirectTo: 'data', pathMatch: 'full' },
+{ path: 'data', component: DataList },
+{ path: 'data/:id', component: DataDetails }
+];
+
+
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+How do you detect route change in Angular?
+In Angular7, you can subscribe to router to detect the changes. The subscription for router events would be as below,
+
+this.router.events.subscribe((event: Event) => {})
+Let's take a simple component to detect router changes
+
+import { Component } from '@angular/core';
+import { Router, Event, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
+
+@Component({
+    selector: 'app-root',
+    template: `<router-outlet></router-outlet>`
+})
+export class AppComponent {
+
+    constructor(private router: Router) {
+
+        this.router.events.subscribe((event: Event) => {
+            if (event instanceof NavigationStart) {
+                // Show loading indicator and perform an action
+            }
+
+            if (event instanceof NavigationEnd) {
+                // Hide loading indicator and perform an action
+            }
+
+            if (event instanceof NavigationError) {
+                // Hide loading indicator and perform an action
+                console.log(event.error); // It logs an error for debugging
+            }
+        });
+   }
+}
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+How does forRoot method helpful to avoid duplicate router instances?
+If the RouterModule module didn’t have forRoot() static method then each feature module would instantiate a new Router instance, 
+which leads to broken application due to duplicate instances. After using forRoot() method, the root application module 
+imports RouterModule.forRoot(...) and gets a Router, and all feature modules import RouterModule.forChild(...) which does not 
+instantiate another Router.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+Is it mandatory to use injectable on every service class?
+No. The @Injectable() decorator is not strictly required if the class has other Angular decorators on it or does not have any dependencies. 
+But the important thing here is any class that is going to be injected with Angular is decorated. i.e, If we add the decorator, 
+the metadata design:paramtypes is added, and the dependency injection can do it's job. That is the exact reason to add 
+the @Injectable() decorator on a service if this service has some dependencies itself.
+ For example, Let's see the different variations of AppService in a root component,
+
+The below AppService can be injected in AppComponent without any problems. This is because there are no dependency services inside AppService.
+export class AppService {
+  constructor() {
+    console.log('A new app service');
+  }
+}
+The below AppService with dummy decorator and httpService can be injected in AppComponent without any problems. 
+This is because meta information is generated with dummy decorator.
+function SomeDummyDecorator() {
+  return (constructor: Function) => console.log(constructor);
+}
+
+@SomeDummyDecorator()
+export class AppService {
+  constructor(http: HttpService) {
+    console.log(http);
+  }
+}
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+Is Angular supports dynamic imports?
+Yes, Angular 8 supports dynamic imports in router configuration. i.e, You can use the import statement for lazy loading the module using 
+loadChildren method and it will be understood by the IDEs(VSCode and WebStorm), webpack, etc.
+ Previously, you have been written as below to lazily load the feature module.
+ By mistake, if you have typo in the module name it still accepts the string and throws an error during build time.
+
+{path: ‘user’, loadChildren: ‘./users/user.module#UserModulee’},
+This problem is resolved by using dynamic imports and IDEs are able to find it during compile time itself.
+
+{path: ‘user’, loadChildren: () => import(‘./users/user.module’).then(m => m.UserModule)};
+
+
+
+--> Use tslint
+
+// ngOnDestroyRule.ts
+import * as Lint from "tslint"
+import * as ts from "typescript"
+import * as tsutils from "tsutils"
+export class Rule extends Lint.Rules.AbstractRule {
+    public static metadata: Lint.IRuleMetadata = {
+        ruleName: "ng-on-destroy",
+        description: "Enforces ngOnDestory hook on component/directive/pipe classes",
+        optionsDescription: "Not configurable.",
+        options: null,
+        type: "style",
+        typescriptOnly: false
+    }
+	
+	
+	
+18) two possible ways of storing tokens to reduce risk of CSRF/XSRF attack are:
+
+Local storage: One of the best ways to store data. Local storage is not vulnerable to CSRF attacks.
+HttpOnly cookie: HttpOnly cookies are not accessible on the client side, i.e. the client cannot read data stored in these cookies.
+
+{
+    path: 'app',
+    component: AppComponent,
+    canActivate: [AuthorizeGuard]
+}
+
+export class AuthorizeGuard implements CanActivate {
+  constructor(private loginService: LoginService,
+              private authStorageService: LocalStorageService,
+              private jwtService: JWTTokenService) {
+  }
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable | Promise | boolean {
+      if (this.jwtService.getUser()) {
+          if (this.jwtService.isTokenExpired()) {
+            // Should Redirect Sig-In Page
+          } else {
+            return true;
+          }
+      } else {
+        return new Promise((resolve) => {
+          this.loginService.signIncallBack().then((e) => {
+             resolve(true);
+          }).catch((e) => {
+            // Should Redirect Sign-In Page
+          });
+        });
+      }
+	  
+	  
+	  
+	  import { Injectable, Inject, Optional } from ‘@angular/core’;
+import { HttpInterceptor, HttpHandler, HttpRequest } from ‘@angular/common/http’;
+import { AuthService } from ‘./auth.service’;
+@Injectable()
+export class UniversalAppInterceptor implements HttpInterceptor {
+
+  constructor( private authService: AuthService) { }
+
+  intercept(req: HttpRequest, next: HttpHandler) {
+    const token = this.authService.getJWTToken();
+    req = req.clone({
+      url:  req.url,
+      setHeaders: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    return next.handle(req);
+  }
+}
+
+18) view encapsulation
+
+None: Parent components css effect other components
+Emulated: default: We can apply local CSS and global stlyes also applied
+Native: All CSS should be applied locally and no global CSS applied
+
+18) Authguards
+
+19) Host Listener, 
+
+20) How do Observables differ from Promises?
+
+As soon as a promise is made, the execution takes place. However, this is not the case with observables because they are lazy. 
+This means that nothing happens until a subscription is made. 
+
+While promises handle a single event, observable is a stream that allows the passing of more than one event. 
+A callback is made for each event in an observable.
+21) 31. Explain the digest cycle in Angular.
+The process of monitoring the watchlist in order to track changes in the value of the watch variable is termed the digest cycle in Angular. 
+The previous and present versions of the scope model values are compared in each digest cycle.
+
+Although the digest cycle process gets triggered implicitly, it is possible to start it manually by using the $apply() function.
+
+22) What is ViewEncapsulation and how many ways are there to do it in Angular?
+To put it simply, ViewEncapsulation determines whether the styles defined in a particular component will affect the entire application or not. Angular supports 3 types of ViewEncapsulation:
+
+Emulated: Styles used in other HTML spread to the component.
+Native: Styles used in other HTML don’t spread to the component.
+None: Styles defined in a component are visible to all components of the application.
+
+23) What are Lifecycle hooks in Angular? Explain some life cycle hooks.
+Angular components enter their lifecycle from the time it is created to the time it is destroyed. 
+Angular hooks provide ways to tap into these phases and trigger changes at specific phases in a lifecycle.
+
+ngOnChanges(): This method is called whenever one or more input properties of the component changes. 
+The hook receives a SimpleChanges object containing the previous and current values of the property.
+ngOnInit(): This hook gets called once, after the ngOnChanges hook.
+It initializes the component and sets the input properties of the component.
+ngDoCheck(): It gets called after ngOnChanges and ngOnInit and is used to detect and act on changes that cannot be detected by Angular.
+We can implement our change detection algorithm in this hook.
+ngAfterContentInit(): It gets called after the first ngDoCheck hook. This hook responds after the content gets projected inside the component.
+ngAfterContentChecked(): It gets called after ngAfterContentInit and every subsequent ngDoCheck. It responds after the projected content is checked.
+ngAfterViewInit(): It responds after a component's view, or a child component's view is initialized.
+ngAfterViewChecked(): It gets called after ngAfterViewInit, and it responds after the component's view, or the child component's view is checked.
+ngOnDestroy(): It gets called just before Angular destroys the component. This hook can be used to clean up the code and detach event handlers.
+
+---------------------
+Difference between constructor and ngoninit
+
+A Constructor should be used to set up Dependency Injection, Initialization of class fields, etc.
+ngOnInit is used to write the work code that  executes as soon as the class is instantiated.
+
+--> Angular CLI has provided some options with this command which are really useful. For this particular case, you can use
+
+· ng lint --fix=true
+
+This command will fix all the fixable lint problems automatically using the rules written in the tslint.json configuration file
+VS Code has provided some really good extensions for linting as well. One of the best VS code lint extensions is TSLint, Prettier and husky
+
+Follow these steps for setting up a custom TSLint rule:
+
+1. Add a directory for your rules to your project, e.g. tslint-rules
+
+2. Add a new file for the rule (e.g. mycustomrule.ts)
+
+3. Compile rule: tsc mycustomrule.ts
+
+4. Configure directory
+
+5. Add rule to tslint.json: "my-custom-rule": true
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+git hooks
+Husky is basically a plugin that lets you add pre-commit and pre-push hooks easily to your project.
+
+Okay, first let’s add the dev dependencies.
+
+npm install husky --save-dev
+npm install prettier --save-dev
+
+Step 2: Configure prettier
+
+On the root of the project, create a file called .prettierrc with these prettier options,
+
+{
+    "bracketSpacing": true,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "printWidth": 80
+}
+
+
+Installing prettier alone won’t be sufficient because as we know prettier’s 
+default rule has some conflicts with tslint. Therefore we need tslint-prettier-config. So as usual do,
+
+npm install tslint-config-prettier --save-dev
+Now You have to update the tslint.json file and extend it to “tslint-config-prettier”
+
+"extends": ["tslint:recommended", "tslint-config-prettier"],
+
+Finally, add husky pre-commit and pre-push git hooks to the package.json file.
+
+"husky": {
+  "hooks": {
+    "pre-commit": "npm run prettier --staged && ng lint && npm test",
+    "pre-push": "ng build --aot true"
+  }
+}
+
+
+Prettier is an opinionated code formatter. It is a great way to keep code formatted consistently for you and your team.
+
+-----------------------------------------Angular coding interview questions:-------------------------------------------------------------------------------
+
+xx
+1) Lazy loading in Angular, how we achieve just give an example?
+2) Suppose I want to add some authorization header to every request which I am calling to the backend, how do you ensure this?
+
+token.interceptor.ts
+        import { Injectable } from '@angular/core';
+        import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+        import { Observable } from 'rxjs/Observable';
+
+        @Injectable()
+        export class TokenInterceptor implements HttpInterceptor {
+
+          public intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+            const token = localStorage.getItem('token') as string;
+            
+
+              if (token) {
+                req = req.clone({
+                  setHeaders: {
+				  Authorization': `Bearer ${token}`
+                  }
+                });
+              }
+
+              return next.handle(req);
+            }
+          }
+		  app.module.ts
+          import { NgModule } from '@angular/core';
+          import { BrowserModule } from '@angular/platform-browser';
+          import { HTTP_INTERCEPTORS } from '@angular/common/http';
+          import { AppComponent } from './app.component';
+          import { TokenInterceptor } from './token.interceptor';
+
+          @NgModule({
+            imports: [
+              BrowserModule
+            ],
+            declarations: [
+              AppComponent
+            ],
+            bootstrap: [AppComponent],
+            providers: [{
+              provide: HTTP_INTERCEPTORS,
+			  useClass: TokenInterceptor,
+              multi: true // < - - - - an array of interceptors can be registered
+            }]
+          })
+          export class AppModule {}
+
+
+3) Create custom directive?  Write an example
+4) Pipes transform example?
+5) How do you test your API call ?
+6) Realtime example of how GraphQL is more useful than REST API
+7) How lazy loading is achieved in angular?
+
+
+
+
+-------------What is a service worker and its role in Angular?
+A service worker is a script that runs in the web browser and manages caching for an application. Starting from 5.0.0 version, 
+Angular ships with a service worker implementation. Angular service worker is designed to optimize the end user experience of using an 
+application over a slow or unreliable network connection, while also minimizing the risks of serving outdated content.
+⬆ Back to Top
+
+What are the design goals of service workers?
+Below are the list of design goals of Angular's service workers,
+
+It caches an application just like installing a native application
+A running application continues to run with the same version of all files without any incompatible files
+When you refresh the application, it loads the latest fully cached version
+When changes are published then it immediately updates in the background
+Service workers saves the bandwidth by downloading the resources only when they changed.
+
+
+
+---------------------- What are the ways to trigger change detection in Angular?
+You can inject either ApplicationRef or NgZone, or ChangeDetectorRef into your component and apply below specific methods to trigger 
+change detection in Angular. i.e, There are 3 possible ways,
+
+ApplicationRef.tick(): Invoke this method to explicitly process change detection and its side-effects. It check the full component tree.
+NgZone.run(callback): It evaluate the callback function inside the Angular zone.
+ChangeDetectorRef.detectChanges(): It detects only the components and it's children.
+
+
+
+What is Angular security model for preventing XSS attacks?
+Angular treats all values as untrusted by default. i.e, Angular sanitizes and escapes untrusted values When a value is inserted into the DOM 
+from a template, via property, attribute, style, class binding, or interpolation.
+
+⬆ Back to Top
+
+What is the role of template compiler for prevention of XSS attacks?
+The offline template compiler prevents vulnerabilities caused by template injection, and greatly improves application performance.
+ So it is recommended to use offline template compiler in production deployments without dynamically generating any template.
+
+
+
+-------------------What is Sanitization? Is angular supports it?
+Sanitization is the inspection of an untrusted value, turning it into a value that's safe to insert into the DOM. 
+Yes, Angular suppports sanitization. It sanitizes untrusted values for HTML, styles, and URLs but sanitizing resource URLs isn't possible because
+ they contain arbitrary code.
+
+
+----------How do you prevent automatic sanitization?
+Sometimes the applications genuinely need to include executable code such as displaying <iframe> from an URL. 
+In this case, you need to prevent automatic sanitization in Angular by saying that you inspected a value, checked how it was generated, 
+and made sure it will always be secure. Basically it involves 2 steps,
+
+Inject DomSanitizer: You can inject DomSanitizer in component as parameter in constructor
+
+Mark the trusted value by calling some of the below methods
+
+bypassSecurityTrustHtml
+bypassSecurityTrustScript
+bypassSecurityTrustStyle
+bypassSecurityTrustUrl
+bypassSecurityTrustResourceUrl
+For example,The usage of dangerous url to trusted url would be as below,
+
+constructor(private sanitizer: DomSanitizer) {
+  this.dangerousUrl = 'javascript:alert("XSS attack")';
+  this.trustedUrl = sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
+  
+  
+  
+--------------  Is angular prevents http level vulnerabilities?
+Angular has built-in support for preventing http level vulnerabilities such as as cross-site request forgery (CSRF or XSRF) and cross-site script 
+inclusion (XSSI). Even though these vulnerabilities need to be mitigated on server-side, Angular provides helpers to make the integration easier
+ on the client side.
+
+HttpClient supports a token mechanism used to prevent XSRF attacks
+HttpClient library recognizes the convention of prefixed JSON responses(which non-executable js code with ")]}',\n" characters) and 
+automatically strips the string ")]}',\n" from all responses before further parsing
+
+
+Angular 14 new features:
+1) CLI Auto completion : 
+The first time you must execute the ng completion command in your terminal.
+You can just type ng command then press Tab to view all of the possible choices and Enter to choose one of them, 
+moreover if we are working on an angular 14 project more auto completion options, such as the ng generate command options, are available.
+
+2) Standalone components: 
+Angular issued an RFC (Request for Comments) on standalone components which is an attempt to make NgModules optional.
+You can import RoutingModule or any other module directly in component instead of assigning them in imports in Module.ts file
+
+3) Enhanced template diagnostics:
+Angular 14 has brought enhanced template diagnostics so developers can be protected from typical mistakes by the compiler similar to 
+typescript code. Currently, in Angular 13 and previous versions, the compiler does not generate warnings and only fails to build if there 
+is an issue that would otherwise prohibit it from doing so.
+So basically it will show errors in template.
+
+4) Catch the invalid banana in a box --- [()]
+
+4) Untyped forms:
+const cat = new UntypedFormGroup({
+name: new UntypedFormGroup({
+first: new UntypedFormControl('Sai'),
+last: new UntypedFromControl('Kiran')
+})
+})
+----
+
+
+
+Angular 13 features:
+
+1) View Engine is no longer available. It is replaced with IVY engine. 
+2) IE 11 is not supported now
+3) Angular now supports persistent build cache
+
+
+Angular 12:
+
+1) Deprecated View Engine
+2) Nullish Coalescing 
+
+instead of {{ age != null && age != undefined ? age : calculate Age()}}
+we can simply write {{ age ?? calculateAge()}}
+
+3) Internalization
+4) Learning Angular
+
+
+Angular 11:
+
+1) Hot Module Replacement -- Mechanism that allows modules to be replaced without a full browser refresh-- ng serve --hmr
+
+2) TypeScript 4.0 and webpack 5.0
+
+3) Moving to ESLint and deprecated TSLint
+
+
+Angular 10:
+
+1) Strict mode -- ng new --strict
+2) tsconfig.base.json -- New file this is for better support in VDE like intelligence
+
+
+Angular 9:
+
+1) IVY rendering engine -- 
+
+
+
+
+
+
+
+
+Testing:
+
+
+----------How to test a components input as well as its outputs?
+
+beforeEach(() => {
+
+    TestBed.configureTestingModule({
+      declarations: [LoginComponent]
+    });
+
+    // create component and test fixture
+    fixture = TestBed.createComponent(LoginComponent);
+
+    // get test component from the fixture
+    component = fixture.componentInstance;
+
+    submitEl = fixture.debugElement.query(By.css('button'));
+    loginEl = fixture.debugElement.query(By.css('input[type=email]'));
+    passwordEl = fixture.debugElement.query(By.css('input[type=password]'));
+  });
+});
+
+
+
+Testing @Inputs
+To test inputs we need to do things:
+
+We need to be able to change the input property enabled on our component.
+We need to check that the button is enabled or disabled depending on the value of our input property.
+it('Setting enabled to false disables the submit button', () => {
+    component.enabled = false;
+    fixture.detectChanges();
+    expect(submitEl.nativeElement.disabled).toBeTruthy();
+});
+
+
+
+Testing @Outputs
+
+it('Entering email and password emits loggedIn event', () => {
+  let user: User;
+  loginEl.nativeElement.value = "test@example.com"; (1)
+  passwordEl.nativeElement.value = "123456";
+
+  component.loggedIn.subscribe((value) => user = value);
+
+  submitEl.triggerEventHandler('click', null); (2)
+
+  expect(user.email).toBe("test@example.com");
+  expect(user.password).toBe("123456");
+});
+
+
+
+How code coverage works in angular 7?
+The CLI can run unit tests and create code coverage reports. Code coverage reports show you any parts of our code base that may not be 
+properly tested by your unit tests.
+
+To generate a coverage report run the following command in the root of your project.
+
+ng test --code-coverage
+When the tests are complete, the command creates a new /coverage folder in the project. Open the index.html file to see a report with
+ your source code and code coverage values.
+
+If you want to create code-coverage reports every time you test, you can set the following option in the CLI configuration file, angular.json:
+
+"test": {
+  "options": {
+    "codeCoverage": true
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------   REACT JS ---------------------------------------------------------------------------------------
+
+Why do we use JSX instead of JS?
+JSX allows us to write HTML elements in JavaScript and place them in the DOM without any createElement() and/or appendChild() methods.
+ JSX converts HTML tags into react elements. You are not required to use JSX, but JSX makes it easier to write React applications.
+ 
+ if-else statements don't work inside JSX. This is because JSX is just syntactic sugar for function calls and object construction. Basic Rule: JSX is fundamentally syntactic sugar.
+ 
+ --- How React and React DOM works:
+ 
+ https://www.geeksforgeeks.org/how-react-and-reactdom-works/
+
+--> React is component architecture based
+--> React is declarative, you tell what you want and React build the UI for you
+-- index.html
+<body>
+<div id="root">
+</body>
+-- index.js
+  ReactDOM.render(<App />, document.getElementById('root'));
+  App Component rendered inside root node and App component represents the view in the browser
+ 
+@@@@ When we run npm run start, index.html file will be served in the browser and root is attached to DOM now control goes to index.js and then
+  here App component is rendered and is attached to root DOM
+  
+  -----------What is the significance of keys in React?
+  
+-- What are Fragments in React and how they are helpful?
+  
+-- If you do export default MyComp then while importing you can import with any other name but if you do export const MyComp, we cannot
+-- Object destructuring in functional components:
+const Task = ({ task, onDelete }) => {
+Here in paranthesis instead of props, we passed task, onDelete which is called Object destructuring
+-- In React event handling happens like onClick={clickButton} we should not write like onClick={clickButton()} because event handler is a function
+but not function call
+-- Arrow functions is the simplest way to send parameters from Child to parent
+-- Conditional rendering using if/else, ternary and short circuit ways
+-- Warning Each child in an array or iterator should have a unique "key" prop
+-- Key is not a prop, if we try to access it is returned as undefined. This is used by React to efficiently load list 
+-- Key help React identify which items have changes, added or removed 
+-- We can use names.map(name, index) index as key if we dont have any unique identifier in the list
+-- event.preventDefault() to prevent page being refreshed on form submit in react
+
+
+
+Life cycle methods:
+
+Constructor---------
+Initializing state, Binding the event handlers, super(props) this will call base class constructor.
+Constructor is only place where you can override state fields directly
+
+getDerivedStateFromProps ---
+static method and used when the state of the component depends on props over time
+
+render()-----
+required method, pure function, after this children component life cycle methods are also executed
+
+componentDidMount-------
+Invoked Immediately after a component and all its children components have been rendered to the DOM
+-- Perform AJAX calls 
+
+-- shouldComponentUpdate -----
+
+Dictates if the component should rerender or not, it is for performance optimization
+
+getSnapshotBeforeUpdate(prevProps, prevState)
+-- called right before the changes from the virtual DOM are to be reflected in the DOM
+
+render()
+
+componentDidUpdate --------------
+called after the render is finished in the re render cycle
+called once after component has re rendered once and is suitable for AJAX calls
+
+componentWillUnMount -- destroying component, clean up, dont call setState
+
+--- React.Framgment inside functional component return so we dont have to write <div> tag extra and we can return multiple elements
+React Fragments let you group list of children elements and return without adding extra node to DOM in render method
+
+--Pure Component: It will implement shouldCOmponentUpdate and renders only when there is change in prevProps and prevState
+-- export default React.memo(component) which is like pure components for functional components
+
+
+
+
+What is the difference between React and ReactDOM?
+The react package contains React.createElement(), React.Component, React.Children, and other helpers related to elements and component classes. 
+You can think of these as the isomorphic or universal helpers that you need to build components. The react-dom package contains ReactDOM.render(),
+ and in react-dom/server we have server-side rendering support with ReactDOMServer.renderToString() and ReactDOMServer.renderToStaticMarkup().
+
+⬆ Back to Top
+
+Why ReactDOM is separated from React?
+The React team worked on extracting all DOM-related features into a separate library called ReactDOM. React v0.14 is the first release in
+ which the libraries are split. By looking at some of the packages, react-native, react-art, react-canvas, and react-three, 
+ it has become clear that the beauty and essence of React has nothing to do with browsers or the DOM.
+
+To build more environments that React can render to, React team planned to split the main React package into two: react and react-dom.
+ This paves the way to writing components that can be shared between the web version of React and React Native.
+
+
+When to use index as key:
+-- The items dont have unique id, list is static and will not be changed, filtered or reordered
+
+https://github.com/sudheerj/reactjs-interview-questions
+
+----What are the major differences between the syntax in ES5 and ES6?
+The syntax has witnessed a great change from ES5 to ES6. The important differences between the two releases of ECMAScript are:
+
+Require vs. Import: The require used in ES5 is now replaced with import.var React = require('react'); //is now replaced with
+import React from 'react'; //in ES6
+Export vs. Exports: Instead of exports, now export is used.export default Component; // replaces
+module.exports = Component; // in ES6
+
+---> Why we exptend class App extends React.component
+Inside src/App.js, we've been exporting our component as a function, however, 
+if we want to start adding interactivity via React event listeners, we need to convert it to a Class Component:
+
+
+
+
+------------------   Explain the initial cycle in React which happens during the first render?
+
+When a React App loads for the first time, the code is run in the mentioned order. All the below-mentioned methods run only one time except “render()”, 
+which can be run many times depending on setState and Parent component bee called.
+
+1) The “constructor()” is the first thing to be called. You can set the initial state here like below.
+
+ constructor(){
+   super();
+   this.state = {
+     spinLogo: true
+   };
+ }
+
+2) Then the “componentWillMount()” will be called. It is very similar to the constructor and called only once before the initial mounting of DOM. 
+That is the reason, it doesn’t have access to the DOM.  ReactJS documentation recommends us to use constructor instead of this lifecycle method 
+and it will be soon deprecated. 
+
+3) Then the initial “render()” will be called. It will also render all the child components(if any) of this component. 
+Also, note that render is generally called many times. Whenever we use setState, the component render is called.
+
+4) Then the function “componentDidMount()” will be called. This function will also be called once during the whole life-cycle. 
+It is a great place to do AJAX call to the server to fetch some data. You can also initialize something that requires interaction with the DOM, 
+like a jQuery library.
+
+
+--------->If you wanted a component to perform an action only once when the component initially rendered—e.g.,
+ make a web analytics call—how would you achieve this with a class component? And how would you achieve it with a function component?
+ 
+ const Homepage = () => {
+  useEffect(() => {
+    trackPageView('Homepage');
+  }, []);
+  
+  return <div>Homepage</div>;
+};
+
+
+
+------------------------*************************************
+
+Explain the new lifecycle methods in React 16.3?
+
+There are two new lifecycle methods introduced in React 16.3. Their main task is replacing the old error-prone lifecycle methods like 
+componentWillUpdate and componentWillReceiveProps. You can still use these old lifecycle methods in your project but only till React 17 is released.
+ These old lifecycle methods are now called - UNSAFE_componentWillUpdate and UNSAFE_componentWillReceiveProps.
+
+static getDerivedStateFromProps(nextProps, prevState)
+This lifecycle method is invoked before calling render(), both on the initial mount and subsequent mounts. 
+It’s main job is replacing componentWillReceiveProps which is now called UNSAFE_componentWillReceiveProps.
+
+getSnapshotBeforeUpdate(prevProps, prevState)
+This lifecycle method is called right before the changes from VDOM are to be committed to the Real DOM. 
+It enables your component to capture some information from the DOM like mouse position before it is changed. 
+The returned value by this lifecycle will be passed as a parameter to componentDidUpdate().
+
+So, the new order of mounting is -
+
+constructor()
+static getDerivedStateFromProps()
+render()
+componentDidMount()
+The order of update caused by changes in any props or state is -
+
+static getDerivedStateFromProps()
+shouldComponentUpdate()
+render()
+getSnapshotBeforeUpdate()
+componentDidUpdate()
+
+
+--------->
+What is the StrictMode component and why would you use it?
+
+Hide answer
+<StrictMode /> is a component included with React to provide additional visibility of potential issues in components. 
+If the application is running in development mode, any issues are logged to the development console,
+ but these warnings are not shown if the application is running in production mode.
+
+Developers use <StrictMode /> to find problems such as deprecated lifecycle methods and legacy patterns, 
+to ensure that all React components follow current best practices.
+
+<StrictMode /> can be applied at any level of an application component hierarchy, which allows it to be adopted incrementally within a codebase.
+
+
+
+****************************-----------------------------Explain lifecycle of component re-rendering due to re-rendering of parent component?
+
+There is a  type of re-rendering, which happens to all child components when the parent component re-renders.
+
+It also happens when you are using a React-redux model and the server call request have been completed and you have just received new props 
+in mapStateToProps(). 
+
+The “componentWillReceiveProps()” will be called whenever the component receives a new set of props. 
+This lifecycle method is a case of common use, when we receive props back from redux in mapStateToProps().
+ After that we can set the state depending on props, as calling this.setState here will not cause a re-render.
+componentWillReceiveProps(nextProps) {
+if (this.props.chinaPopData !== nextProps.chinaPopData) {
+this.setState({
+    chinaPopData: nextProps.chinaPopData.map(item => {return {name:     item.aged, value:item.totaled}}))
+});
+}
+The “shouldComponentUpdate()” lifecycle method is an method, by which we can decide whether to render a component or not. 
+It is mainly used to increase the performance of poor performing components.
+If we return false, it means React will not execute the lifecycle methods - componentWillUpdate() and componentDidUpdate() and also the render()
+
+If it is not used in the project, then React internally gives the default value of true to it.
+
+The next to execute is the lifecycle method “componentWillUpdate()”. This method is called before the render(), but not during the initial first render. It can be used as a replacement of componentWillReceiveProps() because it is called whenever props are passed to the component or state is changed.
+Next, the render() of the component is called and with it, all child components(if any) will be called.
+Lastly the “componentDidUpdate()” lifecycle method will be called. This method is called after the render(). It is a good place to work with any third party library requiring access to the DOM, like a jQuery plugin.
+
+
+React basic questions:
+---- What are the features of React? 
+It uses the virtual DOM instead of the real DOM.
+It uses server-side rendering.
+It follows uni-directional data flow or data binding.
+
+-- What is the use of virtual dom in React? Can you explain?
+
+--- types of components? Class and Function. any difference?
+
+-- WHEN WOULD YOU USE A CLASS COMPONENT OVER A FUNCTIONAL COMPONENT?
+Tip: React uses two kinds of components—class components and functional components.
+
+Functional components are the most basic kind of React component, defined by the components (unchanging) props.
+Class components are more complicated React components that allow developers to execute component lifecycle methods and manage a component’s state.
+This means class components are used over functional components when you need to manage state or use component lifecycle methods
+
+
+
+--- React Props are read-only! You will get an error if you try to change their value.
+
+--- What is a Hook?   Hooks allow us to "hook" into React features such as state and lifecycle methods.
+
+Hooks can only be called inside React function components.
+Hooks can only be called at the top level of a component.
+Hooks cannot be conditional
+
+-- Difference between CSS and SASS files?
+
+--- Difference between props and state:
+
+The Data is passed from one component to another.	                   The Data is passed within the component only.
+It is Immutable (cannot be modified).	                               It is Mutable ( can be modified).
+Props can be used with state and functional components.	               State can be used only with the state components/class component (Before 16.0).
+Props are read-only.	                                               State is both read and write.
+
+2) React components: Class and function components.
+3) Props:
+-- Props is like sending properties like query parameters:
+function Car(props) {
+  return <h2>I am a {props.color} Car!</h2>;
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Car color="red"/>);
+
+4) Component in another component:
+function Car() {
+  return <h2>I am a Car!</h2>;
+}
+
+unction Garage() {
+  return (
+    <>
+      <h1>Who lives in my Garage?</h1>
+      <Car />
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Garage />);
+
+-------
+Why can’t browsers read JSX?
+Browsers can only read JavaScript objects but JSX in not a regular JavaScript object. 
+Thus to enable a browser to read JSX, first, we need to transform JSX file into a JavaScript object using JSX transformers like Babel 
+and then pass it to the browser.
+
+
+5) What are Higher Order components? How to create props proxy for HOC components? (36)
+A higher-order component (HOC) is a function that takes a component and returns a new component. 
+Basically, it's a pattern that is derived from React's compositional nature.
+function HOC(WrappedComponent) {
+  return class Test extends Component {;
+    render() {
+      const newProps = {
+        title: 'New Header',
+        footer: false,
+        showFeatureX: false,
+        showFeatureY: true
+      }
+
+      return <WrappedComponent {...this.props} {...newProps} />
+    }
+  }
+}
+
+
+
+
+Differentiate between stateful and stateless components.
+Stateful vs Stateless
+Stateful Component	Stateless Component
+1. Stores info about component’s state change in memory	                      
+1. Calculates the internal state of the components
+2. Have authority to change state	
+2. Do not have the authority to change state
+3. Contains the knowledge of past, current and possible future changes in state	
+3. Contains no knowledge of past, current and possible future state changes
+4. Stateless components notify them about the requirement of the state change, then they send down the props to them.	
+4. They receive the props from the Stateful components and treat them as callback functions.
+
+
+Explain the lifecycle methods of React components in detail.
+Some of the most important lifecycle methods are:
+
+componentWillMount() – Executed just before rendering takes place both on the client as well as server-side.
+componentDidMount() – Executed on the client side only after the first render.
+componentWillReceiveProps() – Invoked as soon as the props are received from the parent class and before another render is called.
+shouldComponentUpdate() – Returns true or false value based on certain conditions. If you want your component to update, return true else return false. By default, it returns false.
+componentWillUpdate() – Called just before rendering takes place in the DOM.
+componentDidUpdate() – Called immediately after rendering takes place.
+componentWillUnmount() – Called after the component is unmounted from the DOM. It is used to clear up the memory spaces.
+
+
+
+---------------- What are some of the performance optimization strategies for React?
+Using useMemo
+
+useMemo is a React hook that is used for caching CPU-Expensive functions. A CPU-Expensive function called repeatedly due to re-renders of
+ a component, can lead to slow rendering.
+
+useMemo hook can be used to cache such functions. By using useMemo, the CPU-Expensive function gets called only when it is needed.
+
+useCallback can be used to obtain a similar result.
+
+Lazy Loading
+
+Lazy loading is a technique used to reduce the load time of a React app. It helps reduce the risk of web app performances to a minimum, 
+by loading up the components as the user navigates through the app.
+
+
+
+
+
+
+--------------*****************************************
+
+Explain the new feature of Lazy loading and code splitting in React v16.6?
+
+Lazy loading is the new feature introduced in React v16.6, which allows for some Components to load later than other components. 
+This way we can load the components which are fast like text earlier and components which loads images a bit later.
+
+Consider the below code for App.js. In it, there are two Components ContentComponent and myComp.
+One has some paragraph containing lorem ipsum and others have an image to load from unsplash.
+Now, we are lazy loading myComp as it has an image to load. Note the special way to import it and also we need to wrap the component in Suspense. Now, Suspense will contain the fallback Component which will be shown while myComp gets loaded.
+
+The other component ContentComponent will load instantly.
+
+//App.js
+import React, { Component, lazy, Suspense } from "react";
+import "./App.css";
+import ContentComponent from './components/ContentComponent';
+const MyComp = lazy(() => import("./components/myComp"));
+class App extends Component {
+ render() {
+   return (
+     <div className="App">
+       <header className="App-header">  
+         <h1>Lazy Loading Demo</h1>        
+          <Suspense fallback={<div>Loading.....</div>}>
+            <MyComp />
+          </Suspense>
+         <ContentComponent />
+       </header>
+     </div>
+   );
+ }
+}
+export default App;
+//ContentComponent.js
+import React from 'react'
+export default function ContentComponent() {
+ return (
+   <div>
+     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry...</p>
+     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout...</p>
+     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...</p>
+   </div>
+ )
+}
+//myComp.js
+import React from "react";
+export default () => {
+ return <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97" width="960" height="480" alt="coding" />;
+};
+
+
+
+
+
+
+How can you update the state of a component?
+State of a component can be updated using this.setState().
+
+class MyComponent extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            name: 'Maxx',
+            id: '101'
+        }
+    }
+    render()
+        {
+            setTimeout(()=>{this.setState({name:'Jaeha', id:'222'})},2000)
+            return (                                 
+ 
+<div>
+                   
+<h1>Hello {this.state.name}</h1>
+     
+<h2>Your Id is {this.state.id}</h2>
+ 
+                   </div>
+ 
+            );
+        }
+    }
+ReactDOM.render(
+    <MyComponent/>, document.getElementById('content')
+);
+
+7) How to enable production mode in React?
+You should use Webpack's DefinePlugin method to set NODE_ENV to production, by which it strip out things like propType validation and extra warnings. 
+Apart from this, if you minify the code, for example, Uglify's dead-code elimination to strip out development only code and comments, 
+it will drastically reduce the size of your bundle.
+
+8) What is the difference between super() and super(props) in React using ES6 classes? (91)
+
+
+
+// ///////////////////////////////////////////////////REACT AXIO///////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+--------- To set base path for backend URL 
+
+ import axios from 'axios';
+
+export default axios.create({
+    baseURL: 'http://localhost:3500'
+});
+
+
+Where would you put AJAX calls in your React code?
+It is possible to use any AJAX library with React, such as Axios, jQuery AJAX, as well as the in-built browser window.fetch.
+
+Data with AJAX calls need to be added to the componentDidMount() lifecycle method. By doing this, it is possible to use the setState() 
+method for updating components as soon as the data is retrieved.
+
+Why API calls are to be made from componentDidMount and not in constructor/componentWillMount
+This is recommended to avoid side effects. Render method will get called immediately after the componentWillMount 
+and no way we can make the render method wait until the API has returned.
+
+Constructor is a place where we define the variables and not make any API calls. 
+API calls can have side effects and should not be used inside constructor
+
+React expects state to be available as render function will be called next after componentWillMount  and code can break if any mentioned 
+state variable is missing which may occur in case of ajax API calls
+
+One more reason is If we are doing server-side rendering of React components componentWillMount will get called on the server-side 
+and again on the client, resulting in calling fetch two times. Hence, this is not definitely the place where we should integrate our APIs.
+
+NOTE: A side effect is any application state change that is observable outside the called function other than its return value. 
+Eg: modifying a global variable
+
+How do you modularize code in React?
+We can modularize code by using the export and import properties. They help in writing the components separately in different files.
+
+//ChildComponent.jsx
+export default class ChildComponent extends React.Component {
+    render() {
+        return(           
+ 
+<div>
+              
+<h1>This is a child component</h1>
+ 
+           </div>
+ 
+        );    }
+}
+ 
+//ParentComponent.jsx
+import ChildComponent from './childcomponent.js';
+class ParentComponent extends React.Component {    
+    render() {        
+        return(           
+             
+<div>               
+                <App />          
+            </div>
+      
+        );  
+    }
+}
+
+
+
+-----9) How to re-render the view when the browser is resized using React? Can you write example
+
+--- If you were working on a React application that was rendering a page very slowly, how would you go about investigating and fixing the issue?
+
+Hide answer
+If a performance issue such as slow rendering is seen within a React app, the first step is to use the Profiler tool provided within the React 
+Developer Tools browser plugin, which is available for Google Chrome and Mozilla Firefox. 
+The Profiler tool allows developers to find components that take a long time to render or are rendering more frequently than necessary.
+
+One of the most common issues in React applications is when components re-render unnecessarily.
+ There are two tools provided by React that are helpful in these situations:
+
+React.memo(): This prevents unnecessary re-rendering of function components
+PureComponent: This prevents unnecessary re-rendering of class components
+Both of these tools rely on a shallow comparison of the props passed into the component—if the props have not changed, 
+then the component will not re-render. While both tools are very useful, the shallow comparison brings with it an additional performance penalty, 
+so both can have a negative performance impact if used incorrectly. By using the React Profiler, performance can be measured before and after using 
+these tools to ensure that performance is actually improved by making a given change.
+
+
+
+
+
+
+---------------------------- Web security ------------------How to use innerHTML in React?
+The dangerouslySetInnerHTML attribute is React's replacement for using innerHTML in the browser DOM. Just like innerHTML, 
+it is risky to use this attribute considering cross-site scripting (XSS) attacks. You just need to pass a __html object as key and HTML 
+text as value.
+
+In this example MyComponent uses dangerouslySetInnerHTML attribute for setting HTML markup:
+
+function createMarkup() {
+  return { __html: "First &middot; Second" };
+}
+
+function MyComponent() {
+  return <div dangerouslySetInnerHTML={createMarkup()} />;
+}
+
+
+
+
+------------------------How you implement Server Side Rendering or SSR?
+React is already equipped to handle rendering on Node servers. A special version of the DOM renderer is available, which follows the same pattern
+ as on the client side.
+
+import ReactDOMServer from "react-dom/server";
+import App from "./App";
+
+ReactDOMServer.renderToString(<App />);
+This method will output the regular HTML as a string, which can be then placed inside a page body as part of the server response. 
+On the client side, React detects the pre-rendered content and seamlessly picks up where it left off.
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   HOOKSSSSSSSSSSSSSSSSSSSSSSSSSS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+1) Memory Leaks using useEffect --->
+when we add event listener to component and we unmounted component
+
+1) Why Hooks
+***You dont need to bind event handlers in Hooks
+****To provide state and other functionalities in functional components, hooks are used
+****Classes dont minify well and make hot reloading very unreliable
+***There is need to share stateful logic in a better way
+*** Create components for complex scenarios such as data fetching and subscribing to events related code is not organized in one place
+-- Date fetcing : in componentDidMount()  and componentDidUpdate
+-- Event Listeners : componentDidMount() and componentWillUnmount()
+So related code will be placed using Hooks instead of dividing component, it will have multiple functions in same component with related code 
+together.
+
+Rules of Hooks:
+-- Only call Hooks at the top level
+-- 
+
+
+--------------> useState 
+
+1) Access to previous state to increment 5
+
+incrementFive = () => {
+     count: prevCount + 5;
+}
+
+2) For Object in useState : const [name, setName] = useState({firstName: '', lastName:''})
+3) set State will merge the state in class components where as useState hook will not merge the state 
+4) In classes, the state is always an object where as in useState the state does not have to be an object
+5) useState hook returns an array with 2 elements, first one current value of the state and second is state setter function
+
+
+----------------> useEffect
+
+1) useEffect hook is to perform side effects in functional components like calling API, updating DomSanitizer
+2) basically to solve two problems, to remove repetition of code like updating counter, first setting up in componentDidMount() and again in
+componentDidUpdate() which gets called everytime component renders and to group related code together. and also componentWillUnmount()
+3) We pass a fucntion as parameter to useEffect and what we are saying is execute this function everytime componment renders
+4) For conditionally exectuing an effect we pass in second parameter and this parameter is an Array, we specify either state and props to watch.
+If those changes then only effect gets executed.
+5) componentDidMount called only once so we can do samething using useEffect and passing empty array 
+6) To remove listeners and clean up process in useEffect, use return statement and clean up the resources to fix memory leaks
+7) It is possible that we can have multiple useEffects in the same component.
+
+
+---------------- useContext
+
+Context API:
+Context provides a way to pass to pass data through the component tree without having to pass props down manually at every level
+1) export const UserContext = React.createContext()
+function App() {
+return (
+  <div>
+  <UserCOntext.Provider value={'Sai'}>
+  <ComponentA>
+  </div>
+)
+}
+
+
+So in nested component,
+function ComponentF() {
+return (
+  <div>
+  <UserCOntext.Consumer>{
+  user => {
+  return <div> user context value {user}
+  }
+  <ComponentA>
+  </div>
+)
+}
+
+instead of this simply use 
+const user = useContext(userContext)
+
+
+----------------- useReducer
+
+-- It is used for state management. It is alternative to useState.
+-- useState is built using useReducer hook
+
+-- The reduce() method executes a reducer function(provided by us) on each element in Array and resulting in single output value.
+-- useReducer() accepts two arguments -- reducer function and initial state
+
+const array = [1,2,3,4]
+const reducer = (accumulator, currentvalue) => accumulator + currentValue;
+console.log(array.reduce(reducer));  // output is 10
+console.log(array.reduce(reducer,5)) // Output is 15 (Here 5 is initial value given to reduce method)
+
+
+
+------------- useCallback
+-- this will return memoized version of the callback function that only changes if one of the dependecies has changed
+-- It is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary rerenders
+
+-------------- useMemo 
+
+-- useMemo is used when you want to cache long running functions and dont want them to get executed until and unless one of their dependecies has
+changed
+
+
+----------- useRef:
+-- useRef can hold reference to a DOM node using the ref attribute and it can also be used to store any mutable value and value persist through 
+rerenders while also not causing any additional renders when its value changes.
+
+-- It can be used to create generic container which can hold a mutable value similar to instance properties on class component.
+This generic container does not cause rerenders when the data it stores changes at the same time it remembers data even after other state variables
+cause rerender of this state component
+
+
+------- useNavigate hook
+
+-- This is used to navigate programatically like clicking on button we should move to another page.
+
+import { useNavigate } from "react-router-dom"
+export const Home = () => {
+    const navigate = useNavigate()
+    return (
+    <>
+    <div>Home Page</div>
+       <button onClick={navigate('order-summary')}>Place Order</button>
+    </> 
+    )
+}
+
+useNavigate also use to go back so we use <button onClick={()=> navigate(-1)}>Go back</button>
+
+
+----------- useParams hook to get params from URL 
+const params = useParams()
+   const userId = params.userId
+   
+   <Route path=':userId' element={<UserDetails/>}></Route>
+   
+   
+------------- useSearchParams hook is used to store state in URL and useState stores state in Memory that is the difference
+
+
+
+-------Why we need custom hooks?
+
+-- share logic -- Alternative to HOC and Render Props
+
+
+
+
+
+
+----------------Do two components using the same Hook share state?
+No. Custom Hooks are a mechanism to reuse stateful logic (such as setting up a subscription and remembering the current value),
+ but every time you use a custom Hook, all state and effects inside of it are fully isolated.
+ 
+ 
+ ---------------Explain the difference between useState and useRef hooks?
+Mid 
+Top 46 React Hooks Interview Questions  React Hooks  46  
+Answer
+Updating a reference created by useRef doesn't trigger re-rendering, while updating the state (setState) makes the component re-render;
+useRef returns an object with a current property holding the actual value. In contrast, useState returns an array with two elements.
+useRef‘s current property is mutable, but useState‘s state variable is not.
+The reference update is synchronous (the updated reference value is available right away), while the state update is asynchronous (the state variable is updated after re-rendering).
+Using useRef - no re-renders
+
+const countRef = useRef(0);
+  
+const handle = () => {
+    countRef.current++;
+    console.log(`Clicked ${countRef.current} times`);
+};
+Using useState - triggers re-render
+
+const [count, setCount] = useState(0);
+  
+const handle = () => {
+    const updatedCount = count + 1;
+    console.log(`Clicked ${updatedCount} times`);
+    setCount(updatedCount);
+};
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Questions from Hooks:
+
+-- What is the difference between setState from class component and useState from Hooks?
+-- Why we need to use prev state in case your current state depends on your previous state? cant we directly access state?
+-- setForm({
+  ...form,
+  long: form.password.length >=3 ? true : false
+});
+setForm({
+  ...form,
+  username: "*****"
+});
+
+-- So when you call the same function twice and React batches state updates you will not get correct results.
+
+The value of form in the second setForm is still the old value until the next re-render.
+ It doesn't reflect the updated form from the previous setForm.
+
+React setState and useState does not make changes directly to the state object.
+
+setState and useState create queues for React core to update the state object of a React component.
+
+So the process to update React state is asynchronous for performance reasons. That’s why changes don’t feel immediate.
+
+So basically react updates state in batches so changes wont effect immediately
+
+--- Why React setState/useState does not update immediately?
+
+React this.setState, and useState does not make changes directly to the state object.
+
+React this.setState, and React.useState create queues for React core to update the state object of a React component.
+
+
+-- Do you know any of the scenarios you fixed memory leaks using useEffect(), or how do you think we can fix it? any scenario that you think of?
+--- removing event handlers -- check HookMouse.js
+-- Can we write multiple useEffects in same component? Yes and which scenario?
+
+---- How useState and useReduce are different?
+-------- What are the similarities or differences between reduce from JavaScript and useReducer hook in React?
+1) reduce -- Single output                         newState = reducer(currentState, action)
+2) returns single output                           returns pair of value -- newState and Dispatch
+
+-- What are the inputs that we provide to useReducer()
+-- can state and action be object in useReducer() so what scenarios we can use them as objects? -- pass additional data to reducer using action,
+state as object we can keep track of multiple properties
+-- Can you use useContext with useReducer? Can you give real time example
+
+3) useState                                      useReducer
+   Primitive types									Array or Object                     Type of state
+   One or Two										Too Many state Transitions           Number of state transitions( 
+   No												Yes										Related state transitions
+   No business logical								Business Logic							Complex business logic
+   Local component state							Global state 							Local vs Global
+   
+   
+4) Difference between useCallback and useMemo
+-- useCallback caches provided function instance itself where as useMemo invoke provided function and caches its result.
+
+5) How do you write logic to move focus onto one of the input text field on page load ? --- using useEffect and useRef
+
+6) Lets say I have interval and then button to clear interval using Hooks considering performance and useRef and useEffect
+
+7) I have two counters in one counter I should increment by 10 and other counter should increment by 20, how would you write? Custom hook
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% React Router  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+111) To connect URL in the browser with our React application, what should we do? For that React router provides component called Browser Router
+
+---index.js ---
+import { BrowserRouter } from 'react-router-dom'
+
+222) What is the use of NavLink from React router? to get access to active route and style them
+import { NavLink } from 'react-router-dom'
+
+const NavBar = () => {
+  return (
+    <nav>
+       <NavLink to='/'>Home</NavLink>  // If we debug we could see class = "active" when we are on Home page
+       <NavLink to='/about'>About</NavLink>
+    </nav>
+  )
+}
+
+--- > NavLink also has isActive boolean prop to access and based on that we can apply CSS on current active route link
+
+
+333) Navigating Programatically using useNavigate() hook and also using navigate(-1) to go back to previous page
+So how do you navigate back to previous page?
+
+4) We replaced instead of pushing order summary to history then 
+
+5) No Match Route --  *
+
+6) Nested Routes: Within Route again Route path and use Outlet tag inside main path to render child nested route
+
+7) What is the use of Outlet tag in React Router? To partially render child pages we use nested route and outlet tag
+
+8) Index Route in React Router -- when you have Nested Routes,To display child navigation component as part of parent navigation URL itself 
+{{{{{{{{{{-- App.js
+
+lets say we want to display content of /products/new/ as part of /products URL then we use index route.
+
+9) Dynamic Routes:  {/* Dynamic Routes*/}
+      <Route path='users/:userId' element={<UserDetails/>}></Route>
+	  
+	  
+10) useParams hook to get params from URL 
+const params = useParams()
+   const userId = params.userId
+   
+   <Route path=':userId' element={<UserDetails/>}></Route>
+   
+11) Search params: 
+--> useSearchParam hook is used
+
+12) relative link is a link that does not start with forward slash and will inherit the closed route that it rendered.
+
+13)  Absolute path will append from the http:3000/feaured like that but not http:/3000/products/featured
+
+14) To Lazy load we need to use Dynamic imports and React Suspense. What is Dynamic imports?
+
+15) How do we attach URL Query parameters when you are navigating programatically in React JS?
+
+
+const Users = () => {
+  const navigate = useNavigate();
+  const params = { sort: 'date', order: 'newest' };
+
+  const goToPosts = () =>
+    navigate({
+      pathname: '/posts',
+      search: `?${createSearchParams(params)}`,
+    });
+
+  return (
+    <div>
+      <p>Users</p>
+      <button onClick={goToPosts}>Go to Posts</button>
+    </div>
+  );
+};
+
+
+
+
+
+
+
+------------------------------How to get query parameters in React Router v4?
+The ability to parse query strings was taken out of React Router v4 because there have been user requests over the years to support different 
+implementation. So the decision has been given to users to choose the implementation they like. 
+The recommended approach is to use query strings library.
+
+const queryString = require("query-string");
+const parsed = queryString.parse(props.location.search);
+You can also use URLSearchParams if you want something native:
+
+const params = new URLSearchParams(props.location.search);
+const foo = params.get("name");
+
+
+--------------------------------------------Why you get "Router may have only one child element" warning?
+You have to wrap your Route's in a <Switch> block because <Switch> is unique in that it renders a route exclusively.
+
+At first you need to add Switch to your imports:
+
+import { Switch, Router, Route } from "react-router";
+Then define the routes within <Switch> block:
+
+<Router>
+  <Switch>
+    <Route {/* ... */} />
+    <Route {/* ... */} />
+  </Switch>
+</Router>
+
+
+
+
+
+How to pass data between sibling components using React router?
+
+We can pass data between React sibling components using React Router using history.push and match.params.
+
+Let look into the code. We have a Parent component App.js. We have two Child Components HomePage and AboutPage. 
+Everything is inside a Router from React-router Route. We also have a route for /about/{params}. This is where we will pass the data.
+
+import React, { Component } from ‘react’;
+class App extends Component {
+render() {
+   return (
+     <Router>
+       <div className="App">
+       <ul>
+         <li>
+           <NavLink to="/"  activeStyle={{ color:'green' }}>Home</NavLink>
+         </li>
+         <li>
+           <NavLink to="/about"  activeStyle={{ color:'green' }}>About
+  </NavLink>
+         </li>
+  </ul>
+              <Route path="/about/:aboutId" component={AboutPage} />
+              <Route path="/about" component={AboutPage} />
+              <Route path="/" component={HomePage} />
+       </div>
+     </Router>
+   );
+ }
+}
+export default App;
+The HomePage is a simple functional component, which have a button. On clicking the button we are using props.history.push(‘/about/’ + data) , 
+which is used to programatically navigate to /about/data
+
+export default function HomePage(props) {
+  const handleClick = (data) => {
+   props.history.push('/about/' + data);
+  }
+return (
+   <div>
+     <button onClick={() => handleClick('Nabendu')}>To About</button>
+   </div>
+ )
+}
+The AboutPage is also a simple functional component, which gets the passed data by props.match.params.aboutId
+
+export default function AboutPage(props) {
+ if(!props.match.params.aboutId) {
+     return <div>No Data Yet</div>
+ }
+ return (
+   <div>
+     {`Data from HomePage ${props.match.params.aboutId}`}
+   </div>
+ )
+}
+
+
+
+
+------------------------------------------How React Router is different from history library?
+
+React Router is a wrapper around the history library which handles interaction with the browser's window.history with its browser 
+and hash histories. It also provides memory history which is useful for environments that don't have global history, 
+such as mobile app development (React Native) and unit testing with Node.
+
+
+
+
+----------------------------------------------What are the <Router> components of React Router v4?
+React Router v4 provides below 3 <Router> components:
+
+<BrowserRouter>
+<HashRouter>
+<MemoryRouter>
+The above components will create browser, hash, and memory history instances. React Router v4 makes the properties and 
+methods of the history instance associated with your router available through the context in the router object.
+
+
+-----------------------------------------------------How to get query parameters in React Router v4?
+The ability to parse query strings was taken out of React Router v4 because there have been user requests over the years to support different 
+implementation. So the decision has been given to users to choose the implementation they like. The recommended approach is to use query strings 
+library.
+
+const queryString = require("query-string");
+const parsed = queryString.parse(props.location.search);
+You can also use URLSearchParams if you want something native:
+
+const params = new URLSearchParams(props.location.search);
+const foo = params.get("name");
+ 
+ 
+----------------------- How to use componentWillMount() in React Hooks?
+
+You cannot use any of the existing lifecycle methods (componentDidMount, componentDidUpdate, componentWillUnmount etc.) in a hook. 
+They can only be used in class components. And with Hooks you can only use in functional components.
+
+You can think of useEffect Hook as componentDidMount, componentDidUpdate, and componentWillUnmount combined.
+
+Code inside componentDidMount run once when the component is mounted. useEffect hook equivalent for this behaviour is
+
+useEffect(() => {
+ // Your code here
+}, []);
+Without the second parameter the useEffect hook will be called on every render (like componentDidUpdate) of the component which can be dangerous:
+
+useEffect(() => {
+ // Your code here
+});
+Hook equivalent of componentWillUnmount() code will be as follows
+
+useEffect(() => {
+ window.addEventListener('mousemove', () => {});
+
+ // returned function will be called on component unmount 
+ return () => {
+   window.removeEventListener('mousemove', () => {})
+ }
+}, [])
+
+
+
+
+
+------------------What are differences between React.memo() and useMemo()?
+
+React.memo() is a higher-order component (HOC) that we can use to wrap components that we do not want to re-render unless props within them change
+useMemo() is a React Hook that we can use to wrap functions within a component. We can use this to ensure that the values within that function 
+are re-computed only when one of its dependencies change
+
+
+
+
+----------------------------Let's say in our project we have componentWillUnmount that is used for cleanup (like removing event listeners,
+ cancel the timer etc). How to refactor this code using React Hooks?
+
+componentDidMount() {
+  window.addEventListener('mousemove', () => {})
+}
+
+componentWillUnmount() {
+  window.removeEventListener('mousemove', () => {})
+}
+
+
+Answer
+React Hooks equivalent of above code will be as follows
+
+useEffect(() => {
+  window.addEventListener('mousemove', () => {});
+
+  // returned function will be called on component unmount 
+  return () => {
+    window.removeEventListener('mousemove', () => {})
+  }
+}, [])
+
+
+
+----------------------------What are common use cases for the useMemo?
+
+The primary purpose of useMemo hook is "performance optimization".
+
+It returns a memoized value,
+It accepts two arguments - create function (which should return a value to be memoized) and dependency array. It will recompute the memoized value only when one of the dependencies has changed.
+Using useMemo you achieve:
+
+referential equality of the values (to further send them to props of the components to potentially avoid re-renders)
+eliminate redoing of the computationally expensive operations for same parameters
+For example:
+
+function App() {
+    const [data, setData] = useState([....]);
+
+    function format() {
+        console.log('formatting....'); // this will print only when data has changed
+        const formattedData = [];
+        data.forEach(item => {
+            const newItem = //...do soemthing here,
+            if (newItem) {
+                formattedData.push(newItem);
+            }
+        })
+        return formattedData;
+    }
+
+    const formattedData = useMemo(format, [data])
+
+    return (
+        <>
+        {formattedData.map(item => (
+            <div key={item.id}>
+            {item.title}
+            </div>
+        ))}
+        </>
+    )  
+}
+
+
+
+
+
+
+ESLINT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+1) npm run lint 
+code must be placed on a new line, react/jsx-one-expression-per-line
+Strings must use single quote @typescript-eslint/quotes
+1:30  error    Extra semicolon                                 semi
+ 5:26  error    Strings must use singlequote                    quotes
+  7:13  error    Missing space before function parentheses       space-before-function-paren
+  23:1   error    Expected indentation of 2 spaces but found 0    indent
+   4:1   error  More than 1 blank line not allowed            no-multiple-empty-lines
+   5:17  error  A space is required after '{'                 object-curly-spacing
+    14:1   error  Trailing spaces not allowed                                no-trailing-spaces
+
+
+------------------------------------------
+
+15) 7) Given the React code defined above, can you identify two problems?
+Mid 
+Top 130 React Interview Questions  React  130  
+Problem
+Take a look at the code below:
+
+class MyComponent extends React.Component {
+  constructor(props) {
+    this.state = {
+      clicks: 0
+    };
+  }
+
+  componentDidMount() {
+    this.refs.myComponentDiv.addEventListener('click', this.clickHandler);
+  }
+
+  componentWillUnmount() {
+    this.refs.myComponentDiv.removeEventListener('click', this.clickHandler);
+  }
+
+  clickHandler() {
+    this.setState({
+      clicks: this.clicks + 1
+    });
+  }
+
+  render() {
+    let children = this.props.children;
+
+    return (
+      <div className="my-component" ref="myComponentDiv">
+      <h2>My Component ({this.state.clicks} clicks})</h2>
+      <h3>{this.props.headerText}</h3>
+    {children}
+    </div>
+    );
+  }
+}
+Given the code defined above, can you identify two problems?
+
+Answer
+The constructor does not pass its props to the super class. It should include the following line:
+constructor(props) {
+  super(props);
+  // ...
+}
+The event listener (when assigned via addEventListener()) is not properly scoped because ES2015 doesn’t provide autobinding. 
+Therefore the developer can re-assign clickHandler in the constructor to include the correct binding to this:
+constructor(props) {
+  super(props);
+  this.clickHandler = this.clickHandler.bind(this);
+  // ...
+}
+
+
+
+----> 
+Call child method from parent in React
+React.forwardRef():
+
+import { forwardRef, useRef, useImperativeHandle } from "react";
+
+const Child = forwardRef((props, ref) => {
+  useImperativeHandle(ref, () => ({
+    getMessage() {
+      alert("Message from Child");
+    }
+  }));
+
+  return <h1>Child Component</h1>;
+});
+
+const Parent = () => {
+  const childRef = useRef();
+
+  return (
+    <div>
+      <Child ref={childRef} />
+      <button onClick={() => childRef.current.getMessage()}>Click</button>
+    </div>
+  );
+};
+
+--->
+
+Update React component every second 
+
+class TimeComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { time: Date() };
+  }
+  componentDidMount() {
+    this.interval = setInterval(() => this.setState({ time: Date() }), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  render() {
+    return <h3>Current Time: {this.state.time} </h3>;
+  }
+}
+
+--->
+
+Dynamically add child components in React
+// Parent.js
+
+export default class Parent extends React.Component {
+  render() {
+    return (
+      <>
+        <h1> Parent Component! </h1>
+        {this.props.children}
+      </>
+    );
+  }
+}
+// Child.js
+
+export default class Child extends React.Component {
+  render() {
+    return (
+      <>
+        <h2> Child Component! </h2>
+      </>
+    );
+  }
+}
+// index.js
+
+import Parent from "./Parent";
+import Child from "./Child";
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(
+  <StrictMode>
+    <Parent>
+      <Child name="Child Component Props" />
+    </Parent>
+  </StrictMode>,
+  rootElement
+);
+
+
+------>
+
+How to start search only when user stops typing?
+function App() {
+
+  const [value, setValue] = React.useState("");
+
+  const handleOnChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  React.useEffect(() => {
+    const timeoutId = setTimeout(
+      () => console.log(`Search function called: "${value}"`),
+      300
+    );
+    return () => clearTimeout(timeoutId);
+  }, [value]);
+
+  return (
+    <>
+      <input onChange={handleOnChange} value={value} placeholder="Search" />
+      <h1>{value}</h1>
+    </>
+  );
+}
+
+
+
+----->
+
+How to implement default or NotFound page?
+import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+const IndexPage = () => {
+  return <h3>Home Page</h3>;
+};
+
+const AboutPage = () => {
+  return <h3>About Page</h3>;
+};
+
+const NoMatchPage = () => {
+  return <h3>Page Not Found</h3>;
+};
+
+const App = () => {
+  return (
+    <section className="App">
+      <Router>
+        <Link to="/"> Home | </Link>
+        <Link to="/about"> About | </Link>
+        <Link to="/page-not-found"> 404 </Link>
+        <Switch>
+          <Route exact path="/" component={IndexPage} />
+          <Route exact path="/about" component={AboutPage} />
+          <Route component={NoMatchPage} />
+        </Switch>
+      </Router>
+    </section>
+  );
+};
+
+
+----->
+
+How to focus an input element on page load?
+autoFocus:
+
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <input placeholder="It Won't focus" />
+        <input autoFocus placeholder="It will focus" />
+      </div>
+    );
+  }
+}
+
+
+
+-------->
+
+Give a simple example of Jest test case?
+// App.js
+
+function App() {
+  let [count, setCount] = useState(0);
+
+  const decrement = () => setCount((count -= 1));
+  const increment = () => setCount((count += 1));
+
+  return (
+    <div className="App">
+      <h1>Testing React Hooks</h1>
+      <p>{count}</p>
+      <button onClick={decrement}>-</button>
+
+      <button onClick={increment}>+</button>
+    </div>
+  );
+}
+// App.test.js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "../index";
+
+import Enzyme, { shallow } from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+
+Enzyme.configure({ adapter: new Adapter() });
+
+it("renders without crashing", () => {
+  const div = document.createElement("div");
+  ReactDOM.render(<App />, div);
+  ReactDOM.unmountComponentAtNode(div);
+});
+
+it("App loads with initial state of 0", () => {
+  const wrapper = shallow(<App />);
+  const text = wrapper.find("p").text();
+  expect(text).toEqual("0");
+});
+
+
+--------->
+
+How to repeat an element n times using JSX?
+export default function App() {
+
+  let inputFields = [];
+  for (let i = 0; i < 5; ++i) {
+    inputFields.push(
+      <div> Field {i}: <input type="text" placeholder="Search" /> </div>
+    );
+  }
+
+  return (
+    <>
+      <h2> Repeat an element n times using JSX </h2>
+      <div>{inputFields}</div>
+    </>
+  );
+}
+
+
+
+---->
+
+How can I set a cookie in react?
+import { CookiesProvider } from "react-cookie";
+import ReactDOM from "react-dom";
+
+import App from "./App";
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(
+  <CookiesProvider>
+    <App />
+  </CookiesProvider>,
+  rootElement
+);
+import React, { useState } from "react";
+import { useCookies } from "react-cookie";
+
+const App = () => {
+
+  const [name, setName] = useState("");
+  const [cookies, setCookie] = useCookies(["user"]);
+
+  const handle = () => {
+    setCookie("name", name, { path: "/" });
+  };
+  return (
+    <div className="App">
+      <h1> Cookies in React </h1>
+      <input
+        placeholder="Cookie value"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <button onClick={handle}>Set Cookie</button>
+      
+      {cookies.name && (
+        <div>Name: {cookies.name}</div>
+      )}
+    </div>
+  );
+};
+export default App;
+
+
+--> How do you call parent method on clicking button in child component by passing one parameter?
+
+
+------- REACT JS VS REACT NATIVE—WHAT’S THE DIFFERENCE?
+Tip: If you’re applying for a job that focuses on using React JS, you already know what React is.
+ But what about React Native? Employers will want to know you can make a clear distinction between these two platforms. So what IS the difference?
+
+Again, React JS is a front end, open source JavaScript library used for building UIs.
+React Native, on the other hand, is an open source, MOBILE framework that allows developers to use React on platforms like Android and iOS. 
+“Native” is a reference to the fact that React Native integrates React components with the native capabilities of these mobile-specific platforms.
+
+
+What are the <Router> components of React Router v4?
+React Router v4 provides below 3 <Router> components:
+
+<BrowserRouter>
+<HashRouter>
+<MemoryRouter>
+The above components will create browser, hash, and memory history instances. React Router v4 makes the properties and methods of the history 
+instance associated with your router available through the context in the router object.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+How to get history on React Router v4?
+Below are the list of steps to get history object on React Router v4,
+
+Create a module that exports a history object and import this module across the project.
+
+For example, create history.js file:
+
+import { createBrowserHistory } from 'history'
+
+export default createBrowserHistory({
+  /* pass a configuration object here if needed */
+})
+You should use the <Router> component instead of built-in routers. Import the above history.js inside index.js file:
+
+import { Router } from 'react-router-dom'
+import history from './history'
+import App from './App'
+
+ReactDOM.render((
+  <Router history={history}>
+    <App />
+  </Router>
+), holder)
+You can also use push method of history object similar to built-in history object:
+
+// some-other-file.js
+import history from './history'
+
+history.push('/go-here')
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+How to perform automatic redirect after login?
+
+import React, { Component } from 'react'
+import { Redirect } from 'react-router'
+
+export default class LoginComponent extends Component {
+  render() {
+    if (this.state.isLoggedIn === true) {
+      return <Redirect to="/your/redirect/page" />
+    } else {
+      return <div>{'Login Please'}</div>
+    }
+  }
+}
+
+
+
+
+
+
+
+---------------------------------------------------------------- REDUX --------------------------------------
+
+
+What is prop drilling and how to avoid it?
+GIFprop-drilling
+
+Sometimes while developing React applications, there is a need to pass data from a component that is higher in the hierarchy to a component 
+that is deeply nested. To pass data between such components, we pass props from a source component and keep passing the prop to the next 
+component in the hierarchy till we reach the deeply nested component.
+
+The disadvantage of using prop drilling is that the components that should otherwise be not aware of the data have access to the data, 
+moreover, the code becomes harder to maintain.
+
+Prop drilling can be avoided using the Context API or some form of State Management library.
+
+The core principles of Redux are as follows:
+
+Single source of truth: The global state of our application is always put away in an object tree inside one store.
+The state is read-only: The only way to change the state of our application is by emitting an action, an object explaining what has happened.
+Changes are made with pure functions: This principle means that in order to define how the state tree is being transformed by the actions, 
+we have to write pure reducers
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>
+What are the advantages of using Redux?
+The following are some of the advantages of using Redux:
+
+Redux makes transferring states between components a breeze.
+Redux's states are always predictable, and it's pretty simple to maintain.
+Redux makes debugging and testing code simple by logging behaviour and status.
+Redux is a fantastic performer. It may occur to us that maintaining the application's state global will cause performance issues. However, this isn't always the case because React-Redux has several performance optimisations built-in, so our connected component only re-renders when it needs to.
+Redux also provides state persistence by saving the application's state in local storage and restoring it after a refresh.
+
+Why do you think Redux came into picture?
+
+This is just fine for small React apps, and I'd recommend developing using local state and props until you start running into a few problems:
+
+Passing state down through more than two components makes all of the components rely on each other which isn't very scalable
+Using the same state through components that don't have a parent / child relationship is redundant and can require addition calls to a backend 
+server The solution to these problems? Redux.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Repeat after me: You don't actually change the state, you create updated copies of the state. 
+This is probably one of the most important things to understand about Redux's state changing pattern, make sure you commit it to memory.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+To create a global Redux store, we just need to create a .js file, then import this .js file into src/index.js—the main js file being used 
+within our app.
+
+Create a directory for the store with the following command:
+
+mkdir -p src/store
+Then create a file called index.js witin this new directory:
+
+touch src/store/index.js
+Finally, add the following code which will hold our store:
+
+src/store/index.js
+import { createStore } from 'redux'
+
+const store = createStore()
+
+export default store
+
+--------In order to create a store, we need to use the createStore() function imported from Redux. 
+This creates a JavaScript object with a small API (set of properties and functions) attached to it.
+
+This API includes the following:	
+
+getState for accessing the current state of the application
+dispatch for changing state via an action
+subscribe for responding to state changes
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Again, cloning and updating our state is important since we can then traverse between the different states our app is affected by using 
+redux devtools (a browser extension). This gives us insight into what state changed when and how it affected our app, information that's very useful 
+once your state starts getting larger and larger.
+One thing to note is that this createStore() function actually requires an argument to work: a reducer.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>Reducers
+
+handleSubmit(event) {
+    event.preventDefault()
+    this.props.dispatch({
+      type: 'ADD_POST',
+      payload: { id: this.state.postId, title: this.state.value }
+    })
+
+    this.setState({ postId: this.state.postId + 1 })
+  }
+  
+  const mapDispatchToProps = dispatch => {
+  return {
+    dispatch
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
+
+import { createStore } from 'redux'
+
+const initialState = {
+  posts: [],
+  signUpModal: {
+    open: false
+  }
+}
+
+const reducer = (state = initialState, action) => {
+  return state
+}
+
+const store = createStore(reducer)
+
+export default store
+
+------------- Since we're using this reducer function as an argument within createStore(), it will be called a couple of times:
+
+Once on initialization (this sets our store's initial state)
+And every time an action is dispatched
+
+Actions describe the fact that something happened but don’t specify how the application’s state changes in response. That is the job of reducers.
+Handling Actions
+This is called a reducer because it is the type of function you would pass to Array.prototype.reduce(reducer, ?initialValue). 
+It is essential that the reducer stay pure
+import { ADD_TODO, REMOVE_TODO } from '../actionTypes'
+
+-------------------------------------------------------------- Are there any things we should never do inside a reducer?
+We should never do the following things inside a reducer:
+
+Change the reducer's parameter.
+We must ensure no side actions, such as routing transitions or API calls.
+Non-pure functions, such as Date. now(), Math. random(), and so on should not be called.
+
+>>>>>>>>>>>>>>>Actions
+Actions are payloads of information that send data from your application to your store. You send them to the store using store.dispatch()
+
+Actions are plain JavaScript objects. Actions must have a type property that indicates the type of action being performed. 
+Types should typically be defined as string constants.
+
+>>>>>>>>>>>>>>>>>>Action Creators
+Action creators are exactly the functions that create actions.
+
+function addTodo(text) {
+  return {
+    type: ADD_TODO,
+    text
+  }
+}
+
+
+
+Store
+A store is an object that brings them together. A store has the following responsibilities:
+
+Holds application state;
+Allows access to state via getState();
+Allows state to be updated via dispatch(action);
+Registers listeners via subscribe(listener);
+It handles unregistering of listeners via the function returned by subscribe(listener)
+t is important to note that you will only have a single store in a Redux application. If you want to split your data handling logic,
+ you will use reducer composition instead of many stores.
+
+import { createStore } from 'redux'
+import todoApp from './reducers'
+let store = createStore(todoApp)
+
+))))))))))))))))
+What is “store” in redux?
+Answer
+The Redux “store” carries together all the states, reducers, and actions that create the app. The store has multiple responsibilities:
+
+It holds the state of the current application from inside
+With the help of store.getState(); it allows access to the current state.
+With the help of the store.dispatch(action); it allows the state to be updated.
+With the help of the store.subscriber(listener); it allows to register listener callbacks.
+Store Methods
+getState()
+dispatch(action)
+subscribe(listener)
+replaceReducer(nextReducer)
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+In summary, to connect Redux to React, you must do the following:
+
+Install and import react-redux
+Wrap your root App component inside of react-redux's Provider component
+Import connect into the component you'd like to pull Redux state into
+Create a mapStateToProps function that determines what state you'd like to pull from your store
+Export your component using connect, taking mapStateToProps as an argument
+Pass through your state as an argument to your render function
+Render your state\
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Inside src/App.js, we've been exporting our component as a function, however, 
+if we want to start adding interactivity via React event listeners, we need to convert it to a Class Component:
+
+
+11) How to reset state in Redux?
+
+11) How to access Redux store outside a component?
+
+store = createStore(myReducer);
+export default store;
+
+12) What are the differences between redux-saga and redux-thunk?
+Both Redux Thunk and Redux Saga take care of dealing with side effects. In most of the scenarios, Thunk uses Promises to deal with them, 
+whereas Saga uses Generators. Thunk is simple to use and Promises are familiar to many developers,
+ Sagas/Generators are more powerful but you will need to learn them. 
+But both middleware can coexist, so you can start with Thunks and introduce Sagas when/if you need them.
+
+13) Is it necessary to keep all the component states in the Redux store?
+
+14) Highlight the key differences between mapStateToProps() and mapDispatchToProps()?
+The key differences between mapStateToProps() and mapDispatchToProps() are given below:
+
+mapStateToProps()	mapDispatchToProps()
+The mapStateToProps() method is used to render the stored data to the component.	
+The mapDispatchToProps() method is used to render the action creators with props to the component.
+
+The entirety of the results of the mapStateToProps() method is a plain object which is later merged into the component’s prop.	
+In the mapDispatchToProps() method, each action creator is wrapped in the dispatcher call so that they can be called upon directly 
+and later merged into the component’s prop.
+
+This method's use is to connect the redux state to the props of the react component.	
+This method's use is to connect redux actions to the react props.
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+What do you understand about Redux Thunk?
+Using Redux Thunk middleware, we can write action creators returning a function instead of an action. 
+This thunk can postpone the dispatch of an action, or do conditional dispatchment. The arguments passed to the inner function are the store 
+methods dispatch and getState(). In the event of an action creator returning a function, the function gets executed by the Redux Thunk 
+middleware and it does not have to be pure. In other words, the function is allowed to have side effects, including executing asynchronous API calls.
+ It can even dispatch actions. Redux thunk is used to delay the dispatch of an action, or to dispatch in the event of a certain condition being met.
+ At the time of dispatch of a function instead of an action object, if Redux Thunk middleware is enabled, the middleware will call that function 
+ with the dispatch method itself as the first argument
+
+------------------------------------------------------------REACT NATIVE ------------------------------------------------------------------
+
+
+What is meant by Props drilling?
+Props drilling or threading is the process of passing down the data from the parent component to its exact child component. 
+In between, it passes through other components which own the props.
+
+What is the function of a StyleSheet.create?
+The function of StyleSheet.create() in React Native is to ensure the immutability and opaqueness of the values.
+ They are used for sending the style through the bridge only once. Hence, they help to avoid the passing of a new style object.
+ 
+ 
+ Mention some ways of handling different screen sizes.
+Several ways of handling screen sizes are listed below:
+
+Flexbox
+Dimensions
+Pixel ratio
+ScrollView
+AspectRatio
+
+
+
+12. Explain the ScrollView component available in React Native.
+ScrollView component is a general scrolling container. It is capable of holding multiple views and components. 
+We can scroll both horizontally and vertically. We can also use it for implementing zoom and pinch functions in iOS.
+ And we can swipe horizontally between views on Android by the use of the ViewPagerAndroid component. Its best use is presenting a limited number 
+ of things. ScrollView renders a.ll the views and elements even if they are not visible on the screen.
+ 
+ 
+ Can you transfer the existing apps to React Native?
+We can transfer the apps to React Native as long as our program does not depend on the smartphone for performing heavy computational operations. 
+React Native enables building more complicated and larger apps with its ever-expanding capabilities. 
+Also, It becomes cheaper to develop an app on React Native.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------- NODE JS ----------------------------------------------------------
+
+---> What is a Package?
+A package in Node.js contains all the files you need for a module.
+
+-----------Modules are JavaScript libraries you can include in your project.
+
+Consider modules to be the same as JavaScript libraries.
+
+A set of functions you want to include in your application.
+
+********** Built in Module that you worked -- Events, streams
+
+
+
+((((((((((((((((((((((((((((((What is Node.js? Where can you use it?
+Node.js is an open-source, cross-platform JavaScript runtime environment and library to run web applications outside the client’s browser. 
+It is used to create server-side web applications.
+Node.js is perfect for data-intensive applications as it uses an asynchronous, event-driven model. You can use  I/O intensive web applications 
+like video streaming sites. You can also use it for developing: Real-time web applications, Network applications, General-purpose applications, 
+and Distributed systems.
+
+
+(((((((((((((((((((((((((((((((((((((((((((((((
+
+How does Node.js work?
+
+Clients send requests to the webserver to interact with the web application. Requests can be non-blocking or blocking:
+Querying for data
+Deleting data 
+Updating the data
+Node.js retrieves the incoming requests and adds those to the Event Queue
+The requests are then passed one-by-one through the Event Loop. It checks if the requests are simple enough not to require any external resources
+The Event Loop processes simple requests (non-blocking operations), such as I/O Polling, and returns the responses to the corresponding clients
+A single thread from the Thread Pool is assigned to a single complex request. This thread is responsible for completing a particular blocking 
+request by accessing external resources, such as computation, database, file system, etc.
+
+Once the task is carried out completely, the response is sent to the Event Loop that sends that response back to the client.
+
+
+((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+
+
+If Node.js is single-threaded, then how does it handle concurrency?
+
+The Multi-Threaded Request/Response Stateless Model is not followed by the Node JS Platform, and it adheres to the Single-Threaded Event Loop Model. 
+The Node JS Processing paradigm is heavily influenced by the JavaScript Event-based model and the JavaScript callback system. 
+As a result, Node.js can easily manage more concurrent client requests. The event loop is the processing model's beating heart in Node.js.
+
+
+((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+
+
+What are the advantages of using promises instead of callbacks?
+
+The control flow of asynchronous logic is more specified and structured.
+The coupling is low.
+We've built-in error handling.
+Improved readability.
+
+
+((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+
+Why is Node.js preferred over other backend technologies like Java and PHP?
+
+Some of the reasons why Node.js is preferred include:
+
+Node.js is very fast
+Node Package Manager has over 50,000 bundles available at the developer’s disposal
+Perfect for data-intensive, real-time web applications, as Node.js never waits for an API to return data
+Better synchronization of code between server and client due to same code base
+Easy for web developers to start using Node.js in their projects as it is a JavaScript library
+
+
+(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+
+What does event-driven programming mean?
+An event-driven programming approach uses events to trigger various functions. An event can be anything, such as typing a key or clicking 
+a mouse button. A call-back function is already registered with the element executes whenever an event is triggered.
+
+
+((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+
+What is an Event Loop in Node.js?
+Event loops handle asynchronous callbacks in Node.js. It is the foundation of the non-blocking input/output in Node.js, 
+making it one of the most important environmental features.
+
+
+(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+
+What are streams in Node.js?
+Streams are objects that enable you to read data or write data continuously.
+
+There are four types of streams:
+
+Readable – Used for reading operations
+
+Writable − Used for write operations
+
+Duplex − Can be used for both reading and write operations
+
+Transform − A type of duplex stream where the output is computed based on input
+
+
+
+(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+
+For Node.js, why does Google use the V8 engine?
+The V8 engine, developed by Google, is open-source and written in C++. Google Chrome makes use of this engine. V8, 
+unlike the other engines, is also utilized for the popular Node.js runtime. V8 was initially intended to improve the speed of JavaScript
+ execution within web browsers. Instead of employing an interpreter, V8 converts JavaScript code into more efficient machine code to 
+ increase performance. It turns JavaScript code into machine code during execution by utilizing a JIT (Just-In-Time) compiler, 
+ as do many current JavaScript engines such as SpiderMonkey or Rhino (Mozilla).
+ 
+ 
+ 
+(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+
+Explain the concept of middleware in Node.js.
+Middleware is a function that receives the request and response objects. Most tasks that the middleware functions perform are:  
+
+Execute any code
+Update or modify the request and the response objects
+Finish the request-response cycle
+Invoke the next middleware in the stack
+
+
+
+((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((
+
+// define an empty query document
+const query = {};
+// sort in descending (-1) order by length
+const sort = { length: -1 };
+const limit = 3;
+const cursor = collection.find(query).sort(sort).limit(limit);
+
+
+How would you connect a MongoDB database to Node.js?
+To create a database in MongoDB:
+
+Start by creating a MongoClient object
+Specify a connection URL with the correct IP address and the name of the database you want to create
+
+-- Can you please write an exmaple to get the elements starting from 6th id from list of objects and assigning back to Array.
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  //Sort the result by name:
+  var sort = { name: 1 };
+  dbo.collection("customers").find().sort(sort).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+--> What Is Node.js?
+Node.js is an extremely powerful framework developed on Chrome’s V8 JavaScript engine that compiles the JavaScript directly into 
+the native machine code. It is a lightweight framework used for creating server-side web applications and extends JavaScript API to
+ offer usual server-side functionalities. It is generally used for large-scale application development, especially for video streaming sites, 
+ single page application, and other web applications.
+
+--> List down the major benefits of using Node.js?
+
+Fast	Node.js is built on Google Chrome’s V8 JavaScript Engine which makes its library very fast in code execution
+Asynchronous	Node.js based server never waits for an API to return data thus making it asynchronous
+ Scalable	It is highly scalable because of its event mechanism which helps the server to respond in a non-blocking way
+Open Source	Node.js has an extensive open source community which has contributed in producing some excellent modules to add additional capabilities to Node.js applications
+No Buffering	Node.js applications simply output the data in chunks and never buffer any data
+
+
+--> What is the difference between Angular and Node.js?
+Angular	Node.js
+1. It is an open source web application development framework	     1. It is a cross-platform run-time environment for applications
+2. It is written in TypeScript	                                     2. It is written in C, C++ and JavaScript languages
+3. Used for building single-page client-side web applications	     3. Used for building fast and scalable server-side networking applications
+4. Angular itself is a web application framework	                 4. Node.js has many different frameworks like Sails.js, Partial.js, and Express.js, etc.
+5. Ideal for creating highly active and interactive web apps	     5. Ideal for developing small size projects
+6. Helpful in splitting an app into MVC components	                 6. Helpful in generating database queries 
+7. Suitable for developing real-time applications 	                 7. Suitable in situations where something faster and more scalable is required
+
+
+
+
+---> Why Node.js is single threaded?
+Node.js uses a single threaded model in order to support async processing. With async processing, an application can perform better and 
+is more scalable under web loads. Thus, Node.js makes use of a single-threaded model approach rather than typical thread-based implementation.
+
+
+---> How does concurrency work in Node.js?
+
+The thing with node.js is that everything runs concurrently, except for your code.
+
+So, what that means is that there are actually lots of threads running inside Node.js virtual machine (or a thread pool if you wish), 
+and those threads are utilized whenever you call an async function like performing i/o operations on files, accessing databases, 
+requesting urls, etc.
+
+However, for your code, there is only a single thread, and it processes events from an event queue. So, when you register a callback its reference 
+is actually passed to the background worker thread, and once the async operation is done, new event is added to the event-queue with that callback
+
+When Node gets I/O request it creates or uses a thread to perform that I/O operation and once the operation is done, it pushes the result to 
+the event queue. On each such event, event loop runs and checks the queue and if the execution stack of Node is empty then it adds the queue 
+result to execution stack.
+
+
+
+--------------------------------------------------->
+
+Node Package Manager (NPM) provides two main functionalities −
+
+Online repositories for node.js packages/modules which are searchable on search.nodejs.org
+
+Command line utility to install Node.js packages, do version management and dependency management of Node.js packages.
+
+
+
+--> What is package.json?
+The package.json file in Node.js is the heart of the entire application. It is basically the manifest file that contains the metadata 
+of the project where we define the properties of a package.
+
+--> Difference between dependecies and dev dependecies
+
+--> Best project structure for your node js project
+
+--> Pre and Post Scripts
+
+precompress
+compress
+postcompress
+
+--> Why package-lock json file introduced?
+
+--> Semantic versioning of your dependencies? carrot and tide
+
+
+---> Explain the difference between local and global npm packages installation
+
+The main difference between local and global packages is this:
+
+local packages are installed in the directory where you run npm install <package-name>, and they are put in the node_modules folder under 
+this directory
+global packages are all put in a single place in your system (exactly where depends on your setup), regardless of where you run 
+npm install -g <package-name>
+In general, all packages should be installed locally.
+
+This makes sure you can have dozens of applications in your computer, all running a different version of each package if needed.
+Updating a global package would make all your projects use the new release, and as you can imagine this might cause nightmares in terms 
+of maintenance, as some packages might break compatibility with further dependencies, and so on.
+
+
+
+------------------------------->How the Event Loop Works in Node.js?
+
+The event loop allows Node.js to perform non-bocking I/O operations despite the fact that JavaScript is single-threaded. 
+It is done by offloading operations to the system kernel whenever possible.
+
+Node.js is a single-threaded application, but it can support concurrency via the concept of event and callbacks. 
+Every API of Node.js is asynchronous and being single-threaded, they use async function calls to maintain concurrency. 
+Node uses observer pattern. Node thread keeps an event loop and whenever a task gets completed, it fires the corresponding event which signals the event-listener function to execute.
+
+Features of Event Loop:
+
+Event loop is an endless loop, which waits for tasks, executes them and then sleeps until it receives more tasks.
+The event loop executes tasks from the event queue only when the call stack is empty i.e. there is no ongoing task.
+The event loop allows us to use callbacks and promises.
+The event loop executes the tasks starting from the oldest first.
+
+This is how Node manages concurrency.
+
+--> Non-Blocking Code Example
+
+var fs = require("fs");
+
+fs.readFile('input.txt', function (err, data) {
+   if (err) return console.error(err);
+   console.log(data.toString());
+});
+
+console.log("Program Ended");
+
+Program Ended
+Tutorials Point is giving self learning content
+to teach the world in simple and easy way!!!!!
+
+--> How many types of API functions are there in Node.js?
+There are two types of API functions in Node.js:
+
+Asynchronous, non-blocking functions
+Synchronous, blocking functions
+
+
+
+
+--> ---------------------------------------Modules are JavaScript libraries you can include in your project.
+
+Consider modules to be the same as JavaScript libraries.
+
+A set of functions you want to include in your application.
+
+********** Built in Module that you worked -- Events, streams
+
+--> ---> Node.js as a File Server
+The Node.js file system module allows you to work with the file system on your computer.
+
+To include the File System module, use the require() method:
+
+var fs = require('fs');
+
+-------------The File System module has methods for creating new files:
+
+fs.appendFile()
+fs.open()
+fs.writeFile()
+
+The fs.appendFile() method appends specified content to a file. If the file does not exist, the file will be created:
+4
+Example
+Create a new file using the appendFile() method:
+
+var fs = require('fs');
+
+fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
+  if (err) throw err;
+  console.log('Saved!');
+});
+
+
+****************
+var fs = require('fs');
+
+fs.open('mynewfile2.txt', 'w', function (err, file) {
+  if (err) throw err;
+  console.log('Saved!');
+})
+
+
+----->Differentiate between readFile vs createReadStream in Node.js?
+Node.js provides two ways to read and execute files which are using readFile and CreateStream. readFile() 
+is a fully buffered process which returns the response only when the complete file is pushed into the buffer and is read.
+ It is a memory intensive process and in case of large files, the processing can be very slow. Whereas createReadStream is 
+ a partially buffered which treats the entire process as an event series. The entire file is split into chunks which are then processed 
+ and sent back as a response one by one. Once done, they are finally removed from the buffer. Unlike readFile,
+ createReadStream is really effective for the processing of the large files.
+
+
+
+
+---> What is an Event loop in Node.js and how does it work?
+An event loop in Node.js handles all the asynchronous callbacks in an application. It is one of the most important aspects of Node.js and the reason behind Node.js 
+have non-blocking I/O. Since Node.js is an event-driven language, you can easily attach a listener to an event and then when the event occurs 
+the callback will be executed by the specific listener. Whenever functions like setTimeout, http.get, and fs.readFile are called, 
+Node.js executed the event loop and then proceeds with the further code without waiting for the output. Once the entire operation is finished, 
+Node.js receives the output and then executes the callback function. This is why all the callback functions are placed in a queue in a loop. 
+Once the response is received, they are executed one by one.
+Once the response is received, they are executed one by one.
+
+
+--> Events Module
+Node.js has a built-in module, called "Events", where you can create-, fire-, and listen for- your own events.
+
+To include the built-in Events module use the require() method. In addition, all event properties and methods are an instance of 
+an EventEmitter object. To be able to access these properties and methods, create an EventEmitter object:
+
+var events = require('events');
+var eventEmitter = new events.EventEmitter();
+
+//Create an event handler:
+var myEventHandler = function () {
+  console.log('I hear a scream!');
+}
+
+//Assign the event handler to an event:
+eventEmitter.on('scream', myEventHandler);
+
+//Fire the 'scream' event:
+eventEmitter.emit('scream');
+
+
+--------------------------------------->>>>>>>>>>>>>>>>>>>>>>
+
+// Import events module
+var events = require('events');
+
+// Create an eventEmitter object
+var eventEmitter = new events.EventEmitter();
+
+// Create an event handler as follows
+var connectHandler = function connected() {
+   console.log('connection succesful.');
+  
+   // Fire the data_received event 
+   eventEmitter.emit('data_received');
+}
+
+// Bind the connection event with the handler
+eventEmitter.on('connection', connectHandler);
+ 
+// Bind the data_received event with the anonymous function
+eventEmitter.on('data_received', function() {
+   console.log('data received succesfully.');
+});
+
+// Fire the connection event 
+eventEmitter.emit('connection');
+
+console.log("Program Ended.");
+
+
+
+----------------> What do you understand by an Event Emitter in Node.js?
+EventEmitter is a Node.js class that includes all the objects that are capable of emitting events. 
+These objects contain an eventEmitter.on() function through which more than one function can be attached to the named events that
+ are emitted by the object. Whenever an EventEmitter object throws an event, all the attached functions to that specific event 
+ are invoked synchronously. Below code shows how to us the EventEmitter in your application:
+
+const EventEmitter = require('events');
+class MyEmitter extends EventEmitter { }
+const myEmitter = new MyEmitter();
+myEmitter.on('event', () =&gt; {
+console.log('an event occurred!');
+});
+myEmitter.emit('event');
+
+
+--> The Built-in HTTP Module
+Node.js has a built-in module called HTTP, which allows Node.js to transfer data over the Hyper Text Transfer Protocol (HTTP).
+
+To include the HTTP module, use the require() method:
+
+var http = require('http');
+
+
+--> How do you parse given url string in Node js?
+
+
+
+
+
+--> What is an error-first callback in Node.js?
+Error-first callbacks in Node.js are used to pass errors and data. 
+The very first parameter you need to pass to these functions has to be an error object while the other parameters represent the associated data.
+ Thus you can pass the error object for checking if anything is wrong and handle it. In case there is no issue, you can just go ahead and with
+ the subsequent arguments.
+
+var myPost = new Post({title: 'edureka'});
+myPost.save(function(err,myInstance){
+if(err){
+//handle error and return
+}
+//go ahead with `myInstance`
+});
+
+----> Why does Node.js prefer Error-First Callback?
+
+The usual pattern is that the callback is invoked as callback(err, result), where only one of err and result is non-null, 
+depending on whether the operation succeeded or failed. Without this convention, developers would have to maintain different 
+signatures and APIs, without knowing where to place the error in the arguments array.
+
+--> What is Callback?
+Callback is an asynchronous equivalent for a function. A callback function is called at the completion of a given task. 
+Node makes heavy use of callbacks. All the APIs of Node are written in such a way that they support callbacks.
+
+
+
+
+----> What do you understand by callback hell? How would you fix that?
+Callback Hell is also known as the Pyramid of Doom. It is a pattern caused by intensively nested callbacks which are unreadable and unwieldy. 
+It typically contains multiple nested callback functions which in turn make the code hard to read and debug. 
+It is caused by improper implementation of the asynchronous logic.
+
+How can you avoid callbacks?
+To avoid callbacks, you can use any one of the following options:
+
+You can use modularization. It breaks callbacks into independent functions.
+You can use promises.
+You can use yield with Generators and Promises.
+
+
+------------------------------->
+
+Why would you prefer promises over callbacks?
+You must answer such Node.js interview questions with a relevant yet precise reason explaining why you would choose one over the other.
+ The reasons for selecting promises over callbacks are as follows:
+
+Promises easily handle multiple asynchronous operations providing better error handling than callbacks and helping in avoiding the 
+undesired callback hell situation. 
+Built-in error handling
+The coupling is low.
+Improved readability
+
+async_A(function(){
+async_B(function(){
+async_C(function(){
+async_D(function(){
+....
+});
+});
+});
+});
+
+
+---> Explain libuv.
+Libuv is a multi-platform support library of Node.js which majorly is used for asynchronous I/O. It was primarily developed for Node.js, 
+ with time it is popularly practiced with other systems like as Luvit, pyuv, Julia, etc. Libuv is basically an abstraction around libev/ IOCP
+ depending on the platform, providing users an API based on libev. A few of the important features of libuv are:
+
+Full-featured event loop backed
+File system events
+Asynchronous file & file system operations
+Asynchronous TCP & UDP sockets
+Child processes
+25. Explain the concept of middleware in Node.js?
+In general, middleware is a function receives the Request and Response objects. In other words, in an application’s request-response cycle these functions have access to various request &  response objects along with the next function of the cycle. The next function of middleware is represented with the help of a variable, usually named next. Most commonly performed tasks by the middleware functions are:
+
+Execute any type of code
+Update or modify the request and the response objects
+Finish the request-response cycle
+Invoke the next middleware in the stack
+
+
+---> What is the use of NODE_ENV?
+If the project is in the production stage, Node.js promotes the convention of making use of NODE_ENV variable to flag it. 
+This helps in taking better judgment during the development of the projects. Also, when you set your NODE_ENV to production, 
+your application tends to perform 3 times faster.
+
+
+--> Explain what is Reactor Pattern in Node.js?
+
+ What do you understand by Reactor Pattern in Node.js?
+Reactor Pattern in Node.js is basically a concept of non-blocking I/O operations. This pattern provides a handler that is associated with 
+each I/O operation and as soon as an I/O request is generated, it is then submitted to a demultiplexer. 
+This demultiplexer is a notification interface which is capable of handling concurrency in non-blocking I/O mode.
+ It also helps in collecting each and every request in the form of an event and then place each event in a queue.
+ Thus resulting in the generation of the Event Queue. Simultaneously, we have our event loop which iterates the events present in the Event Queue.
+
+---> Does Node.js provide any Debugger?
+Node.js do provide a simple TCP based protocol and debugging client that comes built-in. In order to debug your JavaScript file, 
+you can use the below debug argument followed by js file name that you want to debug.
+
+Syntax:
+
+1
+node debug [script.js | -e "script" | &lt;host&gt; : &lt;port&gt; ]
+In case you are facing any challenges with these Node.js Interview Questions, please mention your problems in the section comment section below.
+
+
+---> Explain the purpose of ExpressJS package?
+Express.js is a framework built on top of Node.js that facilitates the management of the flow of data between server and routes in the 
+server-side applications.  It is a lightweight and flexible framework that provides a wide range of features required for the web as well
+ as mobile application development. Express.js is developed on the middleware module of Node.js called connect. The connect module further
+ makes use of http module to communicate with Node.js. Thus, if you are working with any of the connect based middleware modules,
+ then you can easily integrate with Express.js.
+ 
+ 
+ ----> Can you access DOM in node?
+No, you cannot access DOM in node.
+
+
+---> Sync/Async use cases
+
+
+--------------------->
+
+What do you understand about node.js streams?
+Node.js streams are instances of EventEmitter. You can use them to work with streaming data in Node.js, 
+especially for handling and manipulating streaming large files (such as videos and mp3) over the network. Streams use buffers for temporary storage.
+ There are four main types of streams. 
+
+Writable streams to write data (e.g. fs.createWriteStream())
+Readable streams to read data (e.g. fs.createReadStream())
+Duplex streams that are readable and writable (e.g. net.Socket)
+Transform streams or duplex streams can modify or transform the data as it is written and read (e.g., zlib.createDeflate())
+
+
+______________________________>
+
+What is piping in Node.js?
+This is one of the most common Node.js interview questions to gauge your knowledge of vital topics in Node.js. 
+Piping in Node.js is the mechanism that connects the output of one stream to another, i.e., it connects multiple streams. 
+It retrieves data from one stream and passes the output to another stream.
+
+
+--------------->
+
+How would you enhance Node.js performance through clustering?
+Node.js applications do not use multiple core systems. Instead, they run on a single processor. 
+In Node.js, the cluster mode helps startup multiple node.js processes, thus having multiple instances of the event loop. 
+
+When you use a cluster in a Node.js app behind the scenes, there are numerous node.js processes created, 
+but there is also a parent process called the cluster manager. A cluster manager monitors the health of the individual instances of the application.
+
+What steps will you follow to connect a MongoDB database to Node.js?
+How would you measure the duration of async operations?
+How would you measure the performance of async operations?
+What tools will you use to ensure consistent code style?
+How would you make a post request in Node.js?
+
+
+
+
+Modules
+Require
+JS modules
+Import weight
+
+Package managers
+NPM
+Package Structure
+CLI commands
+NPM Scripts
+Semantic versioning
+Shrinkwrap
+Package-lock
+YARN
+
+Errors (Node.js)
+Handling
+Error class
+Custom errors handling layer
+Error logging
+Async error events
+
+File system
+Difference between OS
+Sync/Async use cases
+
+Promises (Node.js)
+Promises in Node.js
+Async/Await
+
+API
+File System API
+Stream API
+Timer API
+Path API
+
+Testing
+Jest
+Jasmine
+Mocha
+Enzyme (shallow, full DOM, static rendering)
+
+Diagnostic and debugging
+Logging approaches
+Profiling
+Heap and memory analysis
+
+CLI
+environment variables
+command parameters
+Advanced topics
+Buffer
+Streams
+Multithreading (child processes (fork, clustering), worker threads)
+JS under the hood (Node.js)
+Node.js Event Loop (flow, stages, limitations, libUV)
+
+
+
+-- How to share memory between threads in Node JS?
+-- How to communicate data between processes in Node JS?
+-- How asyncronous and synroconus communication happends in File system in Node JS?
+
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+Let's implement our first RESTful API listUsers using the following code in a server.js file −
+
+const express = require('express');
+const app = express();
+const fs = require("fs");
+
+app.get('/listUsers', function (req, res) {
+   fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
+      console.log( data );
+      res.end( data );
+   });
+})
+
+const server = app.listen(3000, function () {
+   const host = server.address().address
+   const port = server.address().port
+   console.log("App listening at http://%s:%s", host, port)
+});
+Add User ( POST method )
+
+Following API will show you how to add new user in the list.
+
+const express = require('express');
+const app = express();
+const fs = require("fs");
+
+const user = {
+   "user4" : {
+      "id": 4,
+      "name" : "Spencer Amos",
+      "age" : 28
+   }
+}
+
+app.post('/addUser', function (req, res) {
+   // First read existing users.
+   fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
+      data = JSON.parse( data );
+      data["user4"] = user["user4"];
+      console.log( data );
+      res.end( JSON.stringify(data));
+   });
+})
+
+const server = app.listen(3000, function () {
+   const host = server.address().address
+   const port = server.address().port
+   console.log("App listening at http://%s:%s", host, port)
+})
+Delete User:
+
+const express = require('express');
+const app = express();
+const fs = require("fs");
+
+const id = 2;
+
+app.delete('/deleteUser', function (req, res) {
+   // First read existing users.
+   fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
+      data = JSON.parse( data );
+      delete data["user" + 2];
+      console.log( data );
+      res.end( JSON.stringify(data));
+   });
+})
+
+const server = app.listen(3000, function () {
+   const host = server.address().address
+   const port = server.address().port
+   console.log("App listening at http://%s:%s", host, port)
+})
+↥ back to top
+Q. What is the difference between req.params and req.query?
+The req.params are a part of a path in URL and they're also known as URL variables. for example, if you have the route /books/:id, then the id property will be available as req.params.id. req.params default value is an empty object {}.
+
+A req.query is a part of a URL that assigns values to specified parameters. A query string commonly includes fields added to a base URL by a Web browser or other client application, for example as part of an HTML form. A query is the last part of URL
+
+Example 01: req.params
+
+/**
+ * req.params
+ */
+
+// GET  http://localhost:3000/employees/10
+
+app.get('/employees/:id', (req, res, next) => {
+   console.log(req.params.id); // 10
+})
+Example 02: req.query
+
+/**
+ * req.query
+ */
+
+// GET  http://localhost:3000/employees?page=20
+
+app.get('/employees', (req, res, next) => {
+  console.log(req.query.page) // 20
+})
+↥ back to top
+Q. How to make post request in Node.js?
+Following code snippet can be used to make a Post Request in Node.js.
+
+/**
+ * POST Request
+ */
+const request = require("request");
+
+request.post("http://localhost:3000/action",  { form: { key: "value" } },
+  function (error, response, body) {
+    if (!error && response.statusCode === 200) {
+      console.log(body);
+    }
+  }
+);
+↥ back to top
+Q. What are Promises in Node.js?
+It allows to associate handlers to an asynchronous action's eventual success value or failure reason. This lets asynchronous methods return values like synchronous methods: instead of the final value, the asynchronous method returns a promise for the value at some point in the future.
+
+Promises in node.js promised to do some work and then had separate callbacks that would be executed for success and failure as well as handling timeouts. Another way to think of promises in node.js was that they were emitters that could emit only two events: success and error.The cool thing about promises is you can combine them into dependency chains (do Promise C only when Promise A and Promise B complete).
+
+The core idea behind promises is that a promise represents the result of an asynchronous operation. A promise is in one of three different states:
+
+pending - The initial state of a promise.
+fulfilled - The state of a promise representing a successful operation.
+rejected - The state of a promise representing a failed operation. Once a promise is fulfilled or rejected, it is immutable (i.e. it can never change again).
+Example:
+
+/**
+ * Promise
+ */
+function getSum(num1, num2) {
+  const myPromise = new Promise((resolve, reject) => {
+    if (!isNaN(num1) && !isNaN(num2)) {
+      resolve(num1 + num2);
+    } else {
+      reject(new Error("Not a valid number"));
+    }
+  });
+
+  return myPromise;
+}
+
+console.log(getSum(10, 20)); // Promise { 30 }
+
+
+
+
+
+
+What is the difference between Asynchronous and Non-blocking?
+1. Asynchronous:
+
+The architecture of asynchronous explains that the message sent will not give the reply on immediate basis just like we send the mail but 
+do not get the reply on an immediate basis. It does not have any dependency or order. Hence improving the system efficiency and performance. 
+The server stores the information and when the action is done it will be notified.
+
+2. Non-Blocking:
+
+Nonblocking immediately responses with whatever data available. Moreover, it does not block any execution and keeps on running as per the requests. 
+
+If an answer could not be retrieved then in those cases API returns immediately with an error. Nonblocking is mostly used with I/O(input/output). 
+Node.js is itself based on nonblocking I/O model. There are few ways of communication that a nonblocking I/O has completed.
+ The callback function is to be called when the operation is completed. Nonblocking call uses the help of javascript which provides a callback 
+ function.
+ 
+ 
+ 
+ What is difference between promises and async-await in Node.js?
+1. Promises:
+
+A promise is used to handle the asynchronous result of an operation.
+ JavaScript is designed to not wait for an asynchronous block of code to completely execute before other synchronous parts of the code can run. 
+ With Promises, we can defer the execution of a code block until an async request is completed.
+ This way, other operations can keep running without interruption.
+
+States of Promises:
+
+Pending: Initial State, before the Promise succeeds or fails.
+Resolved: Completed Promise
+Rejected: Failed Promise, throw an error
+Example:
+
+function logFetch(url) {
+  return fetch(url)
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err => {
+      console.error('fetch failed', err);
+    });
+}
+2. Async-Await:
+
+Await is basically syntactic sugar for Promises. It makes asynchronous code look more like synchronous/procedural code, which is easier for humans to understand.
+
+Putting the keyword async before a function tells the function to return a Promise. If the code returns something that is not a Promise, then JavaScript automatically wraps it into a resolved promise with that value. The await keyword simply makes JavaScript wait until that Promise settles and then returns its result.
+
+Example:
+
+async function logFetch(url) {
+  try {
+    const response = await fetch(url);
+    console.log(response);
+  }
+  catch (err) {
+    console.log('fetch failed', err);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------
+
+<div class=" changeBgColor" > </div>
+
+<div changeBgColor > </div>
+
+<change-bg-color></change-bg-color>
+
+
+import { directi }...
+
+@Injectable({
+ selector: "change-bg-color",
+ providers: "root"
+})
+
+class changeBgColor {
+
+constructor( private element: nativeElementRef ){}
+ let element = element.nativeElement.style.backgroundColor = red; 
+
+}
+
+
+
+
+
+What are render props?
+
+Ans. Render Props is a simple technique for sharing code between components using a prop whose value is a function. The below component uses render prop which returns a React element.
+<DataProvider render={(data) => <h1>{`Hello ${data.target}`}</h1>} />
+Libraries such as React Router and DownShift are using this pattern.
+
+
+Q.29. What is Suspense component?
+
+Ans. If the module containing the dynamic import is not yet loaded by the time parent component renders, you must show some fallback content while you’re waiting for it to load using a loading indicator. This can be done using Suspense component.
+
+Example
+const OneComponent = React.lazy(() => import('./OneComponent'));
+
+function MyComponent() {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <OneComponent />
+      </Suspense>
+    </div>
+  );
+}
+As mentioned in the above code, Suspense is wrapped above the lazy component.

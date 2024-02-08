@@ -1,0 +1,640 @@
+Pending Tasks:
+
+
+netstat -a -n -o | find "8080"
+taskkill /PID 32252 /F
+
+Java Observability:
+
+1) What is Java Observability, EPAM side 
+2) ProgrammingTech 2 videos
+3) Implement Grafan and open portal from above 2 videos and set monitoring of those
+4) How to check bottlenecks in Micro services?
+5) How to find out time taken for each request in Micro services?
+6) How to imrove the performance of the application?
+7) How do you check once production issue/performance issue comes, where do you start?
+
+Kubernetes:
+-- Kuberenetes Notes
+-- Spring Micro services deployment on EKS
+-- Scalability in EKS
+-- Tricky interview questions on EKS
+
+
+Questions:
+
+How to load balance automatically in Kubernetes?
+
+
+Weekend/Total Next week:
+
+-- Microservices.io data
+-- Config server
+-- Keycloak setup and basics about OAuth2 and Keycloak Realm
+-- Monitoring Microservices using Grafana, Prometheus
+-- SAGA Design pattern
+-- Micro services document total
+-- Micro services Spring boot Kubernetes EKS deployment
+-- Kubernetes architecture
+-- Git lab actions sample creation
+
+Heap Dumps or Java Memory Management tools and example
+Multi threading, detect and resolve deadlock, volatile, synchronized, Race condition vs Data Races, Producer-consumer using wait-notify,
+understanding forkjoin pool 
+Collections with examples
+Design Patterns
+Common coding questions, Fibonacci series, Prime Number
+
+
+
+Core Java:
+--> Garbage Collection and latest changes in Java
+--> Experience with Microservices, Rest APIs
+--> Application Optimization - for high throughput – memory allocation, java runtime options, minimize Garbage Collection
+--> Performance tuning –Benchmarking and capacity tests to identify bottlenecks in system. Knows how to develop code which is efficient with computing resources (memory, cpu, etc).
+--> OS system – memory utilization, cpu utilization, disk i/o, system load etc.
+--> Concepts(OOPs, JVM, JNI’s, Maven etc.)
+--> Multithreading, Hashmap, Asynchronization, Concurrency, Shared memory, GC, IntelliJ
+--> Familiarity with data structures and their performance (time and space complexity)
+
+
+
+
+
+1) Java 8 -- Executor framework, Future and CompletableFuture, How to use Executor Framework in Spring boot for performance using @Async
+5) Webclient and parallel calls 
+6) Rate Limit uses and example
+7) Rest ful web services
+8) Spring basics tutorial and annotations
+9) Spring boot tutorial
+9) Spring Data JPA Repository
+
+10) @Transactional and also SAGA patterns.
+6) Testing using JUnit
+4) Java 8 interview questions
+8) Spring security 
+11) Spring cloud example video 
+5) Collections tutorial
+
+
+7) Design Patterns
+8) Kafka Tutorial
+9) Kubernetes deployment example 
+10) Core Java and Java Notepad ++ content
+
+
+Next:
+1) Future and CompletableFuture in Java 8
+
+
+
+3) Best Micro services architecture using Java in Google, Micro services design patterns, 12 factor patterns, 
+4) Micro services deployment using Kubernetes in EKS
+
+
+
+
+1) How to mointor your micro services?
+2) Application is slow then how to start your debugging in java enterprise application?
+3) 
+
+
+
+https://us06web.zoom.us/j/88375479095?pwd=b2lGRzJsRWpPQ1BZeVVBamg3N0tkUT09
+
+
+N0953-04609-16019
+
+
+Equifax report: 1866 8285961
+
+UBS USer details:
+SAIKIRANK, Anjali5417$
+
+
+AA00BYXN3Z
+EPAM Car Rental: XZ17DH2
+
+Daily Tasks:
+
+-- Micro services architecture and check Amit code once 
+-- Write description of project architecutre and then write Micro services deployment using Kubernetes
+
+
+
+----- React JS
+-- Higher Order Components
+-- React Hooks videos
+-- React performance 
+-- React components debugging to improve performance
+-- React code quality using ESLint -- check few issues and then how to fix them and how to override rules
+-- React testing 
+-- React using Docker 
+-- React Routing
+-- React Redux
+-- React Developer Tools
+
+
+Angular:
+Will be covered in videos
+
+-- forms, reactive forms, NgNonBindable, Testing, Services,  Providers, 
+
+2) Debugging Angular components
+3) ESLint errors, pre commit hooks
+4) How to deploy Angular 
+5) Performance improvement
+6) Authentication and Authorization example using Keycloak in Angular
+7) Web security practices in Angular
+8) Angular 11, 12, 13, 14 features
+9) Angular Notes in my system
+10) Once codecraft website coverage for Angular
+11) Angular websites saved in browser
+
+
+K63896840910810    2027/06/04
+
+---------------------------Java pending------------------------------------
+1) Difference between Maven and Gradle build? Advantages of using Gradle build? How Gradle build works?
+
+Jan5th 2023 :
+1) Complete overview of hooks study in Visual Studio Code and Notepad description
+2) Check latest changes in Hooks and questions and useLayOut and useDocument hooks
+1) React -router complete tutorial with interview questions and latest changes
+2) How TypeScript is better than JavaScript?
+
+Pending work items from EPAM:
+1) Join CSR and Mentoring 
+2) 
+
+
+React JS concepts to learn:
+1) How Authentication and Authorization works in React, Protected Routes
+2) How web security is done in React
+3) JWT or OAuth authentication works in React
+4) Section and Main elements in React
+5) what is the use of async keyword and await keyword in React?
+
+
+Angular concepts today:
+1) Latest features in Angular
+2) Angular routing interview questions
+3) Observables questions
+4) Angular forms interview questions
+
+Concepts to learn in React:
+-- ES6 features video
+1) Component life cycle - done
+2) Higher Order Components
+3) Context 
+1) Hooks
+2) Redux
+3) Form handling  -- Done
+4) Http calls in React -- Done
+5) React routing
+6) Build module
+7) Production configurations
+8) Security in React both Authentication and Authorization and also web security
+9) SSO in React
+10) Fetch and Axios questions 
+11) Latest features in React 
+12) Lazy loading example in React
+13) Redux example with interview questions
+14) Docker file containerization in React 
+15) Using AWS Lambda or AWS services in React
+
+--> Check for mentoring and in report check what can we contribute
+
+Weekend:
+
+1) Concepts to learn
+
+-- How Authenication and Authorization works in Angular
+https://medium.com/deskera-engineering/handle-authentication-in-angular-8e18b7f55f2c
+https://www.syncfusion.com/blogs/post/best-practices-for-jwt-authentication-in-angular-apps.aspx
+-- How to add SSO in Angular application  -- Pracitse SSO in given website
+-- 
+-- React JS More questions
+-- React JS Tutorial in YouTube
+-- NoSQL tools interview questions
+-- Check Spring Transaction management and JPA Repositories interview questions
+-- Check Kafka Turotial for questions
+
+Aha password: kavyakakarla7@gmail.com, Entertain@123
+
+Kinkaku izanaya
+
+KW59191
+
+BRD Data:
+BRD Employee ID: 347912
+Password: BroadridgeSK13
+Registration Code: SLiad+46SRRC
+
+Broadridge$13S,575888882
+
+https://epam-my.sharepoint.com/:w:/p/saikiran_kondru/ETdqMwaY1ntCtse6iCX5t54BA8WoShAy82jtBDkiPqd1HQ?e=KG9BCi
+
+
+https://groupnet-pa.greatwestlife.com/publicMember/confirmation
+https://pma.greatwestlife.com/app/en/coverage-and-balances/health?policyCode=ENC_UFJELVBSSS0yMDEzLjA3LjMwLjE5LjQ5LjIxLjkzNjpubnZZbnZpaytCYXpGOVZEVlVIZWNRPT0&benefitCode=ENC_UFJELVBSSS0yMDEzLjA3LjMwLjE5LjQ5LjIxLjkzNjpEQnJnVjFuNUxFVzBvckVlRXNhSmlnPT0
+
+My canada life at work -- kondrusaik@gmail.com, Hyd1274$
+
+
+2) Remote request to go to India -- https://kb.epam.com/display/EPMTRVTE/Canada+Remote+Work+Guidance
+3) US 
+
+
+
+
+https://www.linkedin.com/learning/paths/explore-react-js-development?u
+
+ By Postal Mail
+ 
+WES Reference No. _ _ _ _ _ _ _ _
+WES Global Documentation Centre
+PO Box 2008 Stn Main
+Newmarket, ON L3Y 0G5
+Canada
+
+
+
+By Courier
+
+WES Reference No. _ _ _ _ _ _ _ _
+WES Global Documentation Centre
+14-145 Industrial Pkwy South
+Aurora, ON L4G 3V5
+Canada
+
+
+5828354
+
+
+
+SBI Reference number
+
+CPACIVASA4
+
+Merchant Reference No
+
+1672816238804A1689420W5828354
+
+Amount to be Remitted
+
+Rs 3406.0/-
+
+Transaction Status
+
+Success
+
+
+
+Transaction ID:	1672816238804A1689420W5828354
+Amount Paid:	3406.0
+Transaction Status:	Success
+
+
+Vancouver plan details:
+
+
+Consular Address
+1075 West Pender Street
+Vancouver, BC, V6E 2M6
+Canada
+
+
+Activities in Vancover:
+
+CAPILANO SUSPENSION BRIDGE PARK
+
+
+https://www.viator.com/en-CA/Vancouver-tours/Outdoor-Activities/d616-g9
+
+
+
+
+CELPIP:
+m.vijayraghavan5@gmail.com
+Edvie@123
+
+
+Speaking Test:
+
+Test 1 Tips:
+
+suggestion to friend about buying car 
+
+How to start-- Hey Anjali Hope you are doing great. I am really excited for you that you finally got your drivers license
+In my personal experience so always given personal experience situation
+How to end: Hope you will find a great vehicle Let me know if you need any more advice
+
+
+Test 2 Tips:
+-- Time reference so use past tence verbs ... three years ago, last week when I was in, last year I changed my diet 
+-- Emotions -- voice should reflect emotion happy or frustarted 
+
+Personal experience and suggestion to friend about buying car  -- today 
+
+-- Talk about a time you made a change in your life style. What was the change and how did it affect your life?
+How to start: Start when I was, or when I went to 
+When I was in college, I had to take early morning classes. The classes started at 7AM which meant that I had to wakeup at 5.30AM.
+That was a big change for me because I had to start going to bed earler. It was hard to make this change because I have always been a night owl.
+I like staying up late watching movies and chatting but this change really had a positive impact on my life.
+
+After a few months of early mornings, I really fell in love with the new schedule. I felt less tired than I used to.
+It was so refreshing breathing the crisp morning air as I walked to school. 
+I loved hearing the birds chirping and seeing the sunrise.
+Even though I dont have to wake up early anymore, I still do it because I have grown to love it.
+Nowadays I am an early bird.
+
+Talk about the worst food you ever had 
+
+
+Test 3: Picture:
+
+How to start-- This is a picture of swimming pool or a wildlife.
+-- Big things in the picture: River, mountain, platform in the swimming pool
+-- Foreground, background -- like other side of river
+-- Mention top bottom upper half, lower half, right bottom, right half
+How to end-- overall this picture looks nice with few animals present there 
+
+-- First explain about common or big things in the picture like big lake, big tv and 
+-- Explain about each and every person. Try to cover atlease one line
+
+Alright I hope I have given you a good description of the picture
+
+
+
+Test 4: Make Predictions:
+
+How to start: In this picture, there are several things I think will happen next.
+
+If it is picture and making predictions, Notes would be not be needed.
+-- Always use future tense verbs -- will (or) is going to 
+
+Guitar player will get thristy and will go to the bar tender and order some brink
+May be one of the guys playing poker will loose all this poker chips and go home 
+
+Try to cover all the things happening in the picture
+
+How to end: Alright those are some things that will happen next 
+
+
+Test 5: Compare and Pursuade your friend:
+
+How to start: Hey Gina, I know you are recommending kitchen renovation but I think renovating living room would be better instead.
+
+--Comaprison words: cheaper, better, faster
+--Reasons: Renovating the living room would be better because 
+
+--Handle objections: 
+
+--Even though kitchen project would be faster, but we have lots of time in this summer and time does not matter here.
+
+How to end: Anyway, that is why I think renovating the living room would be better than renovating kitchen/ May be we can tackle kitcen next summer
+
+
+Test 6: Difficult Situation: 60 seconds preparation, 60 seconds time 
+
+How to start: Hi Anjali, its Kiran calling here. I am so sorry to hear that your basement flooded
+How to end: Thank you so much for understanding my situation. I would be happy to swing by on saturday to see if I can still help you
+
+Hello sir, I carefully reviewed both options and I think we should go with urban option
+
+First pursuade:
+
+Explain both and why it is sugestable
+Explain about other option why it is not suggestable like 
+
+I carefully reviewed both options and I think we should go with the option of URBAN location. It has some good features that make it better 
+choice in comparison with rural location. According to the features of URBAN it has easy access to travel and many food choices
+
+On the other hand in rural location has difficult to access, less transport facilities and accomodation problem
+So I think we should opt for Urban location.
+
+
+
+Test 7: Opinion: Prepare 30 seconds, time: 90 seconds
+
+--How to start: I think we should ban/we should not do this way
+
+State your opinion clearly in the first sentence. I think we should be banned fragrances in public places. Give opinion in the first sentence itself.
+
+Tips: Try to think of 3 points... like people are allergic so it may cause serious health issues, 
+Try to talk for whole time
+Talk about experiences like when I went outside and I read magazine article saying people getting addicted to 
+
+How to end: Anyway those are the reasons why I think we should ban fragrances 
+
+
+
+Test 8: Unusual situation ( preparation: 30 seconds, time: 60 seconds): calling friend and explaing the picture
+
+How to start: Plan your introduction: You need to start your answer by giving correct description of the picture means overall picture 
+like Horse is pulling a car and a man sitting on the car or I see a man wearing an egg costume
+
+-- Hey John, Its Sai calling here. I just came to Conestoga mall and I see a strange man
+Hey Anjali, I am Sai calling here. As climate is very nice and it is snowing so I am just walking on the road and I can see a horse pulling a car
+and a man sitting outside of the car. Looks like the car is broke down and so man might have hired horse to pull car its interesting
+and looks funny. because man is sitting outside instead of sitting insdie. Looks like he also enjoying the climate like me. 
+
+Biggest details :
+Describe each and every thing happening in the picture. So we should do in the present continuous because it is happening and I can see it.
+
+How to end: Anyway I hope that gives you a good idea of what he looks like
+
+
+
+
+
+
+
+You and your family visit the local shopping mall every week. However, it has become more and more difficult to find a parking spot recently. You would like to let the shopping mall manager know about this problem.
+
+
+To Manager,
+Trends Shopping Mall.
+
+I am Saikiran Kondru, I visit Trends shopping mall every week and I am writing you to inform about the problems that me and my family facing with the mall's parking space from last few weeks.
+The first problem is with the parking space available. In last few weeks, always I can see a board showing four wheeler parking is full and I am finding it very difficult to park my car inside shopping mall and I am spending almost an hour to find the parking spot and also I don't see the staff guiding people about the available parking space.
+The second problem is parking outside the shopping mall. Whenever the parking is full inside the shopping mall, either I had to park my car outside the shopping mall or I had to go for private parking by paying parking fee which is time consuming so me and my family have not been enjoying shopping experience in the mall.
+I would appreciate if you could take necessary actions like increasing the parking space inside the mall and providing pre booking option for parking which will give the best shopping experience to the shoppers.
+Regards,
+Saikiran Kondru
+
+
+You work in a very big office. There is a popular and cheap restaurant in the building. The boss is thinking of removing the restaurant and replacing it with a childcare facility for the working parents in the office. You have been asked to respond to an opinion survey.
+
+
+Personally, I think we should keep the restaurant. Even though childcare facility is needed for working parents, but current restaurant in the building which is popular and cheap will serve the employees by providing affordable food options.
+
+The first point is about the food. As our office is very big with almost 2000 employees working, we definitely need a good restaurant with different food options and also should be affordable. In our office we have lot of employees who are bachelors and are dependent on this restaurant for their breakfast and lunch as this restaurant is serving healthy and tasty food with affordable prices.
+
+The second point is employment. The restaurant recently included continental dishes in their menu and hired more chefs and the supporting staff. By this decision of removing restaurant, the staff who are working in the restaurant will loose their jobs and their families will get affected. 
+
+Considering all these reasons, I would suggest to keep the existing restaurant which is serving good for our employees. This is my opinion, but I support the decision the boss would take.
+
+Thank you for giving me this opportunity to share my inputs.
+
+
+
+
+Hi Team,
+I had flight with confirmation number GYV36P and Air Canada flight number AC 8093 with Air Canada confirmation number 4PZRC3 on June 28th 8:00 AM EST leaving from Toronto Pearson Airport (YYZ) to Chicago ORD airport. Initially they onboarded passengers to aircraft and after one hour of regular updates and they offboarded and then delaying multiple times they cancelled flight and informed me that I will get further communication about accommodating my travel to the next available flight within 30 to 45 minutes. I waited there but later asked me clear Canada customs and exit from lounge. But I did not receive any further communication until I reached United customer care. I was not informed about anything had to spend hours on call to reach customer care.
+I had plans to go to Chicago and now I had to cancel my Hotel bookings and Rental car bookings which is causing me approximately 500CAD fees for cancelling. So I am eligible to get a compensation of at least 1000CAD.
+
+168805721393192
+
+
+
+
+
+
+------> Assessment questions]
+
+1)Application is performing slowly. How do you start the debug process? -- API response might be taking time, JMeter, DB queries 
+cardinality and 3rd party API, Caching, CompletableFuture
+2)You got new project as team lead, how do you start?
+3)How do you monitor your applications like EKS using Promoethus.
+4)EKS example
+5)How do you decide which technical stack for your project as a team lead?
+6)Micro services design patterns
+7)SAGA design pattern example
+
+
+
+
+
+
+
+
+CELPIP:
+
+------------------Writing: 
+
+thesaurus.com -- type any words that we used in writing and search that word in thesaurus and it will given synonyms
+grammerly for checking grammer in writing part; 
+
+Commas:
+1) Extra Info: 
+I, Saikiran Kondru,(extra info) here by declare you as President.
+Due to the ongoing strikes, after the President's resignation, we will have to shut down the schools tomorrow.
+Gary Smith, the professor at the University of Toronto, will join us later for his meeting.
+
+
+2) connectors: however/moreover/therefore...
+Canada winters are cozy, however, this year I have had enough.
+The chickens at the farm stopped producing eggs, therefore, we will have to buy new ones.
+
+
+Semicolons:
+1) Conclusions: I read the about positivity and I loved it; from now on, I will use those lessons in my life.
+2) Connectors: The prices of homes have been on a rise lately; moreover, the inflation has even hit the grocery stores.
+3) Ideas: I have a fear of flying because I am scared of aeroplanes; I prefer driving to the near by cities.
+
+Adverbs
+
+
+-----------------Speaking:
+
+--Record it
+--Anaylyze each sentence. .
+--Try to have 6 complex sentences like using Although, considering, concerning.
+
+
+
+---------------- Listening
+
+-- Take Notes of Part 4,5,6
+-- No need of taking notes of 1,2,3
+
+
+
+9742292522
+560003
+
+
+
+Remember that we also offer a free website: ocs.transunion.ca, in this website you can request a free copy of your Credit Report once every 30 days, you can also manage a Potential Fraud Alert and file a Dispute.
+
+
+
+
+
+
+
+
+
+Design Patterns
+Node JS Tutorial and basics
+EC2, EKS, S3 tutorial
+Jenkins/Ansible scripts/Github actions, Jenkins pipeline creation and deploying spring boot
+AWS S3 SDK using in code, spring boot using AWS S3 SDK to upload file
+
+
+Hi Yury GM, Yesterday I gave interview for SAP. Unfortunately looks like they declined. I prepared for architecture level as per the position, Kubernetes, AWS and even prepared Node JS. Surprisingly they asked to write Palindrome program and some basic Micro services questions and I have answered but looks like they were not satisfied. Though the questions were simple but unexpected and my answers were too technical and missed few basic terminology. I will be more cautious hereafter. I have already updated questions to Dmytro Lytvynenko2 to help him with the interview. Thank you Yury.
+
+
+
+Hi Team ,
+
+I , Saikiran Kondru ( Emp Id - 5008418 ), previously worked with Syntel
+Inc ( Pune & Chennai ) for the duration of 31st Dec 2012 to 4th Nov
+2016 .
+Currently, I am working with EPAM Systems Canada and with regard to my
+PR ( Permanent Residence ) process in Canada I need the employee
+verification letter in the attached format .
+
+Can you please help with the same or redirect me to the respective
+team to look into it.
+I appreciate your help in this regard .
+
+Thanks and Regards ,
+Saikiran Kondru
+
+
+Please provide below information in the company letterhead and also please provide name of the supervisor.
+
+Exact dates of employment
+ Hours worked per week, and weeks worked per year
+ Any periods of extended leave, if applicable
+ Job title and essential duties and responsibilities
+ Salary and applicable benefits
+ Must be printed on company letterhead, including company address and contact details 
+(phone number, fax number, email address, website)
+ Must include the name of the responsible officer/supervisor
+
+Experienced Java Software Engineer with expertise in designing, coding, testing, and maintaining high-performance applications.
+Proven ability to translate business requirements into technical solutions and write clean, efficient, and well-documented code.
+Skilled in debugging, troubleshooting, and optimizing code for performance and scalability.
+Collaborative team player adept at working in agile environments and contributing to cross-functional teams.
+Proficient in version control (Git), unit testing, and code reviews.
+Strong commitment to security best practices and addressing vulnerabilities.
+Documented technical processes and contributed to continuous improvement initiatives.
+Demonstrated ability to deploy software releases and collaborate with DevOps teams.
+Effective communicator with a track record of providing status updates and mentoring junior developers.
+Adherence to coding standards and ongoing commitment to professional development.
+
+
+Positives:
+
+1) Mark has good knowledge of core java concepts. He could answer for questions on most of the Core Java basics and Collections framework questions but can do better also.
+2) Mark worked on SOAP web services but not on RESTful webservices.
+3) Mark did work on JUnit and could recollect few concepts but he did not work intensively on JUnit.
+
+Improvements:
+
+1) Mark should start using Java 8 and above versions which most of the clients are using.
+2) As Mark worked on Monolethic architecture, he did not have exposure to Micro services architecure so I suggest start developing personal projects using Micro services architecture.
+3) Mark did not work on Spring framework at all. In the current market, almost all clients are using Spring and Spring boot as base for Micro services architecture, I suggest Mark to use Spring framework with Restful webservices in the Micro services architecture sample application.
+4) Mark also did not have exposure to Asynchronous programming like Rabbit MQ or Kafka. So Mark can start learning asynchronous programming as well.
+5) Mark did not work any Jenkins/Gitlab pipeline to build and deploy application which is also important in current market demand.
+6) Mark can also improve his knowledge in Java Design Patterns, Micro services Design patterns and Principles like SOLID for better programming.
+7) Mark can improve his knowledge in Agile and Scrum.
+
+
+
+Overall, Most of Mark experience is in into legacy projects, he has worked on SOAP, jsp and servlets but need to upskill in lot of areas as mentioned above. Ashraf and I would be read to help whenever needed. 
+

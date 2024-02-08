@@ -1,0 +1,2867 @@
+
+
+-----------------------------------------Java Interview Questions:-----------------------------------------------------------------------------
+
+
+1) Why String is called Immutable in Java, different ways to create string in java
+10) How to make class as immutable in java -- http://javarevisited.blogspot.in/2013/03/how-to-create-immutable-class-object-java-example-tutorial.html
+
+11 why enums has only private or default constructor? 
+              Enums contain a fixed set of values, which must all be known at compile-time. 
+              It doesn't make sense to create new literals at run-time, which would be possible if the constructor were visible.
+
+44) Static or Singleton class: 
+ Singleton objects are stored in Heap, but static objects are stored in stack.
+We can clone (if the designer did not disallow it) the singleton object, but we can not clone the static class object .
+Singleton classes follow the OOP (object oriented principles), static classes do not.
+We can implement an interface with a Singleton class, but a class's static methods (or e.g. a C# static class) cannot.
+
+11) Have you ever faced StackOverflow error and OutOfMemoryError?
+
+12) Builder design pattern in Java?
+
+Websites:
+https://www.interviewbit.com/docker-interview-questions/
+https://www.simplilearn.com/tutorials/kubernetes-tutorial/kubernetes-interview-questions
+https://www.edureka.co/blog/interview-questions/kubernetes-interview-questions/
+https://howtodoinjava.com/best-practices/solid-principles/
+https://www.javatpoint.com/design-patterns-in-java
+
+1) What are OOPS Concepts in Java:
+
+2) What is Runtime Polymorphism? Can you give real time example? -------------------------Coding
+
+3) What is Instance Intitializer Block? Why we use it?
+
+13) Java Memory Model?
+
+13.1) What is Heap memoery and stack?
+
+13.2) When Does an Object Become Eligible for Garbage Collection? Describe How the Gc Collects an Eligible Object?
+https://www.baeldung.com/java-memory-management-interview-questions
+
+13.3) When you encounter StackOverflowError and OutOfMemoryError?
+
+https://www.javatpoint.com/instance-initializer-block -- For 
+
+4) Why String is called immutable?  https://www.javatpoint.com/immutable-string
+
+5) What are the default interfaces implemented by String? The java.lang.String class implements Serializable, Comparable and CharSequence interfaces.
+
+6) Do you know Intern method in String? https://www.javatpoint.com/java-string-intern
+
+7) So you know Exception handling in Java? Can you just specify what are checked and unchecked exceptions?
+
+8) How to crate custom exceptions?  https://www.javatpoint.com/custom-exception -----------------------------Coding
+
+9) Difference between Hashmap and hashtable -- https://www.javatpoint.com/difference-between-hashmap-and-hashtable
+
+10) Contract between equals and hashcode method?  https://howtodoinjava.com/java/basics/java-hashcode-equals-methods/
+
+Can you write custom hashmap implementation  https://dzone.com/articles/hashmap-custom-implementation, https://dzone.com/articles/custom-hashmap-implementation-in-java
+
+3) What are the ways to create String?
+
+Why would it be more secure to store sensitive data (such as a password, social security number, etc.) in a character array rather than in a String?
+
+How can you catch an exception thrown by another thread in Java? -------- Coding -----------------
+
+4) Do you know why we have constructor in Abstract classes?
+
+     Abstract classes have constructors and those constructors are always invoked when a concrete subclass is instantiated. 
+We know that when we are going to instantiate a class, we always use constructor of that class. Now every constructor invokes the 
+constructor of its super class with an implicit call to super().
+
+     We know constructor are also used to initialize fields of a class. We also know that abstract classes may contain fields and sometimes 
+they need to be initialized somehow by using constructor.
+
+
+What is exception propagation in java? https://www.javamadesoeasy.com/2015/05/exception-propagation-in-java-deep.html
+
+How ConcurrentHashMap works? Can 2 threads on same ConcurrentHashMap object access it concurrently?
+
+-- can we override object methods in functional interface?
+-- can functional interface extend another interfaces?  
+-- what is the need of equals and hashcode overriding?
+
+
+
+ ------------------    ----------------------------  Java 1.8 ----------------------------------  -------------------------------
+ 
+ 2) Why Default Methods?
+Default methods are introduced to add extra features to current interfaces without disrupting their existing implementations. For example, stream() is a default method which is added to Collection interface in Java 8. If stream() would have been added as abstract method, then all classes implementing Collection interface must have implemented stream() method which may have irritated existing users.
+
+Thanks to Java 8 default method feature, now it is a default method, all implementations of Collection interface inherit default implementation of stream() method.
+ 
+ https://javahungry.blogspot.com/2020/05/java-8-coding-and-programming-interview-questions.html
+ 
+>>>>>>>>>>>>>>>>>Can a functional interface extend/inherit another interface?
+A functional interface cannot extend another interface with abstract methods as it will void the rule of one abstract method per functional interface.
+
+It can extend other interfaces which do not have any abstract method and only have the default, static, 
+another class is overridden, and normal methods 
+
+For declaring Functional Interfaces @FunctionalInterface annotation is optional to use. If this annotation is used for interfaces with more 
+than one abstract method, it will generate a compiler error.
+
+
+#15) What is the difference between limit and skip?
+
+Answer: The limit() method is used to return the Stream of the specified size. For Example, If you have mentioned limit(5), then the number of output elements would be 5.
+
+Let’s consider the following example. The output here returns six elements as the limit is set to ‘six’.
+
+import java.util.stream.Stream;
+ 
+public class Java8 {
+     
+    public static void main(String[] args) {
+        Stream.of(0,1,2,3,4,5,6,7,8)
+        .limit(6)         
+        /*limit is set to 6, hence it will print the 
+        numbers starting from 0 to 5 
+        */
+        .forEach(num-&gt;System.out.print("\n"+num));
+    }
+}
+Output:
+
+Output_Limit method
+
+Whereas, the skip() method is used to skip the element.
+
+Let’s consider the following example. In the output, the elements are 6, 7, 8 which means it has skipped the elements till the 6th index (starting from 1).
+
+import java.util.stream.Stream;
+ 
+public class Java8 {
+     
+    public static void main(String[] args) {
+        Stream.of(0,1,2,3,4,5,6,7,8)
+        .skip(6)
+        /*
+         It will skip till 6th index. Hence 7th, 8th and 9th
+         index elements will be printed
+         */
+        .forEach(num-&gt;System.out.print("\n"+num));
+    }
+}
+Output:
+
+Output_ Skip method
+ 
+ 1) What is the difference between PermGenspace and Metapsace?
+
+Metaspace by default auto increases its size (up to what the underlying OS provides), while PermGen always has a fixed maximum size. 
+You can set a fixed maximum for Metaspace with JVM parameters, but you cannot make PermGen auto-increase.
+
+2) What is the difference between iterator and spliterator? https://www.knowledgepowerhouse.com/what-are-the-differences-between-iterator-and-spliterator-in-java-8/518
+
+   Introduction : Iterator was introduced in jdk 1.2 while Spliterator  is introduced in jdk 1.8
+   Use in API  : Iterator is used for Collection API while Spliterator is used for Stream API
+   Parallel programming : Iterator can be used for iterating the elements in Collection in sequential order while  Spliterator can be used for iterating the Stream elements in parallel or sequential order.
+   Universal Iterator : Iteartor is universal iterator while Spliterator is not a universal iterator.
+
+
+3) What is the difference between Collection API and Stream API?
+https://www.knowledgepowerhouse.com/what-are-the-differences-between-collection-and-stream-api-in-java-8/510
+
+1) Lets take I need a functional interface functionality, Can you please show me the code using Anonymous class and Lambda so just show me differences?
+(int a,b)->{a+b};//Compilation error  --------------------------- Coding
+
+
+
+
+3) Why default methods? Difference between interfaces and abstract class in Jav	a 1.8? 
+
+4) Suppose lets take 2 interfaces which will have default same method and class implmenets these 2 interfaces then what happens?
+
+
+
+14) What is Optional class in java?  https://www.geeksforgeeks.org/java-8-optional-class/
+
+15) What is default method in java? When to use it?  https://www.baeldung.com/java-static-default-methods
+16) What is functional interface in java? Rules to create functional interface? https://www.geeksforgeeks.org/functional-interfaces-java/ 
+17) what is the difference between function, predicate in java 8?
+Both helps in evaluating lambda expressions. The difference is a predicate takes one argument and returns a boolean value 
+while a function takes one argument and returns an object.
+
+In theory, there shouldn't be any functional difference between Predicate<T> and Function<T, Boolean>.
+ A Predicate is just a function that takes an object of some type and returns a boolean.
+ A Function is a generalization which can return any type, not just Boolean's.
+ 
+18) How will you get current date and time using Java 8 Date and TIme API?
+ LocalDate currentDate = LocalDate.now();
+System.out.println(currentDate);
+LocalTime currentTime = LocalTime.now();
+System.out.println(currentTime);
+
+19) Do we have PermGen in Java 8? Are you aware of MetaSpace?
+
+20) 23) Difference between Intermediate and terminal operations in Stream?
+
+5) Difference between Stream’s findFirst() and findAny()?
+
+24) can we override object class methods in functional interface?
+
+In other words, every interface implicitly defines each of Object's methods, and you can therefore @Override those methods. 
+The other methods aren't defined in Object, so you can't override them.
+
+18) What is method reference in java 8? https://www.javatpoint.com/java-8-method-reference
+
+19) Can you tell me where you have used parallel stream?
+
+19) Difference between interface and abstract class in Java 1.8?
+
+20) SOLID principles and Design patterns?
+
+21) Example of Prototype design pattern?
+
+Builder Design Pattern:  Builder Pattern says that "construct a complex object from simple objects using step-by-step approach"
+
+One to many and many to one relationships in hibernate
+
+
+Coding Questions?
+
+https://java2blog.com/java-8-interview-questions/
+https://java2blog.com/interface-default-methods-in-java-8/
+https://www.bestinterviewquestion.com/java-8-interview-questions
+https://www.java67.com/2018/10/java-8-stream-and-functional-programming-interview-questions-answers.html
+
+
+S.No.	Collection API	Stream API
+1.	It’s available since Java 1.2	It is introduced in Java SE 8
+2.	It is used to store Data (A set of Objects).	It is used to compute data (Computation on a set of Objects).
+3.	We can use both Spliterator and Iterator to iterate elements. 
+   We can use forEach to performs an action for each element of this stream.	We can’t use Spliterator or Iterator to iterate elements.
+4.	It is used to store unlimited number of elements.	
+        Stream API is used to process on the elements of a Collection.
+5.	Typically, it uses External Iteration concept to iterate Elements such as Iterator.	
+        Stream API uses internal iteration to iterate Elements, using forEach methods.
+6.	Collection Object is constructed Eagerly.	
+        Stream Object is constructed Lazily.
+7.	We add elements to Collection object only after it is computed completely.	We can add elements to Stream Object without any prior computation. That means Stream objects are computed on-demand.
+8.	We can iterate and consume elements from a Collection Object at any number of times.	We can iterate and consume elements from a Stream Object only once.
+
+
+
+
+
+
+
+------------------------------------------ JAVA CODING -----------------------------------------------------------------
+>>>>>>>>>>>>>>>>
+How to check if list is empty in Java 8 using Optional, if not null iterate through the list and print the object?
+
+Optional.ofNullable(noteLst)
+            .orElseGet(Collections::emptyList) // creates empty immutable list: [] in case noteLst is null
+            .stream().filter(Objects::nonNull) //loop throgh each object and consider non null objects
+            .map(note -> Notes::getTagName) // method reference, consider only tag name
+            .forEach(System.out::println); // it will print tag names
+			
+>>>>>>>>>>>>>>>>>>>>
+How to convert a list of objects to a Map in Java 8 by handling duplicate keys?
+
+List<Notes> noteLst = new ArrayList<>();
+        noteLst.add(new Notes(1, "note1", 11));
+        noteLst.add(new Notes(3, "note3", 33));
+		noteLst.add(new Notes(4, "note4", 44));
+        noteLst.add(new Notes(5, "note5", 55));
+		noteLst.add(new Notes(2, "note2", 22));
+        noteLst.add(new Notes(6, "note4", 44));
+
+//use third mergeFunction argument (oldValue, newValue) -> oldValue solved the duplicated key issue by considering old value
+
+        Map<String, Long> notesRecords = noteLst.stream().collect(
+                Collectors.toMap(Notes::getTagName, Notes::getTagId,
+                        (oldValue, newValue) -> oldValue
+                )
+        );
+		System.out.println("Notes : " + notesRecords);
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+How to convert a List of objects into a Map by considering duplicated keys and store them in sorted order?
+Ans:
+Map<String, Long> notesRecords = noteLst.stream()
+		 .sorted(Comparator.comparingLong(Notes::getTagId).reversed()) // sorting is based on TagId 55,44,33,22,11
+		.collect(
+                Collectors.toMap(Notes::getTagName, Notes::getTagId,
+                        (oldValue, newValue) -> oldValue, // consider old value 44 for dupilcate key
+						LinkedHashMap::new           // it keeps order           
+                )
+        );
+
+			
+>>>>>>>>>>>>>>>>>>>>>>>
+
+How to concatenate List of String/Integer Objects using some separator in Java8?
+List<String> str = Arrays.asList("Welcome", "to", "TechGeekNext");
+
+String jonStr = str.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(" - "));
+//output
+System.out.println(jonStr);
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+How to find only duplicate elements with its count from the String ArrayList in Java8?
+
+List<String> names = Arrays.asList("AA", "BB", "AA", "CC");
+Map<String,Long> namesCount = names
+                             .stream()
+				             .filter(x->Collections.frequency(names, x)>1)
+				             .collect(Collectors.groupingBy
+				             (Function.identity(), Collectors.counting()));
+System.out.println(namesCount);
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+--> Given a String, find the first non-repeated character in it using Stream functions?
+
+import java.util.*;
+import java.util.stream.*;
+import java.util.function.Function;
+
+public class JavaHungry {
+    public static void main(String args[]) {
+            String input = "Java 1.8 has new features";
+
+            Character result = input.chars() // Stream of String       
+                                    .mapToObj(s -> Character.toLowerCase(Character.valueOf((char) s))) // First convert to Character object and then to lowercase         
+                                    .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting())) //Store the chars in map with count 
+                                    .entrySet()
+                                    .stream()
+                                    .filter(entry -> entry.getValue() == 1L)
+                                    .map(entry -> entry.getKey())
+                                    .findFirst()
+                                    .get();
+            System.out.println(result);                    
+    }
+}
+
+1) Lets say I have string "Sai is working in EPAM. Sai is now working in BRD Project" I want to get the number of repeated words in the sentence.
+
+ Set<String> duplicateCompanies = companies
+                .stream()
+                .filter(company -> Collections.frequency(companies, company) > 1)
+                .collect(Collectors.toSet());
+				
+2) Can you just show me the real time example of Optional class? -----------------------Coding
+
+3) How you sort Employee objects using their employee id using Java 1.8?
+
+Given a list of employees, sort all the employee on the basis of age? Use java 8 APIs only
+You can simply use sort method of list to sort the list of employees.
+
+ 
+  List<Employee> employeeList = createEmployeeList();
+        employeeList.sort((e1,e2)->e1.getAge()-e2.getAge());
+        employeeList.forEach(System.out::println);
+		
+4) 5) Given a list of numbers, square them and filter the numbers which are greater 10000 and then find average of them.( Java 8 APIs only) ---------- Coding
+ 
+Implement a difference function, which subtracts one list from another and returns the results
+It should remove all values from list a, which are present in list b keeping their order
+Example:
+
+
+------------->
+Join the all employee names with “,” using java 8?
+ 
+  List<Employee> employeeList = createEmployeeList();
+        List<String> employeeNames = employeeList
+                                     .stream()
+                                     .map(Employee::getName)
+                                     .collect(Collectors.toList());
+        String employeeNamesStr = String.join(",", employeeNames);
+        System.out.println("Employees are: "+employeeNamesStr);
+		
+		
+------------>
+Given the list of employee, group them by employee name?
+ 
+package org.arpit.java2blog;
+ 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+ 
+public class MaximumUsingStreamMain {
+    public static void main(String args[])
+    {
+        List<Employee> employeeList = createEmployeeList();
+        Map<String, List<Employee>> map = employeeList.stream()
+                                              .collect(Collectors.groupingBy(Employee::getName));
+        map.forEach((name,employeeListTemp)->System.out.println("Name: "+name+" ==>"+employeeListTemp));
+		
+	
+    }
+	
+	
+	
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+How to convert a List of objects into a Map by considering duplicated keys and store them in sorted order?
+
+public class TestNotes {
+
+    public static void main(String[] args) {
+
+    List<Notes> noteLst = new ArrayList<>();
+    noteLst.add(new Notes(1, "note1", 11));
+    noteLst.add(new Notes(2, "note2", 22));
+    noteLst.add(new Notes(3, "note3", 33));
+    noteLst.add(new Notes(4, "note4", 44));
+    noteLst.add(new Notes(5, "note5", 55));
+
+    noteLst.add(new Notes(6, "note4", 66));
+
+
+    Map<String, Long> notesRecords = noteLst.stream()
+                                            .sorted(Comparator
+                                            .comparingLong(Notes::getTagId)
+                                            .reversed()) // sorting is based on TagId 55,44,33,22,11
+                                            .collect(Collectors.toMap
+                                            (Notes::getTagName, Notes::getTagId,
+                                            (oldValue, newValue) -> oldValue,LinkedHashMap::new));
+// consider old value 44 for dupilcate key
+// it keeps order
+        System.out.println("Notes : " + notesRecords);
+    }
+}
+
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+Given a String, find the first repeated character in it using Stream functions?
+
+import java.util.*;
+import java.util.stream.*;
+import java.util.function.Function;
+
+public class FirstRepeated{
+  public static void main(String args[]) {
+          String input = "Java Articles are Awesome";
+
+          Character result = input.chars() // Stream of String       
+                                  .mapToObj(s -> Character.toLowerCase(Character.valueOf((char) s))) // First convert to Character object and then to lowercase         
+                                  .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting())) //Store the chars in map with count 
+                                  .entrySet()
+                                  .stream()
+                                  .filter(entry -> entry.getValue() > 1L)
+                                  .map(entry -> entry.getKey())
+                                  .findFirst()
+                                  .get();
+          System.out.println(result);                    
+  }
+}
+
+
+Output:
+a
+
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Write a program to print the count of each character in a String?
+
+public static void findCountOfChars(String s) {
+Map<String, Long> map = Arrays.stream(s.split(""))
+                              .map(String::toLowerCase)
+                              .collect(Collectors
+                              .groupingBy(str -> str, 
+                                LinkedHashMap::new, Collectors.counting()));
+}
+
+Input: String s = "string data to count each character";
+Output: {s=1, t=5, r=3, i=1, n=2, g=1,  =5, d=1, a=5, o=2, c=4, u=1, e=2, h=2}
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+public class Main extends Thread{
+    
+    public static int counter =0;
+    
+    public void run () {
+        for (int i = 0; i <= 1; i++) {
+            counter++;
+            System.out.println ("Run: " + counter);
+        }
+    }
+    
+    public static void main (String[] args) {
+        Main mt = new Main();
+        mt.run();
+        mt.start();
+        for (int i = 0; i <= 1; i++) {
+            counter++;
+            System.out.println ("Main: " + counter);
+        }
+    }
+}
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+class Math {
+    public final double secret = 2;
+}
+
+class ComplexMath extends Math {
+    public final double secret = 4;
+}
+
+public class InfiniteMath extends ComplexMath {
+    public final double secret = 8;
+
+    public static void main(String[] numbers) {
+        Math math = new InfiniteMath();
+        System.out.print(math.secret);
+    }
+}
+
+
+The code compiles without issue, so Option D is incorrect. Java allows methods to be overridden, but not variables. Therefore, marking them final does not prevent them from being reimplemented in a subclass. Furthermore, polymorphism does not apply in the same way it would to methods as it does to variables. In particular, the reference type determines the version of the secret variable that is selected, making Output 2 and Option A the correct answer.
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+class One{	
+	public static void print(){
+		System.out.println("1");
+	}
+}
+
+class Two extends One{
+	public static void print(){
+		System.out.println("2");
+	}
+}
+
+public class Test{	
+	public static void main(String args[]){
+		One one = new Two();
+		one.print();
+	}	
+}
+
+
+
+Static methods are defined at the class level. In the case of the static methods, regardless of which object the reference is pointing to, it always calls the static method defined by the reference class. Here, the reference is of type One, so the static method of class One will be called.
+
+
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+class Parent{
+	public void className(){
+		System.out.println("Parent");
+	}
+}
+class Child extends Parent{
+	void className(){
+		System.out.println("Child");
+	}
+}
+
+public class Test{
+	
+	public static void main(String[] args){	
+		Parent parent = new Child();
+		parent.className();
+	}		
+}
+
+
+When overriding a parent class method in a child class, we cannot reduce the visibility of the method. For example, if the method is defined as public in the parent class, a child class cannot override it with protected. The code will give the compilation error “Cannot reduce the visibility of the inherited method from Parent”.
+
+
+
+
+
+--------------------------
+
+Please review and modify this POJO class. You can propose any changes to make it cleaner and more readable. Imagine you want to get ideal code.  I understand that you do not remember everything, so if you smell bad code say about it or leave a comment.
+
+
+@Data
+@EqualsAndHashcode
+public class WalletData {
+ @EqualsAndHashCode.Include
+	private String name;
+	private String acceptance;
+	private String category;
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getAcceptance() {
+		return acceptance;
+	}
+	
+	public void setAcceptance(String acceptance) {
+		this.acceptance = acceptance;
+	}
+	
+	public String getCategory() {
+		return category;
+	}
+	
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		WalletData that = (WalletData) o;
+		return name.equals(that.name);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
+	}
+}
+
+
+
+
+
+
+
+
+--------------------------------------------------------------Restful webservices---------------------------------------------------------------
+--> This is so since idempotent requests like GET, PUT, and DELETE are all cacheable
+
+13. What are the best practices to develop RESTful web services?
+
+The meaning of idempotent is that even after calling a single request multiple times, the outcome of the request should be the same
+
+GET, PUT, DELETE, HEAD, OPTIONS, and TRACE are the idempotent HTTP methods. POST is not idempotent.
+
+14)What makes REST services to be easily scalable?
+REST services follow the concept of statelessness which essentially means no storing of any data across the requests on the server. 
+This makes it easier to scale horizontally because the servers need not communicate much with each other while serving requests.
+
+
+15) Should we make the resources thread safe explicitly if they are made to share across multiple clients?
+There is no need to explicitly making the resources thread-safe because, upon every request, 
+new resource instances are created which makes them thread-safe by default.
+
+16) Safe methods are those that do not change any resources internally. These methods can be cached and can be retrieved without 
+any effects on the resource.
+
+HTTP Methods	Idempotent 	Safe
+OPTIONS	             yes	yes
+GET	                 yes	yes
+HEAD				 yes	yes
+PUT					 yes	no
+POST				  no	no
+DELETE				 yes	no
+PATCH				  no	no
+
+------------------>
+
+************Explain the term ‘Statelessness’ with respect to RESTful WEB service.
+
+Answer: In REST, ST itself defines State Transfer and Statelessness means complete isolation. This means, the state of the client’s application 
+is never stored on the server and is passed on.
+
+In this process, the clients send all the information that is required for the server to fulfill the HTTP request that has been sent. 
+Thus every client requests and the response is independent of the other with complete assurance of providing the required information.
+
+------------------------->
+
+Whether do you find GraphQL the right fit for designing microservice architecture?
+
+GraphQL and microservices are a perfect fit, because GraphQL hides the fact that you have a microservice architecture from the clients.
+ From a backend perspective, you want to split everything into microservices, but from a frontend perspective, you would like all your data 
+ to come from a single API. Using GraphQL is the best way I know of that lets you do both. It lets you split up your backend into microservices,
+ while still providing a single API to all your application, and allowing joins across data from different services.
+ 
+ 
+ ---------> What are the major security issues faced by  web services?
+ 1) Encryption: encrypt sensitive data
+ 2) Authentication: 
+ 
+ 
+--------------------> Have you worked on Caching in Restful services?
+
+---------------->-   PUT vs POST
+PUT:
+
+Idempotent (i.e. multiple requests will yield same result)
+PUT responses aren’t cacheable
+Updates or replaces target resource with request’s payload
+
+POST:
+
+Not idempotent (i.e. multiple requests will yield multiples of the same resource)
+POST responses can be cacheable, provided proper cache-control header
+Request’s payload is processed by the web server based on target resource
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------Spring boot:------------------------------------------------------------------
+
+
+------  
+
+------- @Component and @Bean differences
+
+Let's consider I want specific implementation depending on some dynamic state. @Bean is perfect for that case.
+
+@Bean
+@Scope("prototype")
+public SomeService someService() {
+    switch (state) {
+    case 1:
+        return new Impl1();
+    case 2:
+        return new Impl2();
+    case 3:
+        return new Impl3();
+    default:
+        return new Impl();
+    }
+}
+However there is no way to do that with @Component.
+
+
+@Component auto detects and configures the beans using classpath scanning whereas @Bean explicitly declares a single bean, rather than letting Spring do it automatically.
+@Component does not decouple the declaration of the bean from the class definition where as @Bean decouples the declaration of the bean from the class definition.
+@Component is a class level annotation whereas @Bean is a method level annotation and name of the method serves as the bean name.
+@Component need not to be used with the @Configuration annotation where as @Bean annotation has to be used within the class which is annotated with @Configuration.
+We cannot create a bean of a class using @Component, if the class is outside spring container whereas we can create a bean of a class using @Bean even if the class is present outside the spring container.
+@Component has different specializations like @Controller, @Repository and @Service whereas @Bean has no specializations.
+
+
+
+Lazy initialization may reduce the number of beans created when the application is starting – therefore, we can improve the startup time of 
+the application
+As none of the beans are created until they are needed, we could mask issues, getting them in run time instead of startup time
+The issues can include out of memory errors, misconfigurations, or class-definition-found errors
+Also, when we're in a web context, triggering bean creation on demand will increase the latency of HTTP requests – 
+the bean creation will affect only the first request, but this may have a negative impact on load-balancing and auto-scaling.
+
+https://www.edureka.co/blog/interview-questions/spring-boot-interview-questions/
+
+1) What are the benefits of Spring Boot starter parent
+Default Maven configuration for the Java version, UTF-encoding, and others.
+
+Dependency management by using the version on parent only and all Spring Boot starter dependencies extend version from the parent.
+
+Provides default configuration of the Spring Boot plugin as shown below.
+
+Describe spring-boot-starter-parent?
+
+jdnjdjdjj
+
+--------------2) Can you disable particular auto-configuration in spring boot? Explain how?
+
+Yes, we can do that by
+
+Using the exclude attribute of @EnableAutoConfiguration
+@Configuration
+
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+
+public class CustomConfiguration {}
+
+using the exclude attribute for @SpringBootApplication annotation
+@SpringBootApplication(exclude= DataSourceAutoConfiguration.class)
+
+--------------------->
+How will you disable specific auto-configuration in Spring Boot?
+a. At annotation level: exclude property is used to disable specific auto-configuration classes in Spring Boot.
+
+In the below example we are excluding DataSourceAutoConfiguration class:
+
+@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+
+b. At property level: You can also use the spring.autoconfigure.exclude property to exclude certain auto-configuration classes.
+
+
+1) you might be worked on Spring and Spring boot? What are the advantages you found in Spring boot?
+
+2) What are the Spring Boot starters?
+
+2) Does Spring Boot code run faster than regular Spring code
+No, behind the scenes, Spring Boot uses the same code as Spring Framework, and its sole purpose is about making it easier to get started 
+minimizing configuration.
+
+
+Spring Boot starters are a set of convenient dependency management providers which can be used in the application to enable dependencies. 
+These starters, make development easy and rapid. All the available starters come under the org.springframework.boot group
+
+2) Which is the core annotation of Spring Boot? Which annotations is it mainly composed of?
+
+3) What is spring actuator?
+
+3) How to exclude any package from component scan without using the basePackages filter?
+
+4) What is the difference between @SpringBootApplication @EnableAutoConfiguration?
+
+7) How to write custom auto configuration in spring boot @Configuration?
+
+Spring Actuator is a cool feature of Spring Boot with the help of which you can see what is happening inside a running application.
+ So, whenever you want to debug your application, and need to analyze the logs you need to understand what is happening in the application right? 
+ In such a scenario, the Spring Actuator provides easy access to features such as identifying beans, CPU usage, etc.
+ 
+ 4) What is the main role of the @EnableAutoConfiguration annotation? How to disable specific auto-configuration in spring boot?
+ @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+ 
+ 4) @ConditionalOnClass and @ConditionalOnMissingClass, @ConditionalOnMissingBean  @ConditionalOnProperty
+ 
+ --- @Configuration
+@ConditionalOnBean(WnpConfigurationProperties.class)
+public class JavaMailConfiguration {
+  final WnpConfigurationProperties wnpConfigurationProperties;
+  
+  
+  @ConfigurationProperties("iam")
+@ConditionalOnProperty(value = "iam.enabled", havingValue = "true")
+public class IamConfigurationProperties {
+
+
+ 
+ 4) 21) How can you access a value defined in the application? What is properties file in Spring Boot?
+
+Use the @Value annotation to access the properties which is defined in the application - properties file.
+
+38) What is @pathVariable?
+
+@PathVariable annotation helps you to extract information from the URI directly.
+
+55)  How to handle exception in Spring Boot.
+
+Spring Boot provides a very useful way to handle exceptions using @ControllerAdvice annotation.
+
+What is the way to use profiles to configure the environment-specific configuration with Spring Boot?
+ 
+ 5) How to deploy spring boot to a different server using Spring Boot?
+ 
+ 6) What are the main security properties in Spring Boot?
+ 
+ 7) How to write custom auto configuration in spring boot @Configuration?
+ 
+ 8) What are Profiles in spring boot?
+ Spring Profiles provide a way to segregate parts of your application configuration and make it only available in certain environments. 
+ Any @Component or @Configuration can be marked with @Profile to limit when it is loaded.
+ 
+ 7) How to add custom JS code in spring boot? What is the process of doing it?
+ 
+ 8) Do you think lazy loading of beans in spring boot improve performance? 
+ 
+ https://www.digitalocean.com/community/tutorials/spring-annotations
+ 
+ 9) conditionalonproperty bean example: https://www.baeldung.com/spring-conditionalonproperty
+ Lets say I want to register few beans to spring container based on one condition how would you achieve that?
+ 10) Conditionalonclass : https://roytuts.com/spring-conditionalonclass-and-conditionalonmissingclass/
+ 
+ https://www.marcobehler.com/guides/spring-boot-interview-questions
+ 
+ 11) What are some of the endpoints exposed by Spring Boot Actuator?
+All the endpoints are prefixed /actuator and each request returns a JSON response from the server to authorized users only.
+
+/health checks the status of your application to see if your app is up or down.
+
+/info gives you information about your application but is empty by default, and you need to customize the info endpoint by updating 
+the application.properties with your app info.
+
+ 
+info.app.name = My Super Cool App
+info.app.description = An app that does magic
+info.app.version = 2.1.0
+ 
+/auditevents inspect events for your application.
+/beans return a list of all beans registered in the Spring application context.
+
+/mappingd returns a list of all @RequestMapping paths.
+
+_____________________>
+Which is the only endpoint disabled by default in Spring Boot Actuator? How do you enable it?
+shutdown is the only endpoint that is disabled by default in Spring Boot Actuator.
+
+You can enable the shutdown endpoint by using the following property:
+management.endpoint.shutdown.enabled=true
+
+--------------------->What do you understand by the shutdown in the actuator?
+
+It is a management endpoint that allows for a smooth and proper shutdown of an application. 
+It is not authorized by default, but it can be enabled by using management.endpoint.shutdown.enabled=true.
+
+12) What are your steps to enable logging in spring boot? 
+
+13) How do you inject custom application properties? @Value
+
+
+---------- @Repository annotation --------A class thus annotated is eligible for Spring DataAccessException translation when used in conjunction 
+with a PersistenceExceptionTranslationPostProcessor. The annotated class is also clarified as to its role in the overall application architecture
+ for the purpose of tooling, aspects, etc.
+
+
+
+
+
+
+
+
+
+-------------------------------------------------- SPRING SECURITY --------------------------------------------------------------------
+
+What is Security Context and Security Context Holder in Spring Security?
+Ans:
+The SecurityContext and SecurityContextHolder are two fundamental classes of Spring Security. The SecurityContext is used to store the details 
+of the currently authenticated user, also known as a principle.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Creating the configuration class for spring security:-
+All the configurations related to HttpSecurity are done inside the configure method().
+For the process of authentication of user, AuthenticationManagerBuilder is used.
+As we are using mysql database to store users and their authorities, so we use jdbcAuthentication.
+WebSecurityConfigurerAdapter is a class which provides several methods by which httpSecurity and WebSecurity can be customised.
+PasswordEncoder specifies whether the password is to be stored in its original form or by the manner the password is to be encoded.
+
+Principal in spring security is used to get the details of currently logged in user.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+How can you create a login page in Spring Boot?
+
+Ans: Here is another example of very frequently asked Spring Boot advanced interview questions. 
+In order to create a simple login page in Spring Boot, you need to seek the help of Spring security. 
+Spring security is responsible for securing all HTTP endpoints which is essential for all the users, since they have to login into the default HTTP form that is provided by Spring. Furthermore, there are also a few other steps you need to keep in mind, such as adding spring-boot-starter-security dependency in build.gradle. You will also be provided with a default username and password which you can then use for logging in. 
+ 
+ ---------------------------------------------------- Micro services -------------------------------------------------------------------
+ 
+ ---- SAGA Design pattern: https://www.nexsoftsys.com/articles/java-microservice-architecture-using-saga-pattern.html
+ 
+ 1) #5) What are the best practices to design microservices?
+
+Answer:
+
+Separate data store for each microservices because we have a database that corresponds to a particular microservice.
+Keep code at a similar level of maturity: This gives developers the freedom to build applications the way they want to.
+A similar level of understanding means a similar level from a business domain perspective. All the teams are on a similar page, even though they’re working on different things.
+Separate build for each microservice: All teams are on the same level when they’re working separately for each microservice. These get deployed in containers.
+Treat servers as stateless: Containers read servers as stateless, this helps in better communication.
+Deploy into containers: Microservices should be deployed into containers.
+
+------------> How will you monitor multiple microservices for various indicators like health
+
+_______________>
+What are the different Microservices Design Patterns
+The different Microservices Design Patterns are -
+Aggregator Microservice Design Pattern
+API Gateway Design Pattern
+Chain of Responsibility Design Pattern
+Branch Microservice Design Pattern
+Circuit Breaker Design Pattern
+Asynchronous Messaging Design Pattern
+
+--------------------------->
+Deploying Multiple Spring Boot Microservices to Docker using Docker
+
+The term 'idempotence' refers to the repeated performance of a task despite the same outcome.  In other words, it is a situation in which a task is performed repeatedly with the end result remaining the same. 
+ 
+Usage: When the remote service or data source receives instructions more than once, Idempotence ensures that it will process each request once.
+ 
+ 1)When you given requirement that client says I want to implement micro services architecture 
+ 
+ 2) What is microservice architecture patterns available?
+ 3) How micro service call other micro service interact with each other? flinclient advantages?
+ 4) Purpose of zuul? Different filters used in Zuul?
+ 5) What is the purpose of API Gateway?
+ 
+ 6) What are the different strategies of Microservices Deployment?
+Answer:
+
+Multiple Service Instance per Host: Run single or multiple service instances of the application on single/multiple physical/virtual hosts.
+Service Instance per Host: Run a service instance per host.
+Service Instance per Container: Run each service instance in its respective container.
+Serverless Deployment: Package the service as a ZIP file and upload it to the Lambda function. 
+The Lambda function is a stateless service that automatically runs enough micro-services to handle all requests.
+
+
+
+
+
+--------------------------------------------------------REST Services -----------------------------------------------------------------
+
+
+------------>
+
+
+While defining resources, use plural nouns. Example: To identify user resource, use the name “users” for that resource.
+While using the long name for resources, use underscore or hyphen. Avoid using spaces between words. For example, to define authorized users resource, the name can be “authorized_users” or “authorized-users”.
+The URI is case-insensitive, but as part of best practice, it is recommended to use lower case only.
+While developing URI, the backward compatibility must be maintained once it gets published. When the URI is updated, the older URI must be redirected to the new one using the HTTP status code 300.
+Use appropriate HTTP methods like GET, PUT, DELETE, PATCH, etc. It is not needed or recommended to use these method names in the URI. Example: To get user details of a particular ID, use /users/{id} instead of /getUser
+Use the technique of forward slashing to indicate the hierarchy between the resources and the collections. Example: To get the address of the user of a particular id, we can use: /users/{id}/address
+
+
+#14) Explain Cache-control header.
+
+Answer: A standard Cache-control header can help in attaining cache ability. Enlisted below is the brief description of the various cache-control 
+header:
+
+Public: Resources that are marked as the public can be cached by any intermediate components between the client and the server.
+Private: Resources that are marked as private can only be cached by the client.
+No cache means that a particular resource cannot be cached and thus the whole process is stopped.
+
+Q #15) What are the best practices that are to be followed while designing RESTful web services?
+
+Answer: To design a secure RESTful web service, there are some best practices or say points that should be considered.
+
+These are explained as follows:
+
+Every input on the server should be validated.
+Input should be well-formed.
+Never pass any sensitive data through URL.
+For any session, the user should be authenticated.
+Only HTTP error messages should be used for indicating any fault.
+Use message format that is easily understood and is required by the client.
+Unified Resource Identifier should be descriptive and easily understood.
+
+
+
+
+
+----------------------------------------------Hibernate and Transaction Management?----------------------------------------------------------------
+
+-----> https://www.baeldung.com/spring-transactional-propagation-isolation
+
+
+&&&&&&&&&& ISOLATION Levels &&&&&&&&&&&&
+
+
+READ_UNCOMMITTED is the lowest isolation level and allows for the most concurrent access.
+
+As a result, it suffers from all three mentioned concurrency side effects. A transaction with this isolation reads uncommitted data of other concurrent transactions. Also, both non-repeatable and phantom reads can happen. Thus we can get a different result on re-read of a row or re-execution of a range query.
+
+We can set the isolation level for a method or class:
+
+@Transactional(isolation = Isolation.READ_UNCOMMITTED)
+public void log(String message) {
+    // ...
+}
+
+
+
+READ_COMMITTED Isolation
+The second level of isolation, READ_COMMITTED, prevents dirty reads.
+
+The rest of the concurrency side effects could still happen. So uncommitted changes in concurrent transactions have no impact on us, but if a transaction commits its changes, our result could change by re-querying.
+
+
+
+The third level of isolation, REPEATABLE_READ, prevents dirty, and non-repeatable reads. So we are not affected by uncommitted changes in concurrent transactions.
+
+Also, when we re-query for a row, we don't get a different result. However, in the re-execution of range-queries, we may get newly added or removed rows.
+
+Moreover, it is the lowest required level to prevent the lost update. The lost update occurs when two or more concurrent transactions read and update the same row. REPEATABLE_READ does not allow simultaneous access to a row at all. Hence the lost update can't happen.
+
+
+
+
+
+
+
+CrudRepository 
+
+JpaRepository 
+
+It is a base interface and extends Repository Interface.	
+It extends PagingAndSortingRepository that extends CrudRepository.
+
+It contains methods for CRUD operations. For example save(), saveAll(), findById(), findAll(), etc. 	
+It contains the full API of CrudRepository and PagingAndSortingRepository. For example, it contains flush(), saveAndFlush(), saveAllAndFlush(), deleteInBatch(), etc along with the methods that are available in CrudRepository.
+
+It doesn’t provide methods for implementing pagination and sorting	
+It provides all the methods for which are useful for implementing pagination.
+
+It works as a marker interface.	It extends both CrudRepository and PagingAndSortingRepository.
+To perform CRUD operations, define repository extending CrudRepository.	To perform CRUD as well as batch operations, define repository extends JpaRepository.
+
+// We can write the query as our needs, that will help to make clear what is happening inside
+@Query("SELECT contest.contestName FROM Contest contest where contest.id = :id") 
+String findContestByIdString(@Param("id") Long id);
+ 
+// In case if we have multiple arguments, we can write 
+// queries based on position as well as name
+// Position based queries
+// We cannot change the order of the method parameters
+// We cannot change the order of the placeholders without breaking our database query
+@Query("SELECT contest FROM Contest contest where contest.contestName = ?1 AND contest.id = ?2")
+public Optional<Contest> findByContestNameAndId(String contestName, Long id);
+
+
+--> @Column(columnDefinition = "varchar(22) default 'Aayush'")
+      private String name;
+	  
+--> @Column(nullable=false) annotation is used for adding the not null constraint on the particular column of the table.
+
+
+-- flush(): Flushes all pending changes to the database.
+
+Syntax:
+
+void flush()
+Method 4: saveAndFlush(): Saves an entity and flushes changes instantly.
+
+Syntax:
+
+<S extends T> S saveAndFlush(S entity)
+Parameters: The entity to be saved. Must not be null.
+
+
+
+--->
+
+The CrudRepository’s save() method is used to perform save as well as update operation both. The implementation has been given in SimpleJpaRepository.java, where persist() and merge() is getting called. If we try to save entity first time then persist() method will get invoked and if we try to update the same entity merge() will get invoked.
+
+
+--->
+
+The CrudRepository saveAll() method used to save multiple entities and internally annotated with @Transactional annotation. It internally uses save() method only as below.
+
+
+--->
+
+The first scenario – Retrieve the data on the basis of one field(i.e university) and sort on the basis of another field(name).
+
+public List<Student> findByUniversity(String university) {
+List<Student> response = studentRepository.findByUniversityOrderByNameAsc(university);
+return response;
+}
+
+The second scenario – Retrieve all record(rows)  and sort on the basis of some field(name).
+
+public List<Student> findAll() {
+List<Student> response = (List<Student>) studentRepository.findAllByOrderByNameAsc();
+return response;
+}
+
+
+--> what happens when we use @Transactional annotation?
+Spring Boot implicitly creates a proxy for the transaction annotated methods. So for such methods the proxy acts like a wrapper which 
+takes care of creating a transaction at the beginning of the method call and committing the transaction after the method is executed.
+
+What's important to keep in mind is that, if the transactional bean is implementing an interface, by default the proxy will be a Java Dynamic Proxy. This means that only external method calls that come in through the proxy will be intercepted. Any self-invocation calls will not start any transaction, even if the method has the @Transactional annotation.
+
+Another caveat of using proxies is that only public methods should be annotated with @Transactional. Methods of any other visibilities will simply ignore the annotation silently as these are not proxied.
+
+Note that by default, rollback happens for runtime, unchecked exceptions only. The checked exception does not trigger a rollback of the transaction. We can, of course, configure this behavior with the rollbackFor and noRollbackFor annotation parameters.
+
+ddl-auto=update : It will create the entity schema and map it to db automatically
+
+spring.jpa.properties.javax.persistence.schema-generation.scripts.create-target=create.sql
+
+--> What are the different types of Transaction Propagations?
+A: The different types of Transaction Propagation for Spring Boot are as follows-
+REQUIRED
+SUPPORTS -- It supports existing but will not create new one.
+NOT_SUPPORTED
+REQUIRES_NEW
+NEVER
+MANDATORY
+
+---> What are Transaction Isolation Levels ?
+A: The Transaction Isolation Levels are as follows-
+READ_UNCOMMITTED
+READ_COMMITTED
+REPEATABLE_READ
+SERIALIZABLE
+DEFAULT
+
+--> What is HATEOAS, and how does it apply in Spring Data REST?
+
+What is ORM?
+
+get vs loaded
+
+which one is thread safe in this sessionfactory and session
+
+first level cache and second level cache
+
+advanatages of HQL over SQL?
+
+What is criteria query?
+
+difference between criteria an hql?
+
+Why it's important to provide no-argument constructor in Hibernate Entities?
+
+Read more: https://javarevisited.blogspot.com/2013/05/10-hibernate-interview-questions-answers-java-j2ee-senior.html#ixzz6RiLooYFX
+
+What is Lazy loading i Hibernate? How to get child objects as well?
+
+lazy loading in hibernate
+
+>>>>>>>>>>>>>>>>>>>>>>>>>
+Why do we need equals()/hashCode(), and how to implement them correctly for JPA entities?
+By default, in Java, object instances are equal if their addresses in memory are equal. For JPA, this approach does not work well. 
+If we fetch the same entity instance in different transactions, their addresses in memory will be different. 
+It might cause problems with caching, issues with Set collections, etc. That's why it is essential to properly define the equals() method for
+ JPA entities.
+
+The same reasoning applies to the hashCode() method implementation. JDK collections framework and Hibernate-specific collections use this method 
+heavily, so the improper implementation may affect application performance, lead to entities "loss" in collections, or even cause runtime 
+exceptions if we use lazy attribute loading. There are some examples of such behavior in the article about Lombok in JPA.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Transaction Propagation
+Transaction propagation allows you to specify the behavior if a transactional method is executed when the transaction context already exists. 
+E.g., you can configure it to create a nested transaction inside an already existing one; or suspend an active transaction and create a new one.
+ Here are all the available options:
+
+REQUIRED – the default value. Spring uses the active transaction to execute the business logic. If no transaction exists, it creates a new one.
+NESTED – If there's no active transaction, it works like REQUIRED. When there is an active transaction, Spring remembers a point where the method was called and creates a new transaction. In case of an execution error, the transaction will be rolled back to the saved point.
+REQUIRES_NEW – Spring suspends the existing transaction if it exists and then creates a new one.
+MANDATORY – If there is an active transaction, Spring uses it. Otherwise, it throws the TransactionRequiredException.
+SUPPORTS – If there is an active transaction, Spring uses it. Otherwise, the code will be executed in the non-transactional form.
+NOT_SUPPORTED – If there is an active transaction, Spring suspends it. Next, the code will be executed in the non-transactional form.
+NEVER – Spring throws TransactionalException if there is an active transaction. Otherwise, the code will be executed in the non-transactional form.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+@Transactional(readOnly = true)
+If you only plan to get data from the database and not change it, consider setting the readOnly attribute to true.
+
+@Transactional(readOnly = true) 
+User findById(Integer id); 
+You can win some performance points by explicitly telling Spring that you only need to read the data. Also, depending on your database, 
+Spring can omit table locks or even reject write operations you might trigger accidentally.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+@Modifying annotation
+The @Modifying annotation is designed to be used along with the @Query annotation. When we use these two annotations together, 
+we can perform not only SELECT statements but also INSERT, UPDATE and DELETE ones.
+
+@Transactional 
+@Modifying 
+@Query("update User u set u.isActive = true where u.email is not null") 
+int updateActivityStatus(); 
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+What is difference between CrudRepository and JpaRepository interfaces in Spring Data JPA?
+CrudRepository provides CRUD functions. PagingAndSortingRepository provides methods to do pagination and sort records.
+JpaRepository provides JPA related methods such as flushing the persistence context and delete records in a batch.
+
+
+
+
+
+
+
+--------------------------------------------- Docker ----------------------------------------------
+
+-- # Fetching latest version of Java
+FROM openjdk:18
+ 
+# Setting up work directory
+WORKDIR /app
+
+# Copy the jar file into our app
+COPY ./target/spring-0.0.1-SNAPSHOT.jar /app
+
+# Exposing port 8080
+EXPOSE 8080
+
+# Starting the application
+CMD ["java", "-jar", "spring-0.0.1-SNAPSHOT.jar"]
+
+
+1) Tell us how you have used Docker in your past position?
+
+1) What is a container?
+Containers are deployed applications bundled with all necessary dependencies and configuration files. 
+All of the elements share the same OS kernel. Since the container isn’t tied to any one IT infrastructure, 
+it can run on a different system or the cloud.
+
+2). Explain virtualization.
+Virtualization is the means of employing software (such as Hypervisor) to create a virtual version of a resource such as a server, data storage, 
+or application. Virtualization lets you divide a system into a series of separate sections, each one acting as a distinct individual system.
+ The virtual environment is called a virtual machine.
+
+3). What’s the difference between virtualization and containerization?
+Virtualization is an abstract version of a physical machine, while containerization is the abstract version of an application.
+
+4) Which is the best method for removing a container: the command “stop container” followed by the command “remove the container,” 
+the rm command by itself?
+Stop the container first, then remove it. Here’s how:
+
+$ docker stop <coontainer_id>
+$ docker rm -f <container_id>
+
+5) Can a container restart on its own? Since the default flag -reset is set to false, a container cannot restart by itself.
+
+6) Can a container restart by itself?
+Yes, it is possible only while using certain docker-defined policies while using the docker run command. Following are the available policies:
+
+1. Off: In this, the container won’t be restarted in case it's stopped or it fails.
+2. On-failure: Here, the container restarts by itself only when it experiences failures not associated with the user.
+3. Unless-stopped: Using this policy, ensures that a container can restart only when the command is executed to stop it by the user.
+4. Always: Irrespective of the failure or stopping, the container always gets restarted in this type of policy.
+
+These policies can be used as:
+docker run -dit — restart [restart-policy-value] [container_name]
+
+7) How will you ensure that a container 1 runs before container 2 while using docker compose?
+Docker-compose does not wait for any container to be “ready” before going ahead with the next containers. In order to achieve the order of execution, we can use:
+
+The “depends_on” which got added in version 2 of docker-compose can be used as shown in a sample docker-compose.yml file below:
+version: "2.4"
+services:
+ backend:
+   build: .
+   depends_on:
+     - db
+ db:
+   image: postgres
+The introduction of service dependencies has various causes and effects:
+
+The docker-compose up command starts and runs the services in the dependency order specified. 
+For the above example, the DB container is started before the backend.
+docker-compose up SERVICE_NAME by default includes the dependencies associated with the service. 
+In the given example, running docker-compose up backend creates and starts DB (dependency of backend).
+Finally, the command docker-compose stop also stops the services in the order of the dependency specified. 
+For the given example, the backend service is stopped before the DB service
+
+
+8) Can you remove a paused container from Docker?
+To answer this question blatantly, No, it is not possible to remove a container from Docker that is just paused. 
+It is a must that a container should be in the stopped state before it can be removed from the Docker container.
+
+9) What is the difference between deploying applications on hosts and containers?
+Deploying Applications consist of an architecture that has an operating system. 
+The operating system will have a kernel that holds various libraries installed on the operating system needed for an application.
+
+Whereas container host refers to the system that runs the containerized processes. 
+This kind is isolated from the other applications; therefore, the applications must have the necessary libraries. 
+The binaries are separated from the rest of the system and cannot infringe any other application.
+
+10) What is the Ingress network, and how does it work?
+ An ingress is an object that allows users to access your Kubernetes services from outside the Kubernetes cluster.
+ Users can configure the access by creating rules that define which inbound connections reach which services.
+
+How does it work- This is an API object that provides the routing rules to manage the external users' 
+access to the services in the Kubernetes cluster through HTTPS/ HTTP. With this, users can easily set up the rules for routing traffic without creating a bunch of load balancers or exposing each service to the nodes.
+
+
+
+
+
+
+------------------------------------------------------------ Kubernetes---------------------------------------------------------
+
+What are the various K8's services running on nodes and describe the role of each service?
+Mainly K8 cluster consists of two types of nodes, executor and master.
+
+Executor node: (This runs on master node)
+
+Kube-proxy: This service is responsible for the communication of pods within the cluster and to the outside network, which runs on every node. 
+This service is responsible to maintain network protocols when your pod establishes a network communication.
+kubelet: Each node has a running kubelet service that updates the running node accordingly with the configuration(YAML or JSON) file. 
+NOTE: kubelet service is only for containers created by Kubernetes.
+
+
+Master services:
+
+Kube-apiserver: Master API service which acts as an entry point to K8 cluster.
+Kube-scheduler: Schedule PODs according to available resources on executor nodes.
+Kube-controller-manager:  is a control loop that watches the shared state of the cluster through the apiserver and makes changes attempting 
+to move the current state towards the desired stable state
+
+What is the role of Load Balance in Kubernetes?
+Load balancing is a way to distribute the incoming traffic into multiple backend servers, which is useful to ensure the application 
+available to the users.
+
+
+Load Balancer
+In Kubernetes, as shown in the above figure all the incoming traffic lands to a single IP address on the load balancer which is a way 
+to expose your service to outside the internet which routes the incoming traffic to a particular pod (via service) using an algorithm known 
+as round-robin. Even if any pod goes down load balances are notified so that the traffic is not routed to that particular unavailable node. 
+Thus load balancers in Kubernetes are responsible for distributing a set of tasks (incoming traffic) to the pods
+
+7. What are the various things that can be done to increase Kubernetes security?
+By default, POD can communicate with any other POD, we can set up network policies to limit this communication between the PODs.
+
+RBAC (Role-based access control) to narrow down the permissions.
+Use namespaces to establish security boundaries.
+Set the admission control policies to avoid running the privileged containers.
+Turn on audit logging.
+
+
+8. How to monitor the Kubernetes cluster?
+Prometheus is used for Kubernetes monitoring. The Prometheus ecosystem consists of multiple components.
+
+Mainly Prometheus server which scrapes and stores time-series data.
+Client libraries for instrumenting application code.
+Push gateway for supporting short-lived jobs.
+Special-purpose exporters for services like StatsD, HAProxy, Graphite, etc.
+An alert manager to handle alerts on various support tools.
+
+
+
+9. How to get the central logs from POD?
+This architecture depends upon the application and many other factors. Following are the common logging patterns
+
+Node level logging agent.
+Streaming sidecar container.
+Sidecar container with the logging agent.
+Export logs directly from the application.
+In the setup, journalbeat and filebeat are running as daemonset. Logs collected by these are dumped to the kafka topic which is eventually dumped to the ELK stack.
+
+
+23. How to troubleshoot if the POD is not getting scheduled?
+In K8’s scheduler is responsible to spawn pods into nodes. There are many factors that can lead to unstartable POD. 
+The most common one is running out of resources, use the commands like kubectl describe <POD> -n <Namespace> to see the reason why POD is not started.
+ Also, keep an eye on kubectl to get events to see all events coming from the cluster
+ 
+ 
+ 
+ 
+ 
+
+
+------------------------------------------- Cloud Computing ------------------------------------------
+11) What are edge locations in aws?
+Edge locations are the endpoints in aws used for caching content. If you want to know more about the edge locations, 
+then click on the link shown below:
+
+************What are the most essential things that must be followed before going for cloud computing platform?
+Compliance
+Loss of data
+Data storage
+Business continuity
+Uptime
+Data integrity in cloud computing
+
+************************************************************** Why are microservices important for a true cloud environment?
+	
+The reason why microservices are so important for a true cloud environment is because of these four key benefits:
+
+Each microservice is built to serve a specific and limited purpose, and hence application development is simplified. 
+Small development teams can then focus on writing code for some of the narrowly defined and easily understood functions.
+Code changes will be smaller and less complex than with a complex integrated application, making it easier and faster to make changes, 
+whether to fix a problem or to upgrade service with new requirements.
+Scalability — Scalability makes it easier to deploy an additional instance of a service or change that service as needs evolve.
+Microservices are fully tested and validated. When new applications leverage existing microservices, developers can assume the integrity 
+of the new application without the need for continual testing.
+
+#3) What are the different types of cloud computing?
+
+Answer: There are three main types of cloud computing offered as services by the service providers.
+
+These are as follows:
+
+Infrastructure as a Service (IaaS) provides basic building blocks such as virtual or dedicated hardware in the form of computers, 
+       data storage space as well as networking access in the form of IT infrastructure on a pay as per use basis to customers 
+	   eliminating initial and ongoing expenses after purchasing infrastructure, space, and maintenance, 
+	   but only to focus on business improvement and improving applications built by these companies.
+Platform as a Service (PaaS) offers managing hardware and operating systems for the customers and focusing on deploying their products, 
+       eliminating initial and ongoing expenses after purchasing infrastructure, space, and maintenance.
+Software as a Service (SaaS) offers complete management of end-user applications along with management of infrastructure supporting 
+       these applications, for the companies as their service offerings.
+	   
+	   
+********************************************
+#4) What benefits organizations will have in moving to cloud computing?
+
+Answer: Organizations moving their infrastructure and applications to the public cloud will have the following benefits:
+
+Scalability: Cloud allows scale up or down based on usage, you only need to pay per use for the computing and storage perspective.
+Reliability: Cloud providers offer the reliability of their infrastructure up to 99.999999%, with provision for multiple levels of 
+             redundancy and backups in case it is needed.
+Security: Most cloud providers are compliant with industry-level security protocols like HIPAA, PCI, offer access restrictions to 
+             applications and systems at multiple levels and monitoring services at a very granular level to trigger alarms.
+Cost Efficiency: Moving to the cloud for startup companies offers benefits of cost savings by differing from investing in expensive servers, cache 
+             managing, and maintaining them. Every month, companies have to pay only for the computing power and storage that are utilized by them
+			 during the month.
+			 
+********************************************************
+#10) What security practices should be followed for Amazon EC2 instance?
+
+Answer: Following security practices are followed for Amazon EC2 instance:
+
+Least Access: Managing access to AWS resources and APIs using identity federation, IAM users, and IAM roles.
+Least Privilege: Implementation of least permissive rules for security groups.
+Configuration Management: Patch, update, and secure the operating system and applications on an instance regularly.
+
+What are the best practices for security in Lambda?
+Ans: For security, there are some of the best options available in Lambda. One can use Identity Access and Management. 
+This would be beneficial when it comes to controlling access to resources.
+ Privilege is another option that basically opens up the permissions. Access can be restricted to hosts that are not trusted or unauthorized. 
+ There are rules in the security group that can be reviewed with time to keep up the pace simply. 
+ 
+ x
+ **********************************************************************
+ What are the use cases for which Lambda was actually designed? What is the use case that you have used?
+The overall response to the clicks made on the website, Image uploading, Sensor’s reacting monitoring, 
+as well as reading from the IoT devices are some of the use cases of AWS Lambda. However, access is not just limited to this only.
+ There are several other tasks that can also be accomplished with Lambda. 
+Back-end services can be provisioned automatically with Lambda.
+
+
+***************************************************************
+How do you upgrade or downgrade a system with near-zero downtime?
+You can upgrade or downgrade a system with near-zero downtime using the following steps of migration:
+
+Open EC2 console
+Choose Operating System AMI
+Launch an instance with the new instance type
+Install all the updates
+Install applications
+Test the instance to see if it’s working
+If working, deploy the new instance and replace the older instance
+Once it’s deployed, you can upgrade or downgrade the system with near-zero downtime.
+Take home these interview Q&As and get much more. Download the complete AWS Interview Guide here:
+
+What do you know about Zero downtime deployment?
+Deployments are generally considered in the form of functions. 
+AWS Lambda divides it into units in case they are complex. The fact here is app remains in offline mode during such a time period. 
+However, the results are always good. 
+
+************************************************************************
+What are the different types of EC2 instances based on their costs?
+The three types of EC2 instances based on the costs are:
+
+On-Demand Instance - These instances are prepared as and when needed. Whenever you feel the need for a new EC2 instance, you can go ahead and create 
+an on-demand instance. It is cheap for the short-time but not when taken for the long term.
+
+Spot Instance - These types of instances can be bought through the bidding model. These are comparatively cheaper than On-Demand Instances.
+
+Reserved Instance - On AWS, you can create instances that you can reserve for a year or so. These types of instances are especially useful when 
+you know in advance that you will be needing an instance for the long term. In such cases, you can create a reserved instance and save heavily 
+on costs
+
+
+*********************************************************************
+
+
+What is the difference between stopping and terminating an EC2 instance? 
+While you may think that both stopping and terminating are the same, there is a difference. When you stop an EC2 instance, 
+it performs a normal shutdown on the instance and moves to a stopped state. However, when you terminate the instance, 
+it is transferred to a stopped state, and the EBS volumes attached to it are deleted and can never be recovered. 
+
+**************************************************************************
+How can you add an existing instance to a new Auto Scaling group?
+Here’s how you can add an existing instance to a new Auto Scaling group:
+
+Open EC2 console
+Select your instance under Instances
+Choose Actions -> Instance Settings -> Attach to Auto Scaling Group
+Select a new Auto Scaling group
+Attach this group to the Instance
+Edit the Instance if needed
+Once done, you can successfully add the instance to a new Auto Scaling group
+
+****************************************************************************
+What are the different types of load balancers in AWS?
+There are three types of load balancers that are supported by Elastic Load Balancing:
+
+Application Load Balancer
+Network Load Balancer
+Classic Load Balancer
+
+**************************************************************************
+
+How do you allow a user to gain access to a specific bucket?
+You need to follow the four steps provided below to allow access. They are:
+
+Categorize your instances
+Define how authorized users can manage specific servers.
+Lockdown your tags
+Attach your policies to IAM users
+
+******************************************************************************
+How can you send a request to Amazon S3?
+Amazon S3 is a REST Service, and you can send a request by using the REST API or the AWS SDK wrapper libraries that wrap the underlying Amazon S3 REST API.
+
+
+What is Replication Rule feature supported by AWS S3 ?
+Ans: With S3 Amazon provides a lot of useful features. One such feature is Replication Rules. Replication rules allows us to replicate the 
+data to a secondary region so that AWS Classes in Pune can continuously allow our users and customers to access the data. 
+Replication rules allows to reduce upon the cost by replicating specific type of data and not all the data in the bucket. 
+Also, when the data is replicated to the secondary region, one can transform the data storage class to optimize upon the cost.
+
+
+Explain Object Lock feature in AWS S3?
+Ans: S3 object lock allows us to store object using WORM model (write-once-read-many). The feature allows a S3 user to protect his data 
+from being over-written or deleated for a cfertain amount of time or indefinately. S3 object lock is often implemented by various orginizations 
+to meet regulatory requirements that needs WORM storage.
+
+
+What are the steps to encrypt a file in S3 ?
+Ans: Its easy to encrypt a file in S3 bucket. While uploading a file using S3 management console, one can simply expand property option and choose 
+if AWS Managed key should be used or Customer Managed key is to be used for file encryption.
+ Consider if the file is already uploaded, one can easily navigate to properties of the file and enable encryption.
+ 
+ 
+ 
+How do you manage access to Amazon S3 buckets?
+ 
+There are various ways to manage access to Amazon S# buckets.
+
+IAM - Manage access to S3 resources via AWS Identity And Access Management (IAM) Users, Groups, and Roles.
+
+ACL - Manage access to S3 resources and individual objects via Access Control Lists (ACL)
+
+S3 Access Points - Manage access to S3 data sets via S3 Access Points specific to each application.
+
+S3 Bucket Policies - Manage access to S3 resources by configuring access policies and permissions at the bucket level,
+ which apply to all objects within that bucket.
+
+
+
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+----------In how many ways can AWS Lambda be used?
+
+One can use Lambda in the following ways:
+
+As an event-driven compute service, AWS Lambda runs code in response to events.
+These events can be the changes to data in an Amazon S3 bucket or AWS DynamoDB
+Lambda can run code in response to HTTP requests using Amazon API Gateway or API calls made using AWS SDKs.
+
+------------------What do you think makes Lambda a timesaving approach?
+There can be a number of reasons behind this. One of which is that Lambda stores everything in a local server memory.  
+Another reason can be that data is stored directly in the database without it affecting the performance. 
+In addition to these features, Lambda also has simple testing techniques; for example, integration testing can be made powerful through
+ multiple vendors.
+ 
+How does Lambda handle failure during event processing?
+In Lambda, a function is run in either synchronous or asynchronous mode. If a function fails in synchronous mode, 
+then it just gives an exception to the calling application. If a function fails in asynchronous mode, then it is retried at least three times.
+
+
+Is vertical scaling possible in Lambda?
+Yes, vertical scaling is possible in Lambda. Vertical scaling is one of the  most in-demand features of AWS Lambda. 
+This feature is generally used when a user needs to spin a larger instance. If, in case, they are already using an instance, 
+it can be paused and detached from the server. In this process, it is important to note the ID of the new device post that can continue the process.
+ 
+ 
+-----------------------What is serverless computing?
+Serverless computing is a cutting-edge computing execution model wherein a cloud provider runs the virtual server and 
+dynamically manages the allocation of machine resources. Serverless computing helps build and run applications and services 
+without being concerned about servers. With the prowess of serverless computing, applications run on servers, but the servers are managed by AWS. 
+This gives developers a lot of flexibility and freedom to focus on app development. 
+AWS Lambda is at the core of serverless computing as it helps to run code without servers.
+
+
+ How to get started with a serverless application?
+In order to get started with a serverless application, a user needs to console AWS Lambda and download the blueprint. 
+The original file that will be downloaded should have an AWS Sam file, also known as AWS resource in the application, and a ZIP file. 
+AWS Cloud formation commands can be used for packaging and deploying serverless application codes and documentation can also be performed.
+ 
+ 
+ 
+ 
+ 
+ ------------------------------ SQS -----------------------------
+ 
+ Can you explain the different types of queues available in SQS?
+There are three different types of queues available in SQS: Standard, FIFO, and Dead Letter. Standard queues are the most basic type of queue and are best 
+suited for simple workloads. FIFO queues are designed for more complex workloads where order is important, and Dead Letter queues are used for
+ storing messages that cannot be processed successfully.
+ 
+ 
+ In what scenarios should we use standard over FIFO Queue or vice versa?
+FIFO queues are ideal for scenarios where message order must be preserved, such as when processing financial transactions. 
+Standard queues are best for scenarios where message ordering is less important and message throughput is more critical, 
+such as when sending email notifications.
+
+
+What do you understand about long polling with SQS?
+Long polling is a way of checking for messages in an SQS queue without having to continuously poll the queue. With long polling, 
+you can set up a “wait time” for the queue, and SQS will check the queue for messages during that time. If there are no messages in the queue, 
+SQS will return an empty response. If there are messages in the queue, SQS will return up to 10 messages.
+
+
+How can you ensure high availability when using SQS?
+There are a few different ways to ensure high availability when using SQS. One way is to create multiple queues and spread the load across them.
+ Another way is to use Amazon SQS Extended Client Library for Java which allows you to perform failover operations.
+ 
+ 
+ 
+ 
+ ------------------------------- DynamoDB --------------------------------------------------
+ 
+ How is Amazon's NoSQL implementation different from other well-known ones like Cassandra or MongoDB?
+A managed NoSQL database service, DynamoDB provides quick, predictable performance with easy scalability. 
+Several significant aspects set DynamoDB apart from other well-liked NoSQL implementations:
+
+DynamoDB provides a managed service rather than needing setup and management by the user.
+DynamoDB utilizes a proprietary query language rather than SQL, DynamoDB employs a proprietary storage format rather than JSON.
+ 
+ 
+What do you think about Firebase vs DynamoDB?
+If you're going to look for a controlled NoSQL database that scales well, DynamoDB is a fantastic choice. 
+Additionally, if you require precise control over your data, it is a wise choice. If you want a controlled NoSQL database that is feature-rich 
+and simple to use, Firebase is a good choice.
+
+Please explain what are global secondary indexes?
+An index with a different partition and partition-and-sort key from those on the table is called global Secondary index.
+It is considered to be “global” in the sense that queries on the index can span all the items in a table across, all the partitions.
+
+
+List types of secondary indexes supported by Amazons DynamoDB?
+Two types of indexes are supported by Amazon DynamoDB. They are:
+Global Secondary index – It is an index with a partition or a partition sort key that is different from those on the table. 
+The global secondary index is considered to be global because queries on the index can span all the items in a table, across all the partitions.
+
+Local secondary index – An index that has the same partition key as that of the table but different sort key. 
+It is considered to be “local” because every partition of the index is scoped to a table partition that has the same partition key.
+
+
+________________________________________________________________ JUNIT ---------------------------------------------------------------
+
+
+
+What are some of the important annotations provided by JUnit?
+Some of the annotations provided by JUnit are as follows:
+
+@Test: This annotation over a public method of void return type can be run as a test case. This is a replacement of the org.junit.TestCase annotation.
+@Before: This is used when we want to execute the preconditions or any initialisation based statements before running every test case.
+@BeforeClass: This is used when we want to execute statements before all test cases. The statements may include test connections, common setup initialisation etc.
+@After: This is used when we want to execute statements after each test case. The statements can be resetting the variables, deleting extra memory used etc.
+@AfterClass: This is used when certain statements are required to be executed after all the test cases of the class are run. Releasing resource connections post-execution of test cases is one such example.
+@Ignores: This is used when some statements are required to be ignored during the execution of test cases.
+@Test(timeout=x): This is used when some timeout during the execution of test cases is to be set. The value of x is an integer that represents the time within which the tests have to be completed.
+@Test(expected=NullPointerException.class): This is used when some exception thrown by the target method needs to be asserted.
+7. How will you write
+
+
+------->
+
+@SpringBootTest
+@AutoConfigureMockMvc
+public class HelloControllerMockMvcTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
+    public void shouldReturnDefaultMessage() throws Exception {
+        this.mockMvc.perform(get("/"))
+                    .andDo(print())
+                    .andExpect(status().isOk())
+                    .andExpect(content().string(containsString("Hello World!")));
+    }
+}
+
+
+----  To start using Mockito in JUnit tests we need to annotate a class with @ExtendWith(MockitoExtension.class)
+
+What is the importance of @RunWith annotation?
+@RunWith annotation lets us run the JUnit tests with other custom JUnit Runners like SpringJUnit4ClassRunner, MockitoJUnitRunner etc.
+ We can also do parameterized testing in JUnit by making use of @RunWith(Parameterized.class
+ 
+ 
+ 
+ How can we test protected methods?
+For testing protected methods, the test class should be declared in the same package as that of the target class
+
+ @Mock vs @InjectMocks
+The @Mock annotation creates a mock implementation for the class it is annotated with.
+@InjectMocks also creates the mock implementation of annotated type and injects the dependent mocks into it.
+In the above example, we have annotated EmployeeManager class with @InjectMocks, so mockito will create the mock object for EmployeeManager class and inject the mock dependency of EmployeeDao into it.
+
+To process Mockito annotations with JUnit, we need to use MockitoExtention that automatically initializes all the objects annotated with @Mock and @InjectMocks annotations.
+
+@ExtendWith(MockitoExtension.class)
+public class TestEmployeeManager {
+
+	@InjectMocks
+	EmployeeManager manager;
+
+	@Mock
+	EmployeeDao dao;
+	
+	If we are not using the MockitoJUnitRunner class approach, then we can use the static method MockitoAnnotations.initMocks(). Upon initialization of junit tests, this method also initializes the mock objects.
+	
+	@Before
+	public void init() {
+		MockitoAnnotations.openMocks(this);
+	}
+	
+	//
+
+	//tests
+	
+	when(dao.getEmployeeList()).thenReturn(list);
+
+		//test
+		List<EmployeeVO> empList = manager.getEmployeeList();
+
+		assertEquals(3, empList.size());
+		verify(dao, times(1)).getEmployeeList();
+		
+		---------------------------------------------------------------------
+		
+		
+		@WebMvcTest(controllers = SendMoneyController.class)
+class SendMoneyControllerWebMvcMockBeanTest {
+
+  @Autowired
+  private MockMvc mockMvc;
+
+  @MockBean
+  private SendMoneyUseCase sendMoneyUseCase;
+
+  @Test
+  void testSendMoney() {
+    ...
+  }
+  
+  
+  
+  @SpringBootTest
+@AutoConfigureMockMvc
+public class HelloControllerMockMvcTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
+    public void shouldReturnDefaultMessage() throws Exception {
+        this.mockMvc.perform(get("/"))
+                    .andDo(print())
+                    .andExpect(status().isOk())
+                    .andExpect(content().string(containsString("Hello World!")));
+    }
+}
+
+
+@Test (expected = IllegalArgumentException.class)
+    public void throwsExceptionWhenNegativeNumbersAreGiven() {
+        // act
+        calculator.add("-1,-2,3");
+    }
+
+}
+}
+
+
+doNothing-when: This is used when we do not want to check for the return parameters and skip the actual execution. When this mocked method is called, then it does nothing. The test case would be:
+
+@Test
+public void updateItemTest() {
+    Item item = new Item(2, "Item 1"); 
+    doNothing().when(itemRepository).updateItem(any(Item.class));
+    itemService.updateItem(item);
+}
+
+
+https://www.interviewbit.com/junit-interview-questions/#what-will-happen-if-return-type-of-junit-method-is-string
+
+
+
+
+
+
+----------------------------------------------- Database and NoSQL ----------------------------------------------------------
+
+What is the difference between column-oriented and document-oriented NoSQL?
+
+The primary difference between document-oriented and column-oriented databases is that the document stores allow complex documents,
+ whereas the column stores allow a fixed format like a one or two-level dictionary. For instance, a document-oriented database can 
+ intern entire documents while the column-oriented database can address individual columns or super columns and update them individually.'
+ 
+ 
+----- Explain difference between scaling horizontally and vertically for databases
+
+Horizontal scaling means that you scale by adding more machines into your pool of resources whereas
+Vertical scaling means that you scale by adding more power (CPU, RAM) to an existing machine.
+In a database world horizontal-scaling is often based on the partitioning of the data i.e. each node contains only part of the data,
+ in vertical-scaling the data resides on a single node and scaling is done through multi-core i.e. spreading the load between the CPU and RAM 
+ resources of that machine.
+
+Good examples of horizontal scaling are Cassandra, MongoDB, Google Cloud Spanner. and a good example of vertical scaling is MySQL - Amazon RDS
+ (The cloud version of MySQL).
+ 
+ 
+ ----- How do I perform the SQL JOIN equivalent in MongoDB?
+Mid 
+Top 77 MongoDB Interview Questions  MongoDB  77  
+Answer
+Mongo is not a relational database, and the devs are being careful to recommend specific use cases for $lookup, but at least as of 3.2 doing 
+join is now possible with MongoDB. The new $lookup operator added to the aggregation pipeline is essentially identical to a left outer join:
+
+{
+   $lookup:
+     {
+       from: <collection to join>,
+       localField: <field from the input documents>,
+       foreignField: <field from the documents of the "from" collection>,
+       as: <output array field>
+     }
+}
+
+
+1) How do you increase the performance of your queries, what actions you take while writing any query?
+
+2) 
+
+1) What are the NVL and the NVL2 functions in SQL? How do they differ?
+
+Hide answer
+Both the NVL(exp1, exp2) and NVL2(exp1, exp2, exp3) functions check the value exp1 to see if it is null.
+
+With the NVL(exp1, exp2) function, if exp1 is not null, then the value of exp1 is returned; otherwise, the value of exp2 is returned, but case to the same data type as that of exp1.
+
+With the NVL2(exp1, exp2, exp3) function, if exp1 is not null, then exp2 is returned; otherwise, the value of exp3 is returned.
+
+
+
+2) Define sequence.
+A sequence is a schema-bound, user-defined object which aids to generate a sequence of integers. This is most commonly used to generate values to identity columns in a table. We can create a sequence by using the CREATE SEQUENCE statement as shown below:
+
+CREATE SEQUENCE serial_num START 100;
+To get the next number 101 from the sequence, we use the nextval() method as shown below:
+
+SELECT nextval('serial_num');
+We can also use this sequence while inserting new records using the INSERT command:
+
+INSERT INTO ib_table_name VALUES (nextval('serial_num'), 'interviewbit')
+
+
+3) What are parallel queries in PostgreSQL?
+Parallel Queries support is a feature provided in PostgreSQL for devising query plans capable of exploiting multiple CPU processors to 
+execute the queries faster.
+
+4) What structure can you implement for the database to speed up table reads? 
+Follow the rules of DB tuning we have to:
+
+properly use indexes ( different types of indexes)
+ properly locate different DB objects across different tablespaces, files, and so on.
+3 create a special space (tablespace) to locate some of the data with special datatype ( for example CLOB, LOB, and …)
+
+
+
+******************************************
+What are some features of MongoDB?
+Indexing: It supports generic secondary indexes and provides unique, compound, geospatial, and full-text indexing capabilities as well.
+Aggregation: It provides an aggregation framework based on the concept of data processing pipelines.
+Special collection and index types: It supports time-to-live (TTL) collections for data that should expire at a certain time
+File storage: It supports an easy-to-use protocol for storing large files and file metadata.
+Sharding: Sharding is the process of splitting data up across machines
+
+****************************
+What are some of the advantages of MongoDB?
+Some advantages of MongoDB are as follows:
+
+MongoDB supports field, range-based, string pattern matching type queries. for searching the data in the database 
+MongoDB support primary and secondary index on any fields
+MongoDB basically uses JavaScript objects in place of procedures
+MongoDB uses a dynamic database schema
+MongoDB is very easy to scale up or down
+MongoDB has inbuilt support for data partitioning (Sharding)
+
+
+***********************************************
+
+
+What is the Aggregation Framework in MongoDB?
+The aggregation framework is a set of analytics tools within MongoDB that allow you to do analytics on documents in one or more collections.
+The aggregation framework is based on the concept of a pipeline. With an aggregation pipeline, we take input from a MongoDB collection 
+and pass the documents from that collection through one or more stages, each of which performs a different operation on its inputs 
+(See figure below). Each stage takes as input whatever the stage before it produced as output.
+
+ The inputs and outputs for all stages are documents—a stream of documents.
+ 
+ *************************************************************
+ 
+Explain the Replication Architecture in MongoDB.
+
+In the preceding model, the PRIMARY database is the only active replica set member that receives write operations from database clients.
+ The PRIMARY database saves data changes in the Oplog. Changes saved in the Oplog are sequential—that is, saved in the order that they are received 
+ and executed. 
+ 
+The SECONDARY database is querying the PRIMARY database for new changes in the Oplog. If there are any changes, then Oplog entries are copied 
+from PRIMARY to SECONDARY as soon as they are created on the PRIMARY node.
+
+Then, the SECONDARY database applies changes from the Oplog to its own datafiles. Oplog entries are applied in the same order they were inserted 
+in the log. As a result, datafiles on SECONDARY are kept in sync with changes on PRIMARY. 
+
+Usually, SECONDARY databases copy data changes directly from PRIMARY. Sometimes a SECONDARY database can replicate data from another SECONDARY. 
+This type of replication is called Chained Replication because it is a two-step replication process.
+ Chained replication is useful in certain replication topologies, and it is enabled by default in MongoDB
+ 
+ 
+*********************************************************************
+Explain the process of Sharding.
+Sharding is the process of splitting data up across machines. We also use the term “partitioning” sometimes to describe this concept.
+ We can store more data and handle more load without requiring larger or more powerful machines, by putting a subset of data on each machine.
+ 
+In the figure below, RS0 and RS1 are shards. MongoDB’s sharding allows you to create a cluster of many machines (shards) and break up a collection 
+across them, putting a subset of data on each shard. This allows your application to grow beyond the resource limits of a standalone server or 
+replica set.
+
+
+What is CAP (Consistency, Availability, Partition Tolerance) theorem about?
+2. What guarantees do provide RDBMS?
+3. What guarantees do provide DBs like MongoDb, HBase or BigTable?
+4. What guarantees do provide DBs like CouchDb, Riak or Cassandra?
+1. What no-sql database types do you know?
+2. In RDBMS we stores different entity types in different tables and then joins then according to relations.
+Can we do the same in NO-SQL dbs?
+3. Please explain why this is bad idea for distributed no-sql db and how can we achieve similar results w/o joins?
+
+
+______________________________________________________________________________________________________
+
+What is Kafka?
+What are the main Kafka architecture elements?
+What is a Kafka broker?
+How Kafka topics are organized?
+What is the need in using zookeeper to run Kafka?
+What is an in-sync replica?
+What network protocol is used for client-to-server communication in Kafka?
+Why Kafka doesn't support async calls for producer API? (provocative question)
+Can we publish the messege without key?
+Could you describe how Kafka choose the partition (with and without key)?
+What delivery models do you know? Describe them.
+When can we use 'at most once' deleivery model?(use cases)
+How would you implement exactly once processing?
+What is the primarily unit of paralellism in Kafka? Explain how to scale out?
+Which kafka component is responcibele for message storing?
+How many brokers coould be run in 1 physical server?
+It is known that for 1 partition only 1 consumer could be present. How then 2 applications can read 1 topic?
+Could you explain what is log compaction and why we can need it?
+Imagine one of consumer in consumer group died with OOM error. How newly created consumer knows the offset to start processing with?
+How can we achieve global ordering in Kafka?
+How can we find if all replicas are in sync?
+What is Dead Letter Queue? Why can we need it?
+
+
+
+What are the various phases of SDLC?
+What are Non-Functional Requirements?
+What is the difference between Quality Assurance and Quality Control?
+What is a team velocity vs team capacity in scrum?
+What is load testing?
+What does the best Code Review consist of?
+What does an ideal story should incude?
+Please explain all estimaiton techniques you know
+What's the difference between CI/CD
+
+
+
+
+
+--> Can you explain the main benefit of using AWS Elastic Beanstalk?
+The main benefit of using AWS Elastic Beanstalk is that it makes it very easy to deploy and manage your web applications in the cloud. 
+Elastic Beanstalk takes care of all of the heavy lifting for you, so you don’t have to worry about provisioning and configuring servers, 
+setting up load balancers, or anything else. All you need to do is upload your code and Elastic Beanstalk will handle the rest.
+
+--> What are the Environment Types on AWS Elastic Beanstalk?
+There are 2 types of environment types:
+Load-balancing, Autoscaling Environment - helps in starting additional instances for accomodating increase the load on our application.
+Single-Instance Environment - helps in containing AWS EC2 instance with an Elastic IP address.
+
+--> How to force https on elastic beanstalk?
+
+--> Can you explain what an environment tier means in context with AWS Elastic Beanstalk?
+An environment tier is a way of categorizing the different types of environments that can be created using AWS Elastic Beanstalk.
+ The three tiers are web server, worker, and custom. A web server environment is typically used to host web applications and is the most 
+ common type of environment. A worker environment is used to run background tasks and is typically used in conjunction with a web server environment.
+ A custom environment can be used for anything that doesn’t fit into the other two categories.
+ 
+ 
+ ----> What are the best practices for security in Lambda?
+ 
+ --> 1. What is an API gateway?
+An API gateway is a type of proxy server that sits between client applications and backend services in order to facilitate communication 
+between the two. An API gateway handles requests from clients, forwards them to the appropriate backend service, 
+and then returns the response back to the client. API gateways can also provide additional features such as authentication, 
+rate limiting, and caching.
+ 
+ --> What is API Caching in API Gateway?
+Ans:
+Users can enable API caching in Amazon API Gateway to cache the responses for our endpoints.
+ Caching allows to reduce the amount of calls made to our endpoint while also improving the latency of requests to the API. 
+ The TTL value for API caching is set to 300 seconds by default. TTL can be set to a maximum of 3600 seconds.
+ 
+ --> What is API Caching in API Gateway?
+Ans:
+Users can enable API caching in Amazon API Gateway to cache the responses for our endpoints. 
+Caching allows to reduce the amount of calls made to our endpoint while also improving the latency of requests to the API. 
+The TTL value for API caching is set to 300 seconds by default. TTL can be set to a maximum of 3600 seconds.
+
+--> How can you cache responses from an API endpoint?
+One way to cache responses from an API endpoint is to use a content delivery network (CDN). 
+A CDN can cache static content from your API endpoint and deliver it to users more quickly. 
+Another way to cache responses is to use a reverse proxy server. 
+A reverse proxy server can cache API responses and return them to users without having to send a request to the API endpoint each time.
+
+
+--> How does Amazon API Gateway handle CORS (cross-origin resource sharing)?
+Amazon API Gateway handles CORS by allowing developers to specify which origins are allowed to access their API. 
+This is done by setting up a CORS policy, which can be done either through the API Gateway console or through the API Gateway REST API. 
+Once a CORS policy is in place, API Gateway will automatically add the necessary headers to responses from the API, 
+allowing browsers to determine whether or not they should be allowed to access the resources.
+
+--> What is AWS SQS?
+Amazon Simple Queue Service (SQS) is a fully managed message queuing service that enables you to decouple and scale microservices, 
+distributed systems, and serverless applications. SQS eliminates the complexity and overhead of managing and operating message-oriented middleware,
+ and provides flexibility when you move to a microservices architecture. With SQS, you can send, store, and receive messages between 
+ software components at any volume, without losing messages or requiring other services to be always available.
+ 
+ 
+ --> Can you explain the different types of queues available in SQS?
+There are three different types of queues available in SQS: Standard, FIFO, and Dead Letter. 
+Standard queues are the most basic type of queue and are best suited for simple workloads. 
+FIFO queues are designed for more complex workloads where order is important, 
+and Dead Letter queues are used for storing messages that cannot be processed successfully.
+
+
+--> What are the limitations of using SQS?
+One of the key limitations of SQS is that it does not guarantee message delivery. This means that there is a possibility that messages may be lost, 
+which could impact the accuracy of your data. Additionally, SQS is not a real-time messaging service, 
+so there may be a delay in message delivery.
+
+
+--> What do you understand about long polling with SQS?
+Long polling is a way of checking for messages in an SQS queue without having to continuously poll the queue. 
+With long polling, you can set up a “wait time” for the queue, and SQS will check the queue for messages during that time. 
+If there are no messages in the queue, SQS will return an empty response. If there are messages in the queue, SQS will return up to 10 messages.
+
+
+
+
+
+------------------------------------------ Lombok Notes---------------------------------------------------------
+
+The way it works is by plugging into our build process and auto-generating Java bytecode into our .class files as per a number of project 
+annotations we introduce in our code.
+
+By adding the @Getter and @Setter annotations, we told Lombok to generate these for all the fields of the class.
+@NoArgsConstructor will lead to an empty constructor generation.
+
+
+What if we want to refine the visibility of some properties? For example, if we want to keep our entities' id field modifiers package or protected 
+visible because they are expected to be read, but not explicitly set by application code, 
+we can just use a finer grained @Setter for this particular field:
+
+private @Id @Setter(AccessLevel.PROTECTED) Long id;
+
+
+Let's suppose that this data is cached as a field inside a class. The class must now make sure that any access to this field returns the cached data.
+One possible way to implement such a class is to make the getter method retrieve the data only if the field is null. We call this a lazy getter.
+
+Lombok makes this possible with the lazy parameter in the @Getter annotation we saw above.
+
+
+@Getter(lazy = true)
+    private final Map<String, Long> transactions = getTransactions();
+	
+	
+@ToString: will generate a toString() method including all class attributes. No need to write one ourselves and maintain it as we enrich our 
+data model.
+@EqualsAndHashCode: will generate both equals() and hashCode() methods by default considering all relevant fields, 
+and according to very well though semantics.
+
+
+@SneakyThrows
+public String resourceAsString() {
+    try (InputStream is = this.getClass().getResourceAsStream("sure_in_my_jar.txt")) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+        return br.lines().collect(Collectors.joining("\n"));
+    } 
+}
+
+@Cleanup InputStream is = this.getClass().getResourceAsStream("res.txt");
+
+@Slf4j // or: @Log @CommonsLog @Log4j @Log4j2 @XSlf4j
+public class ApiClientConfiguration {
+
+    // log.debug(), log.info(), ...
+
+}
+
+
+------- @Data is the combination of 5 annotations, @ToString,@EqualsAndHashCode,@Getter,@Setter,@RequiredArgsConstructor
+
+
+----- Lombok @RequiredArgsConstructor
+Generates a constructor with required arguments. Required arguments are uninitialized final fields and fields with constraints such as 
+@NonNull. Default access modifier is public.
+
+Lombok @RequiredArgsConstructor will not generate any argument for following fields
+
+Non-final fields.
+Initialized final fields.
+static fields.
+Initialized non-null fields.
+
+
+---- Lombok Value annotation (@Value) is used when creating Immutable classes. All Lombok generated fields are made  private and  final  
+by default, and setters are not generated. The class itself is also made final by default.
+
+@Value annotation is short hand for the annotation combination @Getter @FieldDefaults(makeFinal=true, level=AccessLevel.PRIVATE)
+ @AllArgsConstructor @ToString @EqualsAndHashCode .
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+--------------------------------------------- Gradle build ------------------------------------------------------------------------
+
+--> repositories { 
+    mavenCentral() 
+}
+
+For maintaining repositories 
+
+----- implementation. Required dependencies for compiling the project code, but that will be provided at runtime by a container running the code 
+(for example, the Java Servlet API).
+
+----- testImplementation. Dependencies used for compiling and running tests, but not required for building or running the project’s runtime code.
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------- KAFKA -----------------------------------------------------------------------
+
+Spring Kafka,
+Simple Queue -- topics
+Multiple Queues -- topic
+Multiple Topics -- Broker
+Multiple 
+
+topics is like table names in database. you can create topics for journals and topic for securities
+topics can be divided into multiple partitions
+Kafka broker holds multiple topics
+Kafka cluster holds multiple brokers
+
+Apache Kafka enables a feature of replication to secure data loss even when a broker fails down. 
+To do so, a replication factor is created for the topics contained in any particular broker. 
+A replication factor is the number of copies of data over multiple brokers. 
+The replication factor value should be greater than 1 always (between 2 or 3)
+
+
+It chooses one of the broker's partition as a leader, and the rest of them becomes its followers.
+The followers(brokers) will be allowed to synchronize the data. But, in the presence of a leader, none of the followers is allowed to serve 
+the client's request. These replicas are known as ISR(in-sync-replica). 
+So, Apache Kafka offers multiple ISR(in-sync-replica) for the data.
+
+
+----- How does the producer write data to the cluster?
+A producer uses following strategie//s to write data to the cluster:
+
+Message Keys
+Acknowledgment
+
+
+
+
+--------------------------------------------------Spring boot Micro services Tutorial:
+
+Hystrix Circuit Breaker: Which server is failing and how many times it is failing -- Hystrix Dashboard
+Config Server: Cloud config server, all our configurations are kept here and a git repository 
+Zepkin and Sluth library  for logging services 
+
+TraceId: Unqiue id for entire request
+span id: Unqiue for each service
+
+Service registry: Maintain all micro services, getting status updates,port information, URL
+
+Spring cloud Eureka server: for service registry, 
+--for this create spring starter project and add Spring cloud Eureka server dependency
+--In Main class along with @SpringBootApplication, add @EnableEurekaServer 
+-- In application.yml : 
+           server:
+		     port: 8761 (default port for Eureka server)
+		   Eureka:
+		     client:
+			   register-with-eureka: false
+			   fetch-registry: false
+-- In 2 Micro services, UserService and DepartmentService, add Eureka client dependency
+          in application.yml file:
+		  Eureka:
+		     client:
+			   register-with-eureka: true
+			   fetch-registry: true
+			   service-url:
+			     defaultZone: http://localhost:8761/eureka/
+			   instance:
+			     hostname: localhost
+		  spring:
+		    application:
+			  name: USER-SERVICE
+			  
+			  @LoadBalanced on top of RestTemplate 
+			  
+API Gateway:
+
+For this we need to add Eureka client dependency to register with Eureka
+
+Gateway Depedency: Provides a simple way to route to API and provide cross cutting concerns to them such as security, monitoring and resiliency
+
+         In Application.yml:
+		 cloud:
+		   gateway: 
+		     routes:
+			   - id: USER-Service
+			     uri: lb://USER-SERVICE
+				 predicate:
+				   - Path=/users/**
+				 filters:
+				   -name: CircuitBreaker
+				    args:
+					  name: USER-Service
+					  fallbackuri: forward:/userServiceFallBack
+				   
+-- CIRCUIT BREAKER:
+
+Which of the services not available or not running and it will run the fallback method and inform users that this service is not working
+
+--API GATEWAY APPLICATION.YML: Add Hystrix dependency
+-- CloudGatewayApplication -- @EnableHystrix
+
+		   
+hystrix:
+  command.fallbackcmd.execution.isolation.thread.timeoutInMilliSeconds: 4000
+  
+  
+Config Server: For Maintaining common configurations in one file
+
+
+For this add annotation @EnableConfigServer in main file
+Create config folder in resources and add all the configurations so for this create service-name.yaml file 
+like  deparment-service.yaml file 
+   server:
+     port: 8081
+and deparment-service should know right from where configurations should be loaded so for this in deparment-service application.yaml add this
+
+config:
+  import: "optional:configserver:http://localhost:8088"
+
+
+
+Distribution Systems Logging:
+
+Zipkin and Sluth library  for logging services 
+
+TraceId: Unqiue id for entire request
+span id: Unqiue for each micro service
+
+For this, add 
+management.tracing.sampling.probability: 1.0 in deparment-service.yaml file in config server where we placed all the configurations
+
+
+
+WebCLient:
+
+@Configuration
+public class WebClientConfig {
+
+@AutoWired
+private LoadBalancedExchangeFilterFunction filterFunction;
+
+
+@Bean
+public WebClient employeeWebClient(){
+return WebClient.builder().baseUrl("http://Employee service URL").filter(filterFunction).build();
+}
+
+@Bean
+public EmployeeClient employeeClient(){
+
+}
+
+
+
+
+}
+
+
+webClientBuilder().build().get().uri().retrieve().bodyToMono(Movie.class).block()
+
+here bodyToMono is like reactive means in future response will come, when response comes so it will come like this class 
+block -- we are blocking the execution until result comes
+
+
+
+
+
+
+
+
+
+
+
+2) Service discovery:
+
+======== Client side service discovery:
+
+@Configuration
+@EnableEurekaClient
+@Profile(Array("enableEureka"))
+class EurekaClientConfiguration {
+
+  @Bean
+  @LoadBalanced
+  def restTemplate(scalaObjectMapper : ScalaObjectMapper) : RestTemplate = {
+  
+  
+--- The @LoadBalanced annotation configures the RestTemplate to use Ribbon, which has been configured to use the Eureka client to do service discovery. As a result, the RestTemplate will handle requests to the http://REGISTRATION-SERVICE/user endpoint by querying Eureka to find the network locations of available service instances.
+
+--- Client-side discovery has the following benefits:  Fewer moving parts and network hops compared to Server-side Discovery
+
+--- Client-side discovery also has the following drawbacks:
+
+This pattern couples the client to the Service Registry
+You need to implement client-side service discovery logic for each programming language/framework used by your application, e.g Java/Scala, JavaScript/NodeJS. For example, Netflix Prana provides an HTTP proxy-based approach to service discovery for non-JVM clients.
+
+
+
+========= Server side service discovery:
+
+When making a request to a service, the client makes a request via a router (a.k.a load balancer) that runs at a well known location. The router queries a service registry, which might be built into the router, and forwards the request to an available service instance.
+
+
+--- Server-side service discovery has a number of benefits:
+
+Compared to client-side discovery, the client code is simpler since it does not have to deal with discovery. Instead, a client simply makes a request to the router
+Some cloud environments provide this functionality, e.g. AWS Elastic Load Balancer
+
+
+--- It also has the following drawbacks:
+
+Unless it’s part of the cloud environment, the router must is another system component that must be installed and configured. It will also need to be replicated for availability and capacity.
+The router must support the necessary communication protocols (e.g HTTP, gRPC, Thrift, etc) unless it is TCP-based router
+More network hops are required than when using Client Side Discovery
+
+-----------------------------------------------------------------------------------
+PARALLEL CALLS:
+
+Using completable Future:
+
+
+@Service
+public class CountryClient {
+    RestTemplate restTemplate = new RestTemplate();
+
+    @Async
+    public CompletableFuture<List<Country>> getCountriesByLanguage(String language) {
+        String url = "https://restcountries.eu/rest/v2/lang/" + language + "?fields=name";
+        Country[] response = restTemplate.getForObject(url, Country[].class);
+
+        return CompletableFuture.completedFuture(Arrays.asList(response));
+    }
+
+    @Async
+    public CompletableFuture<List<Country>> getCountriesByRegion(String region) {
+        String url = "https://restcountries.eu/rest/v2/region/" + region + "?fields=name";
+        Country[] response = restTemplate.getForObject(url, Country[].class);
+
+        return CompletableFuture.completedFuture(Arrays.asList(response));
+    }
+}
+
+
+
+@GetMapping("")
+    public List<String> getAllEuropeanFrenchSpeakingCountries() throws Throwable {
+        CompletableFuture<List<Country>> countriesByLanguageFuture = countryClient.getCountriesByLanguage("fr");
+        CompletableFuture<List<Country>> countriesByRegionFuture = countryClient.getCountriesByRegion("europe");
+        List<String> europeanFrenchSpeakingCountries;
+        try {
+            europeanFrenchSpeakingCountries = new ArrayList<>(countriesByLanguageFuture.get().stream().map(Country::getName).collect(Collectors.toList()));
+            europeanFrenchSpeakingCountries.retainAll(countriesByRegionFuture.get().stream().map(Country::getName).collect(Collectors.toList()));
+        } catch (Throwable e) {
+            throw e.getCause();
+        }
+
+        return europeanFrenchSpeakingCountries;
+    }
+
+
+
+
+
+Using Mono from Spring Reactive programming:
+public Mono fetchUserAndItem(int userId, int itemId) {
+    Mono user = getUser(userId);
+    Mono item = getItem(itemId);
+
+    return Mono.zip(user, item, UserWithItem::new);
+}
+
+Now, the method to perform two or more calls in parallel becomes:
+
+public Flux fetchUserAndOtherUser(int id) {
+    return Flux.merge(getUser(id), getOtherUser(id));
+}
+
+
+
+
+
+What is Synchronous and blocking:
+
+ When all records are not processed until that time end user wont see the result means only once execution is done
+and all the data fetched from endpoint then only end user will see the result.
+
+If we have millions of records then it takes time and execution is blocked until we get response 
+
+Asynchronous and Non blocking in Reactive programming:
+
+For this return type is Flux<Customer> instead of List<Customer> in Controller class and also
+
+@GetMapping(value="/stream", produces= MediaType.TEXT_EVENT_STREAM_VALUE)
+public Flux<Customer> getAllCustomersStream() {
+    return service.loadAllCustomers();
+} 
+
+
+With synchronous and blocking even though you cancelled request backend will still process the request and complete it but with Flux, once you
+cancel the request, backend will stop the request
+
+
+
+---------------------------------------------------------------------------------------------------------
+
+Rate Limit Spring boot application using Bucket 4J:
+
+https://www.section.io/engineering-education/implement-rate-limiting-in-spring-boot/
+
+Rate limiting is a software engineering strategy that allows creators and maintainers of API infrastructures to control access to their APIs. The number of calls that any consumer can make is checked during a particular time.
+
+The Bucket4j library is a Java-based library built using the token-bucket algorithm. 
+
+In similar terms, consider an application with a rate limit of 500 requests per hour. We could build a bucket that can hold 500 tokens, and set up a refill rate of 500 per hour.
+
+If we get 450 requests, in an hour, which is less than the total number of 500 available tokens, we would carry forward the remaining 50 tokens to the next hour; raising the bucket’s capacity.
+
+
+
+private final Bucket bucket;
+
+    public Controller() {
+        Bandwidth limit = Bandwidth.classic(50, Refill.greedy(50, Duration.ofMinutes(1)));
+        this.bucket = Bucket4j.builder()
+                .addLimit(limit)
+                .build();
+    }
+	
+	@PostMapping(value = "/api/v1/perimeter/rectangle")
+public ResponseEntity<Perimeter> rectangle(@RequestBody Dimension dimensions) {
+	
+	 if (bucket.tryConsume(1)) {
+        return ResponseEntity.ok(new Perimeter("rectangle",
+                (double) 2 * (dimensions.getLength() + dimensions.getBreadth())));
+    }
+	
+	return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).build();
+	
+	}
+	
+	
+	
+	
+	GRPC:
+	
+	-- Proto file -- endpoint details --
+	
+	service BasketStatusAPI {
+	
+	rpc GetBasketStatus(GetBasketStatusRequest)
+	returns(BasketStatus){
+	option(google.api.http) = {
+	get: ""
+	};
+	}
+	
+	message BasketStatus
+	
+	}
+	
+	Once we compile proto file then we can create Java file for that service. like BRPCLient
+	
+	@AutoWired
+	public BRPClient brpClient;
+	
+	brpClient 
+	
+	
+	
+	
+	
+	
+	
+---  12 Factor App
+
+1) Code base
+2) Dependencies -- Maven or Gradle for managing dependencies like security
+3) Config server: properties or configuration
+4) Backing services: At any time, remove components like remove mySQL and add postgre sql
+5) Build, Run and Release 
+6) Processes -- Account service should be handling account functionalities
+7) Port Binding 
+8) Concurrency
+9) Disposability -- dispose the instance
+10) Dev and Prod parity -- 
+11) Logs -- Splunk 
+12) Admin processes -- 
+
+
+
+
+--- SQL vs No SQL
+-- No SQL provides easy scalability, replication architecture, aggregation framework
+-- SQL has Binary log for scalability
+-- 
+No SQL:
+
+-- Sharding is like sharding database based on location so each shard has data based on location like users of new york
+-- Replication using Master Slave, always write operation happens in Master is the updated copy.
+-- If read request it can distribute across slave servers
+-- Consistency is difficult
+-- Write indexes on Shards 
+
+
+
+Pros of SQL:
+
+
+SQL is widely understood and supported; most developers know it well.
+
+SQL is extremely useful for simple aggregations over large datasets, such as calculating averages.
+
+SQL is extremely useful for setting up simple ETL jobs, especially if the input and output formats are relational databases.
+
+SQL is well-documented and easy to learn.
+
+Cons of SQL:
+
+
+The performance of SQL can be poor on substantial data sets because it requires multiple passes over the data to complete many operations (especially joins). 
+
+Debugging SQL can be complicated because it doesn't provide informative error messages.
+
+The syntax of SQL tends to be verbose compared with programming languages like Python or R, which makes it harder to write complex transformations as scripts or functions.
+
+Pros and cons of NoSQL
+A significant benefit of NoSQL is that you don't have to define a schema upfront (or ever). This makes it easy to add new columns without dealing with all the issues involved in altering a vast table with lots of data already in it. It also means that if your queries don't require SQL, you can avoid the overhead of parsing and compiling SQL statements, modeling, and storing, providing an enormous performance boost when dealing with large amounts of data.
+
+However, NoSQL is less mature than SQL. Here’s a look at NoSQL's pros and cons.
+
+Pros of NoSQL:
+
+
+Flexible schema
+
+Usable on distributed infrastructure platforms
+
+Low-cost infrastructure
+
+High availability and throughput
+
+Cons of NoSQL:
+
+
+Less mature technology and difficult to manage
+
+Limited query capabilities
+
+Data inconsistency and poor performance in some complex scenarios
+
+
+
+
+Here are some situations where NoSQL might make the most sense to you:
+
+You need high performance, particularly read performance: The way distributed NoSQL systems like Cassandra and Riak work means you can usually get very high read performance by adding more boxes. Some go so far as to automatically replicate data across nodes to ensure you always have plenty of copies of your data to access.
+
+You need high availability (HA): Data replicates across nodes in a NoSQL system, so the failure of a single node does not necessarily result in data loss or downtime for your application. This also means you can easily add or remove nodes from clusters without impacting availability.
+
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+Three tables join to extract the relevant information(student course teacher): here he is trying to check your
+understanding of ORM based annotations like @ManytoMany, @JoinColumns, @JoinColumn, mappedBy, fetchType.EAGER, FetchType.LAZY etc
+
+
+
+@Entity
+class Series {
+  @Id
+  Long id;
+
+  @OneToMany(mappedBy="series")
+  List<Dossier> dossiers;
+}
+@Entity
+class Dossier{
+  @Id
+  Long id;
+
+  @ManyToOne
+  Series series;
+
+  @OneToMany(mappedBy="dossier"
+  List<Item> items;
+}
+
+@Entity
+class Item{
+  @Id
+  Long id;
+
+  @ManyToOne
+  Dossier dossier;
+}
+
+
+
+select s.dossiers.items from Series s where s.projectId = :param
+
+
+ @Query(nativeQuery = true,value = "Select Items from Series,Dossier,Item Where Series.Id=Dossier.seriesId and Dossier.id=Item.dossierId and series.projectId = :param")
+ 
+ 
+ 
+ ----- AWS EC2, Auto Scaling and EKS
+ 
+ eks.yaml: 
+ kind: ClusterConfig
+ managedNodeGroups: 
+ 
+ Kubernetes Architecure:
+ -- Master Node
+ -- Worker Nodes where kubelet is running which is again process so that cluster can communicate and run some work on worker nodes
+ -- Each worker node can contain different number of containers 
+ -- Worker node is where work is happening.
+ -- Master Node is having API server which is container and entry point to the K8s cluster
+ -- Constroller Manager Keeps track of whats happening in the cluster, if container failed it tries to bring it up
+ -- Schduler-- shceduling containers on diff nodes based on availability of servers on nodes. SO it decides if new pod (container) comes then
+     to which node it can be placed decided by scheduler
+ -- etcd: K8s backing store-- current state of the kubernetes clusters, it has all configuration data, status about all nodes and containers inside node
+ -- etcd snapshots we can restore cluster
+ -- Virtual Network using which Master Node and worker nodes communicate
+ -- Pod is abstraction over container -- so it is kubernetes layer and tomorrow you can replace container with other things.
+ -- Usually 1 Application per pod. Each pod get one IP address and pods communicate using IP's
+ -- Service is permanent IP address. Specify the type of service. So Internal service like DB and external is application 
+ 
+ -- ConfigMap: external configuration of your application
+ == secret used to store secret data but in Base 64 encoded data
+ -- Volumes *is like used to store data which will be helpful when database pod gets restarted and data will be persisted
+ -- Kubernetes creates another node for application and db means two nodes running and each node with one pod of application and db. Here new node
+    is also connected to Service
+-- Ingress: router traffic to cluster
+Load Balancer:
+
+service is like load balancer here so it has 2 pods connected with it and it will decide to which pdo request should be sent
+
+Deployment: Bluprint of pods. So you will mention how many replicas you want to create of pod
+
+StatefulSet: DB can be replicate and should be using Statefulset.
+
+
+
+
+-------------------------------------------------------------------- Spring boot Caching ----------------------------------------------------------
+
+
+Spring boot caching:
+
+--> @Cacheable(value=”Customer”, condition=”#name.length<10″)  
+
+public Customer findCustomer(String name)  {…} 
+
+---> @CacheEvict(value=”name”, allEntries=true)
+
+Since the cache is small in size. We don’t want to populate the cache with values that we don’t need often. Caches can grow quite large, quite fast. We can use the @CacheEvict annotation to remove values so that fresh values can be loaded into the cache again:
+
+public String getName(Customer customer) {…}
+
+@Caching(evict = {  
+
+ @CacheEvict(“name”),  
+
+ @CacheEvict(value=”directory”, key=”#customer.id”) })
+
+--> @CachePut(value=”name”)
+
+@CachePut annotation can update the content of the cache without interfering with the method execution. 
+
+public String getName(Customer customer) {…}
+
+
+--> @CacheConfig
+
+With @CacheConfig annotation, we can simplify some of the cache configurations into a single place at the class level, so that we don’t have to declare things multiple times.
+
+@CacheConfig(cacheNames={“name”})
+
+public class CustomerData {
+
+  @Cacheable
+
+   public String getName(Customer customer) {…}
+   
+   
+--> @Cacheable(value=”name”, condition=”#customer.name ==  ‘Megan’ “)
+
+public String getName(Customer customer) {…}
+
+
+<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>3.0.4</version>
+        </dependency>

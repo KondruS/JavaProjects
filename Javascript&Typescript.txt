@@ -1,0 +1,1420 @@
+>>>>>>>>>>>>>>>>>>> 
+
+Advantages of TypeScript over JavaScript:
+
+-- Let’s say one of your developers writes an addNumbers function and uses types to define that the function can only take two numbers. TypeScript will then return an error if another developer tries to provide text to the function, whereas in JavaScript such an operation would be perfectly acceptable.
+
+1. Strict typing
+Everything stays the way we define it. Need a variable to always be a number? It’ll always be a number, then.
+
+4. Type inference
+Implicit typing performed by TypeScript itself, so that your developers don’t need to provide types where the compiler can find them on its own.
+
+-- TypeScript introduced a great deal of syntax taken from object-oriented programming, including but not limited to:
+
+2. Types make code management easier:
+For instance, addNumbers takes two numbers and returns one number. It’s the most useful information you can get from types and code documentation, and TypeScript gives it to you straight away when writing new code.
+
+I can tell you from personal experience that whenever I write something new in JavaScript, I usually need to run the code first in order to see exactly what a particular function does and returns. With TypeScript, I can rely on the type definition to tell me everything I need to know.
+
+
+If you know when to use TypeScript and it’s configured to match your needs, it can be a massive advantage over plain JavaScript. Having types is beneficial if you’re new to a project. You’ll immediately know the exact parameters that each function requires or the complicated structure it returns.
+
+interfaces,
+classes,
+enumerated types,
+generics,
+modules.
+
+It’s true that ECMAScript 6 (or ECMAScript 2015) introduced some of those features to JavaScript—but not all of them. For instance, abstract classes or access modifiers are still nowhere to be found in JavaScript, while TypeScript has them.
+
+5. Compile time errors: As JavaScript is dynamically typed language, we cannot find errors upfront. JavaScript will execute the code and locate errors during runtime. If your code contains a TypeError or ReferenceError — or any error — halfway into your code, then you will only find out once the compiler reaches that error during execution
+
+
+--- Any & Unknown
+A type called Any (anything that you wish) can cover unknown is its type-safe system. Here, any allows you to assign and JavaScript variable whenever you want to escape the type system. It’s widely used to describe incoming variables that haven’t been validated yet and whose type is unknown (for example, from third-party APIs).
+
+Unknown is similar to Any, but it will not allow you to do anything with it unless it’s explicitly type-checked.?
+
+
+
+
+Advantages of using Javascript mode
+Makes debugging easier. Code errors that would otherwise have been ignored or would have failed silently will now generate errors or throw exceptions,
+  alerting you sooner to problems in your code and directing you more quickly to their source.
+Prevents accidental globals. Without strict mode, assigning a value to an undeclared variable automatically creates a global variable with that name.
+    This is one of the most common errors in JavaScript. In strict mode, attempting to do so throws an error.
+Eliminates this coercion. Without strict mode, a reference to a this value of null or undefined is automatically coerced to the global. 
+    This can cause many headfakes and pull-out-your-hair kind of bugs. In strict mode, referencing a a this value of null or undefined throws 
+	an error.
+Disallows duplicate parameter values. Strict mode throws an error when it detects a duplicate named argument 
+    for a function (e.g., function foo(val1, val2, val1){}), thereby catching what is almost certainly a bug in your code that you might 
+    otherwise have wasted lots of time tracking down.
+Note: It used to be (in ECMAScript 5) that strict mode would disallow duplicate property names (e.g. var object = {foo: "bar", foo: "baz"};) 
+    but as of ECMAScript 2015 this is no longer the case.
+Makes eval() safer. There are some differences in the way eval() behaves in strict mode and in non-strict mode. Most significantly, 
+    in strict mode, variables and functions declared inside of an eval() statement are not created in the containing scope (they are created in the containing scope in non-strict mode, which can also be a common source of problems).
+Throws error on invalid usage of delete. The delete operator (used to remove properties from objects) cannot be used on non-configurable 
+    properties of the object. Non-strict code will fail silently when an attempt is made to delete a non-configurable property, whereas strict mode will throw an error in such a case.
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+How to enforce strict null checks in TypeScript?
+Null pointers are one of the most common sources of unexpected runtime errors in programming. 
+TypeScript helps you avoid them to a large degree by enforcing strict null checks.
+
+You can enforce strict null checks in two ways:
+
+providing the --strictNullChecks flag to the TypeScript (tsc) compiler
+setting the strictNullChecks property to true in the tsconfig.json configuration file.
+When the flag is false, TypeScript ignores null and undefined values in the code.
+ When it is true, null and undefined have their distinct types. The compiler throws a type error if you try to use them where a 
+ concrete value is expected
+ 
+ 
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+How to make object properties immutable in TypeScript? (hint: readonly)
+You can mark object properties as immutable by using the readonly keyword before the property name. For example:
+
+interface Coordinate {
+readonly x: number;
+readonly y: number;
+}
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+Explain the concept of inheritance in TypeScript.
+Inheritance allows a class to extend another class and reuse and modify the behavior defined in the other class. 
+The class which inherits another class is called the derived class, and the class getting inherited is called the base class.
+
+In TypeScript, a class can only extend one class. TypeScript uses the keyword ‘extends’ to specify the relationship 
+between the base class and the derived classes.
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>JavaScript ---------------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Nullish Coalescing,
+Temporal Dead zone
+const food = {pizza: 'p', 'fruit': 'apple'} -- Different wayas to clone this object
+Generics in TypeScript
+
+
+
+
+------------->Is javascript a statically typed or a dynamically typed language?
+JavaScript is a dynamically typed language. In a dynamically typed language, the type of a variable is checked during run-time in contrast to a statically typed language, where the type of a variable is checked during compile-time.
+
+
+
+------------------>Explain WeakSet in javascript.
+In javascript, a Set is a collection of unique and ordered elements. Just like Set, WeakSet is also a collection of unique and ordered elements with some key differences:
+
+Weakset contains only objects and no other type.
+An object inside the weakset is referenced weakly. This means, that if the object inside the weakset does not have a reference, it will be garbage collected.
+Unlike Set, WeakSet only has three methods, add() , delete() and has() .
+const newSet = new Set([4, 5, 6, 7]);
+console.log(newSet);// Outputs Set {4,5,6,7}
+
+const newSet2 = new WeakSet([3, 4, 5]); //Throws an error
+
+
+let obj1 = {message:"Hello world"};
+const newSet3 = new WeakSet([obj1]);
+console.log(newSet3.has(obj1)); // true
+
+
+
+------------------------> Difference between prototypal and classical inheritance
+Programers build objects, which are representations of real-time entities, in traditional OO programming. Classes and objects are the two sorts of abstractions. A class is a generalization of an object, whereas an object is an abstraction of an actual thing. A Vehicle, for example, is a specialization of a Car. As a result, automobiles (class) are descended from vehicles (object).
+
+Classical inheritance differs from prototypal inheritance in that classical inheritance is confined to classes that inherit from those remaining classes, but prototypal inheritance allows any object to be cloned via an object linking method. Despite going into too many specifics, a prototype essentially serves as a template for those other objects, whether they extend the parent object or not.
+
+----- What is Currying?
+
+Currying is when you break down a function that takes multiple arguments into a series of functions that take part of the arguments. 
+Here's an example in JavaScript:
+
+function add (a, b) {
+  return a + b;
+}
+
+add(3, 4); // returns 7
+This is a function that takes two arguments, a and b, and returns their sum. We will now curry this function:
+
+function add (a) {
+  return function (b) {
+    return a + b;
+  }
+}
+In an algebra of functions, dealing with functions that take multiple arguments (or equivalent one argument that's an N-tuple) 
+is somewhat inelegant. So how do you deal with something you'd naturally express as, say, f(x,y)? Well, you take that as equivalent 
+to f(x)(y) - f(x), call it g, is a function, and you apply that function to y. In other words, you only have functions that take one argument
+ - but some of those functions return other functions (which ALSO take one argument).
+
+---- Difference between object creation by Object constructor and Object.create()
+1) ES6 new features:
+2) Explain Hoisting in javascript.
+Hoisting is the default behaviour of javascript where all the variable and function declarations are moved on top.
+
+
+This means that irrespective of where the variables and functions are declared, they are moved on top of the scope. The scope can be both local and global.
+
+Example 1:
+
+hoistedVariable = 3;
+console.log(hoistedVariable); // outputs 3 even when the variable is declared after it is initialized	
+var hoistedVariable;Example 2:
+
+hoistedFunction();  // Outputs " Hello world! " even when the function is declared after calling
+
+function hoistedFunction(){ 
+  console.log(" Hello world! ");
+} 
+Example 3:
+
+// Hoisting takes place in the local scope as well
+function doSomething(){
+  x = 33;
+  console.log(x);
+  var x;
+} 
+
+
+
+
+3) What is an Immediately Invoked Function in JavaScript?
+
+An Immediately Invoked Function ( known as IIFE and pronounced as IIFY) is a function that runs as soon as it is defined.
+
+Syntax of IIFE :
+
+(function(){ 
+  // Do something;
+})();
+To understand IIFE, we need to understand the two sets of parentheses that are added while creating an IIFE :
+
+The first set of parenthesis:
+
+(function (){
+   //Do something;
+})
+While executing javascript code, whenever the compiler sees the word “function”, it assumes that we are declaring a function in the code. 
+Therefore, if we do not use the first set of parentheses, the compiler throws an error because it thinks we are declaring a function, 
+and by the syntax of declaring a function, a function should always have a name.
+
+function() {
+  //Do something;
+}
+// Compiler gives an error since the syntax of declaring a function is wrong in the code above.
+To remove this error, we add the first set of parenthesis that tells the compiler that the function is not a function declaration, 
+instead, it’s a function expression.
+
+The second set of parenthesis:
+
+(function (){
+  //Do something;
+})();
+From the definition of an IIFE, we know that our code should run as soon as it is defined. A function runs only when it is invoked. 
+If we do not invoke the function, the function declaration is returned:
+
+(function (){
+  // Do something;
+})
+
+// Returns the function declaration
+Therefore to invoke the function, we use the second set of parenthesi
+
+
+4) What do you mean by strict mode in javascript and characteristics of javascript strict-mode?
+In ECMAScript 5, a new feature called JavaScript Strict Mode allows you to write a code or a function in a "strict" operational environment. 
+In most cases, this language is 'not particularly severe' when it comes to throwing errors. In 'Strict mode,' however, all forms of errors, 
+including silent errors, will be thrown. As a result, debugging becomes a lot simpler.  Thus programmer's chances of making an error are lowered.
+
+Characteristics of strict mode in javascript
+
+Duplicate arguments are not allowed by developers.
+In strict mode, you won't be able to use the JavaScript keyword as a parameter or function name.
+The 'use strict' keyword is used to define strict mode at the start of the script. Strict mode is supported by all browsers.
+Engineers will not be allowed to create global variables in 'Strict Mode
+
+
+---------------------------5) Explain Closures in JavaScript.
+Closures are an ability of a function to remember the variables and functions that are declared in its outer scope.
+
+var Person = function(pName){
+  var name = pName;
+
+  this.getName = function(){
+    return name;
+  }
+}
+
+var person = new Person("Neelesh");
+console.log(person.getName());
+Let’s understand closures by example:
+
+function randomFunc(){
+  var obj1 = {name:"Vivian", age:45};
+
+  return function(){
+    console.log(obj1.name + " is "+ "awesome"); // Has access to obj1 even when the randomFunc function is executed
+
+  }
+}
+
+var initialiseClosure = randomFunc(); // Returns a function
+
+initialiseClosure(); 
+Let’s understand the code above,
+
+The function randomFunc() gets executed and returns a function when we assign it to a variable:
+
+var initialiseClosure = randomFunc();
+The returned function is then executed when we invoke initialiseClosure:
+
+initialiseClosure(); 
+The line of code above outputs “Vivian is awesome” and this is possible because of closure.
+
+console.log(obj1.name + " is "+ "awesome");
+When the function randomFunc() runs, it seems that the returning function is using the variable obj1 inside it:
+
+Therefore randomFunc(), instead of destroying the value of obj1 after execution, saves the value in the memory for further reference. 
+This is the reason why the returning function is able to use the variable declared in the outer scope even after the function is already executed
+
+This ability of a function to store a variable for further reference even after it is executed is called Closure
+
+
+6) What do mean by prototype design pattern?
+The Prototype Pattern produces different objects, but instead of returning uninitialized objects, it produces objects that have values 
+replicated from a template – or sample – object. Also known as the Properties pattern, the Prototype pattern is used to create prototypes.
+
+The introduction of business objects with parameters that match the database's default settings is a good example of where the Prototype pattern c
+omes in handy. The default settings for a newly generated business object are stored in the prototype object.
+
+The Prototype pattern is hardly used in traditional languages, however, it is used in the development of new objects and templates in JavaScript, 
+which is a prototypal language
+
+
+--> Explain passed by value and passed by reference in Javascript
+Primitive types are passed by value and non primitive types are passed by reference
+
+--->
+What do you mean by Self Invoking Functions?
+Without being requested, a self-invoking expression is automatically invoked (initiated). If a function expression is followed by (), 
+it will execute automatically. A function declaration cannot be invoked by itself.
+
+Normally, we declare a function and call it, however, anonymous functions may be used to run a function automatically when it is described 
+and will not be called again. And there is no name for these kinds of functions
+
+
+---->
+What are callbacks?
+A callback is a function that will be executed after another function gets executed. In javascript, functions are treated as first-class citizens, they can be used as an argument of another function, can be returned by another function, and can be used as a property of an object.
+
+Functions that are used as an argument to another function are called callback functions. Example:
+
+function divideByHalf(sum){
+  console.log(Math.floor(sum / 2));
+}
+
+function multiplyBy2(sum){
+  console.log(sum * 2);
+}
+
+function operationOnSum(num1,num2,operation){
+  var sum = num1 + num2;
+  operation(sum);
+}
+
+operationOnSum(3, 3, divideByHalf); // Outputs 3
+
+operationOnSum(5, 5, multiplyBy2); // Outputs 20
+In the code above, we are performing mathematical operations on the sum of two numbers. The operationOnSum function takes 3 arguments, the first number, the second number, and the operation that is to be performed on their sum (callback).
+Both divideByHalf and multiplyBy2 functions are used as callback functions in the code above.
+These callback functions will be executed only after the function operationOnSum is executed.
+Therefore, a callback is a function that will be executed after another function gets executed
+
+
+
+----->
+What is Object Destructuring?
+Object destructuring is a new way to extract elements from an object or an array.
+
+Object destructuring: Before ES6 version:
+const classDetails = {
+  strength: 78,
+  benches: 39,
+  blackBoard:1
+}
+
+const classStrength = classDetails.strength;
+const classBenches = classDetails.benches;
+const classBlackBoard = classDetails.blackBoard;
+The same example using object destructuring:
+
+const classDetails = {
+  strength: 78,
+  benches: 39,
+  blackBoard:1
+}
+
+const {strength:classStrength, benches:classBenches,blackBoard:classBlackBoard} = classDetails;
+
+console.log(classStrength); // Outputs 78
+console.log(classBenches); // Outputs 39
+console.log(classBlackBoard); // Outputs 1
+
+
+---->Is JavaScript a pass-by-reference or pass-by-value language?
+The variable's data is always a reference for objects, hence it's always pass by value. As a result, if you supply an object and alter
+ its members inside the method, the changes continue outside of it. It appears to be pass by reference in this case.
+ However, if you modify the values of the object variable, the change will not last, demonstrating that it is indeed passed by value
+
+
+
+
+
+
+-----> Explain the difference between Object.freeze() vs const
+Mid 
+Top 179 JavaScript Interview Questions  JavaScript  179  
+Answer
+const and Object.freeze are two completely different things.
+
+const applies to bindings ("variables"). It creates an immutable binding, i.e. you cannot assign a new value to the binding.
+const person = {
+    name: "Leonardo"
+};
+let animal = {
+    species: "snake"
+};
+person = animal; // ERROR "person" is read-only
+
+Object.freeze works on values, and more specifically, object values. It makes an object immutable, i.e. you cannot change its properties.
+let person = {
+    name: "Leonardo"
+};
+let animal = {
+    species: "snake"
+};
+Object.freeze(person);
+person.name = "Lima"; //TypeError: Cannot assign to read only property 'name' of object
+console.log(person);
+
+
+
+---------->What's the difference between .call and .apply?
+Mid 
+Top 179 JavaScript Interview Questions  JavaScript  179  
+Answer
+Both .call and .apply are used to invoke functions and the first parameter will be used as the value of this within the function.
+ However, .call takes in comma-separated arguments as the next arguments while .apply takes in an array of arguments as the next argument. 
+ An easy way to remember this is C for call and comma-separated and A for apply and an array of arguments.
+
+function add(a, b) {
+  return a + b;
+}
+
+console.log(add.call(null, 1, 2)); // 3
+console.log(add.apply(null, [1, 2])); // 3
+
+
+
+7) 
+https://www.w3schools.com/Js/js_es6.asp
+https://www.cronj.com/blog/javascript-es7-es8-new-features/
+
+Typescript advantages: 
+https://www.geeksforgeeks.org/8-reasons-why-you-should-pick-typescript-over-javascript/
+
+https://www.edureka.co/blog/interview-questions/javascript-interview-questions/#advanced
+
+1) What is the ‘Strict’ mode in JavaScript and how can it be enabled?
+2) What are escape characters in JavaScript?
+3) What are the ways to define a variable in JavaScript?
+4) What is the difference between Local storage & Session storage?
+5) What is the difference between CSS and SCSS 
+6) What is let and how it can be used? 
+
+https://www.geeksforgeeks.org/what-is-the-difference-between-css-and-scss/
+
+
+
+
+
+
+
+--------------------Given two strings, return true if they are anagrams of one another
+
+For example: Mary is an anagram of Army
+
+Answer
+var firstWord = "Mary";
+var secondWord = "Army";
+
+isAnagram(firstWord, secondWord); // true
+
+function isAnagram(first, second) {
+  // For case insensitivity, change both words to lowercase.
+  var a = first.toLowerCase();
+  var b = second.toLowerCase();
+
+  // Sort the strings, and join the resulting array to a string. Compare the results
+  a = a.split("").sort().join("");
+  b = b.split("").sort().join("");
+
+  return a === b;
+}
+
+
+--------------To what evaluates typeof a and typeof b in the following snippet:
+jujwiwjjwsnnnj
+function foo() {
+  let a = b = 0;
+  a++;
+  return a;
+}
+foo();
+typeof a; 
+typeof b;
+Answer
+Let's look at the line 2: let a = b = 0. This statement declares a local variable a. However, it does declare a global variable b.
+
+No variable b is declared neither in the foo() scope or global scope. So JavaScript interprets b = 0 expression as window.b = 0.
+
+In other words, b is a global variable created accidentally.
+
+typeof a is 'undefined', typeof b is number
+
+------------- const clothes = ['jacket', 't-shirt'];
+clothes.length = 0;
+clothes[0]; 
+
+
+--------- What is output of following?
+let i;
+for (i = 0; i < 3; i++) {
+  const log = () => {
+    console.log(i);
+  }
+  setTimeout(log, 100);
+}
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+How do you add an element at the begining of an array? How do you add one at the end?
+
+myArray = ['start', ...myArray];
+myArray = [...myArray, 'end'];
+myArray = ['start', ...myArray, 'end'];
+
+
+
+--->
+
+var variable1 = 23;
+
+let variable2 = 89;
+
+function catchValues(){
+  console.log(variable1);
+  console.log(variable2);
+
+
+}
+
+window.variable1; 
+
+window.variable2; 
+
+// Both the variables can be accessed anywhere since they are declared in the global scope 
+
+// Returns the value 23
+Returns undefined
+----
+
+
+
+--> Pass by value and pass by reference
+
+
+const object = {a: 1, b: 2};
+const objectA = {...a};
+const array = [...a];
+const objectB = Object.assign({c:123});
+
+
+function changeValues(a, b, c)
+{
+  a = a * 10;
+  b.item = "changed";
+  c = {item: "changed"};
+}
+
+var num = 10;
+var obj1 = {item: "unchanged"};
+var obj2 = {item: "unchanged"};
+
+changeValues(num, obj1, obj2);
+
+console.log(num); //
+console.log(obj1.item); //
+console.log(obj2.item); //
+
+10
+changed
+unchanged
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+var people = [ 
+	{ name: "John", age: 20 }, 
+	{ name: "Mary", age: 35 }, 
+	{ name: "Arthur", age: 78 }, 
+	{ name: "Mike", age: 27 }, 
+	{ name: "Judy", age: 42 }, 
+	{ name: "Tim", age: 8 } 
+];
+
+
+Find people age greater than 18 and get just names
+
+
+If obj1 was not a reference at all, then changing obj1.item would have no effect on the obj1 outside of the function.
+If the argument was a proper reference, then everything would have changed. num would be 100, and obj2.item would read "changed". 
+Instead, num stays 10 and obj2.item remains "unchanged".
+Instead, the situation is that the item passed in is passed by value. But the item that is passed by value is itself a reference. 
+Technically, this is called call-by-sharing.
+
+In practical terms, this means that if you change the parameter itself (as with num and obj2), 
+that won't affect the item that was fed into the parameter. 
+But if you change the internals of the parameter, that will propagate back up (as with obj1).
+
+-------------------------------------->
+
+<body>
+
+<h1>The JavaScript <i>this</i> Keyword</h1>
+
+<p>In a function, by default, <b>this</b> refers to the global object.</p>
+
+<p>Strict mode does not allow default binding, so <b>this</b> is:</p>
+<p id="demo"></p>
+
+<script>
+"use strict";
+document.getElementById("demo").innerHTML = myFunction();
+
+function myFunction() {
+  return this;
+}
+</script>
+
+</body>
+
+so it returns undefined
+
+
+
+
+------------------------------------------
+
+Remove duplicates items from an array using ES6 Set?
+The Set object lets you store unique values of any type, whether primitive values or object
+Here’s a one-liner to remove duplicates from an array. (ES6, of course!)
+
+
+const numbers = [1, 2, 3, 4, 5, 5, 5, 5, 5, 5];
+
+function removeDuplicates(array) {
+  return [...new Set(array)];
+}
+console.log(removeDuplicates(numbers)); // [1, 2, 3, 4, 5]
+
+
+
+
+
+
+{/*
+-----------Template literals:
+
+let word1 = 'sai';
+let word2 = 'kiran';
+let num1= 5;
+let num2=6;
+const fullName = `${word1} ${word2}`;
+const total = `${num1+num2}`;
+
+If we want to print name in multiple lines then
+let example = `${word1}
+${word2}
+`;
+
+-----------Object Destructuring
+const personalInfo = {
+    firstName: 'Sai',
+    lastName: 'Kiran'
+}
+
+const {firstName, lastName} = personalInfo;
+const {firstName:fn, lastName:ln} = personalInfo;
+
+console.log(`${fn} ${ln}`)
+
+
+----------- Destructuring Arrays
+let names = ["sai", "kiran", "kondru"];
+let {firstName, middleName} = ["sai", "kiran", "kondru"];
+
+
+-------- Object Literal
+
+addressChange('waterloo', 'on');
+
+function addressChange(city, state) {
+    const newAddress = {city: city, state: state}
+    //intead of mapping above we can write logic like this
+    const newAddress = {city, state};
+    // Here both passed parameter and field names are same then it works
+
+
+    Challenge 
+
+    function addressMaker(address){
+        const newAddress = {
+            city: address.city,
+            state: address.state,
+            country: 'US'
+        }
+    }
+
+    above can be converted to 
+
+    function addressMaker(address){
+        const {city,state} = address;
+        const newAddress = {
+            city,
+            state,
+            country: 'US'
+        }
+        console.log(`${newAddress.city}`)
+    }
+
+    addressMaker({city:'Waterloo',state:'ON'})
+    
+}
+
+
+
+-------- Spread operator
+
+let example1 = [1,2,3,4];
+let example2 = [...example1];
+console.log('Prints new memory example2 with values')
+// They will share different memory locations
+
+let num1 = [40,50,60];  
+    let num2 = [10,20,30,...num1,70,80,90,100];  
+    
+console.log(num2);
+
+
+----------- Rest Operator
+
+function add(...nums){
+   console.log(nums); // Prints [1,2,3,4]
+}
+
+add(1,2,3,4);
+
+
+----- Default params
+
+function add(number = []){
+
+}
+add();
+//We can assign some default value to params passed to the function
+
+
+
+
+
+------ includes()
+
+let num = [1,2,3,4];
+console.log(num.includes(0)) // returns false
+
+
+
+
+
+
+--------create a function that adds two numbers and works for the following scenarios
+
+add(1,2)
+add(1)(2)
+
+
+---------- What is the output for this one 
+
+1+2+"3" ?
+
+![] === !{} --?
+!{} === !'' --?
+
+
+
+
+
+
+
+
+// clousure
+
+// Create a function that adds 2 numbers and works the same 
+//for the following scenarios
+
+function add(numberOne, numberTwo = null) {
+    if (!Number.isNaN(numberOne)) {
+        if (!Number.isNaN(numberTwo)) {
+            return numberOne + numberTwo
+        } else {
+            return function(numberTwo) {
+                return numberOne + numberTwo
+            }
+        }
+    }
+
+}
+
+add(1,2)
+add(1)(2)
+
+
+----------  What is memoization
+Memoization is a programming technique which attempts to increase a function’s performance by caching its previously computed results. 
+Each time a memoized function is called, its parameters are used to index the cache. 
+If the data is present, then it can be returned, without executing the entire function. 
+Otherwise the function is executed and then the result is added to the cache. Let's take an example of adding function with memoization,
+
+const memoizAddition = () => {
+  let cache = {};
+  return (value) => {
+    if (value in cache) {
+      console.log("Fetching from cache");
+      return cache[value]; // Here, cache.value cannot be used as property name starts with the number which is not a valid JavaScript  identifier. Hence, can only be accessed using the square bracket notation.
+    } else {
+      console.log("Calculating result");
+      let result = value + 20;
+      cache[value] = result;
+      return result;
+    }
+  };
+};
+// returned function from memoizAddition
+const addition = memoizAddition();
+console.log(addition(20)); //output: 40 calculated
+console.log(addition(20)); //output: 40 cached
+
+
+
+
+
+Function Expressions
+Another option is to use a function expression. This just involves creating the func‐
+tion as a variable:
+const logCompliment = function() {
+ console.log("You're doing great!");
+};
+logCompliment();
+The result is the same, and You're doing great! is logged to the console.
+One thing to be aware of when deciding between a function declaration and a func‐
+tion expression is that function declarations are hoisted and function expressions are
+not. In other words, you can invoke a function before you write a function declara‐
+12 | Chapter 2: JavaScript for React
+tion. You cannot invoke a function created by a function expression. This will cause
+an error. For example:
+// Invoking the function before it's declared
+hey();
+// Function Declaration
+function hey() {
+ alert("hey!");
+}
+This works. You’ll see the alert appear in the browser. It works because the function is
+hoisted, or moved up, to the top of the file’s scope. Trying the same exercise with a
+function expression will cause an error:
+// Invoking the function before it's declared
+hey();
+// Function Expression
+const hey = function() {
+ alert("hey!");
+};
+TypeError: hey is not a function
+This is obviously a small example, but this TypeError can occasionally arise when
+importing files and functions in a project. If you see it, you can always refactor as a
+declaration
+
+
+
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>JavaScript latest>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+
+What are the possible ways to create objects in JavaScript
+There are many ways to create objects in javascript as below
+
+Object constructor:  The simplest way to create an empty object is using the Object constructor. Currently this approach is not recommended.
+var object = new Object();
+
+
+Object's create method:
+The create method of Object creates a new object by passing the prototype object as a parameter
+var object = Object.create(null);
+
+
+Object literal syntax:
+The object literal syntax (or object initializer), is a comma-separated set of name-value pairs wrapped in curly braces.
+var object = {
+     name: "Sudheer",
+     age: 34
+};
+Object literal property values can be of any data type, including array, function, and nested object.
+Note: This is an easiest way to create an object
+
+
+Function constructor:Create any function and apply the new operator to create object instances,
+function Person(name) {
+  this.name = name;
+  this.age = 21;
+}
+var object = new Person("Sudheer");
+
+
+Function constructor with prototype:
+
+This is similar to function constructor but it uses prototype for their properties and methods,
+
+function Person() {}
+Person.prototype.name = "Sudheer";
+var object = new Person();
+This is equivalent to an instance created with an object create method with a function prototype and then call that function with an instance and parameters as arguments.
+
+function func() {};
+
+new func(x, y, z);
+(OR)
+
+// Create a new instance using function prototype.
+var newInstance = Object.create(func.prototype)
+
+// Call the function
+var result = func.call(newInstance, x, y, z),
+
+// If the result is a non-null object then use it otherwise just use the new instance.
+console.log(result && typeof result === 'object' ? result : newInstance);
+ES6 Class syntax:
+
+ES6 introduces class feature to create the objects
+
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+var object = new Person("Sudheer");
+Singleton pattern:
+
+A Singleton is an object which can only be instantiated one time. Repeated calls to its constructor return the same instance and this way one can ensure that they don't accidentally create multiple instances.
+
+var object = new (function () {
+  this.name = "Sudheer";
+})();
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+How do you determine whether object is frozen or not
+Object.isFrozen() method is used to determine if an object is frozen or not.An object is frozen if all of the below conditions hold true,
+
+If it is not extensible.
+If all of its properties are non-configurable.
+If all its data properties are non-writable. The usage is going to be as follows,
+const object = {
+  property: "Welcome JS world",
+};
+Object.freeze(object);
+console.log(Object.isFrozen(object));
+
+-------------------------------------------------------- Promises ------------------------------------------------
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+What are the three states of promise
+Promises have three states:
+
+Pending: This is an initial state of the Promise before an operation begins
+Fulfilled: This state indicates that the specified operation was completed.
+Rejected: This state indicates that the operation did not complete. In this case an error value will be thrown.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+A promise object has the following internal properties:
+
+state – This property can have the following values:
+pending: Initially when the executor function starts the execution.
+fulfilled: When the promise is resolved.
+rejected: When the promise is rejected.
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+How to Use the .finally() Promise Handler
+The .finally() handler performs cleanups like stopping a loader, closing a live connection, and so on. The finally() method will be called irrespective of whether a promise resolves or rejects. It passes through the result or error to the next handler which can call a .then() or .catch() again.
+
+let loading = true;
+loading && console.log('Loading...');
+
+// Gatting Promise
+promise = getPromise(ALL_POKEMONS_URL);
+
+promise.finally(() => {
+    loading = false;
+    console.log(`Promise Settled and loading is ${loading}`);
+}).then((result) => {
+    console.log({result});
+}).catch((error) => {
+    console.log(error)
+});
+
+
+https://www.freecodecamp.org/news/javascript-promise-tutorial-how-to-resolve-or-reject-promises-in-js/
+
+
+
+The Promise.all() method
+Promise.all([promises]) accepts a collection (for example, an array) of promises as an argument and executes them in parallel.
+
+This method waits for all the promises to resolve and returns the array of promise results. If any of the promises reject or execute to fail due to an error, all other promise results will be ignored.
+
+Let's create three promises to get information about three Pokémons.
+
+const BULBASAUR_POKEMONS_URL = 'https://pokeapi.co/api/v2/pokemon/bulbasaur';
+const RATICATE_POKEMONS_URL = 'https://pokeapi.co/api/v2/pokemon/raticate';
+const KAKUNA_POKEMONS_URL = 'https://pokeapi.co/api/v2/pokemon/kakuna';
+
+
+let promise_1 = getPromise(BULBASAUR_POKEMONS_URL);
+let promise_2 = getPromise(RATICATE_POKEMONS_URL);
+let promise_3 = getPromise(KAKUNA_POKEMONS_URL);
+Use the Promise.all() method by passing an array of promises.
+
+Promise.all([promise_1, promise_2, promise_3]).then(result => {
+    console.log({result});
+}).catch(error => {
+    console.log('An Error Occured');
+});
+Output:
+
+image-161
+As you see in the output, the result of all the promises is returned. The time to execute all the promises is equal to the max time the promise takes to run.
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+The Promise.any() method
+
+
+Promise.any([promises]) - Similar to the all() method, .any() also accepts an array of promises to execute them in parallel. This method doesn't wait for all the promises to resolve. It is done when any one of the promises is settled.
+
+ Promise.any([promise_1, promise_2, promise_3]).then(result => {
+     console.log(JSON.parse(result));
+ }).catch(error => {
+     console.log('An Error Occured');
+ });
+The output would be the result of any of the resolved promises:
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+The Promise.allSettled() method
+romise.allSettled([promises]) - This method waits for all promises to settle(resolve/reject) and returns their results as an array of objects. The results will contain a state (fulfilled/rejected) and value, if fulfilled. In case of rejected status, it will return a reason for the error.
+
+Here is an example of all fulfilled promises:
+
+Promise.allSettled([promise_1, promise_2, promise_3]).then(result => {
+    console.log({result});
+}).catch(error => {
+    console.log('There is an Error!');
+});
+Output:
+
+If any of the promises rejects, say, the promise_1,
+
+let promise_1 = getPromise(POKEMONS_BAD_URL);
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+The Promise.race() method
+Promise.race([promises]) – It waits for the first (quickest) promise to settle, and returns the result/error accordingly.
+
+Promise.race([promise_1, promise_2, promise_3]).then(result => {
+    console.log(JSON.parse(result));
+}).catch(error => {
+    console.log('An Error Occured');
+});
+Output the fastest promise that got resolved:
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+The Promise.resolve/reject methods
+Promise.resolve(value) – It resolves a promise with the value passed to it. It is the same as the following:
+
+let promise = new Promise(resolve => resolve(value));
+Promise.reject(error) – It rejects a promise with the error passed to it. It is the same as the following:
+
+let promise = new Promise((resolve, reject) => reject(error));
+
+
+
+
+
+
+--------------------------------------------------Java Script, Typescript & CSS ----------------------------------------------------
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+How to specify optional properties in TypeScript?
+let pt: { x: number; y: number; z?: number } = {
+  x: 10,
+  y: 20
+};
+console.log(pt);
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+---- Example usage of reducer method in Arrays?
+
+
+----------When do you use a return type of never and how does it differ from void?
+
+In contrast, never is a type that represents a value that never occurs. For example, a function with an infinite loop or a function 
+that throws an error are functions that have a never return type.
+
+const error = (): never => {
+  throw new Error("");
+};
+
+Let’s take the function in the example below. It doesn’t explicitly return anything to the caller.
+ However, if you assign it to a variable and log the value of the variable, you will see that the function’s value is undefined.
+
+printName(name: string): void {
+  console.log(name);
+}
+
+onst printer = printName('Will');
+console.log(printer); // logs "undefined"
+
+void is used whenever a function doesn’t return anything explicitly whereas never is used whenever a function never returns.
+
+
+----------------- What are generics and how to use them in TypeScript?
+
+
+The use of generics provides reusability and flexibility by allowing a component to work over a variety of types rather than a single
+ one while preserving its precision (unlike the use of any).
+
+Below is an example of a generic function that lets the caller define the type to be used within the function.
+
+function updateUser<Type>(arg: Type): Type {
+  return arg;
+}
+
+
+// explicitly specifying the type
+let user = updateUser<string>("Bob");
+
+// type argument inference
+let user = updateUser("Bob");
+
+
+
+-------------------When should you use the unknown type?
+
+invokeCallback(callback: unknown): void {
+  if (typeof callback === 'function') {
+    callback();
+  }
+}
+
+
+To summarize, you can assign anything to both an any and an unknown type. However, unknown types require a type check or type assertion to 
+perform any operation on the variable.
+
+
+------------------------- Explain how optional chaining works in TypeScript.
+
+Optional chaining uses the question mark followed by a period (?.) as its operator. TypeScript evaluates each reference in the chain 
+and performs a null or undefined check before accessing its children. TypeScript immediately stops the execution when it fails the null
+ or undefined check and returns undefined for the entire chain.
+ 
+ 
+ const user = {
+  personalInfo: {
+    name: 'John'
+  }
+}
+
+// without optional chaining
+const name = user && user.personalInfo && user.personalInfo.name || undefined;
+
+// with optional chaining
+const name = user?.personalInfo?.name;
+
+
+
+----------------------What are type assertions in TypeScript?
+
+
+Type assertion allows you to explicitly set the type of a value and tell the compiler not to infer it. 
+This is useful when you know the type of an object more specifically than its current type or current inferred type. 
+In such cases, you can use type assertions to tell TypeScript the current type of the variable.
+
+// using the `as` keyword
+const name: string = person.name as string;
+
+// using `<>`
+const name: string = <string>person.name;
+
+
+
+--------------------- How does function overloads work in TypeScript?
+
+print(message: string): void;
+print(message: string[]): void;
+
+print(message: unknown): void {
+  if (typeof message === 'string') {
+    console.log(message);
+  } else if (Array.isArray(message)) {
+    message.forEach((individualMessage) => {
+      console.log(individualMessage);
+    });
+  } else {
+    throw new Error('unable to print');
+  }
+}
+
+
+
+
+----------------------- What is the Generator function?
+This is a new feature in ES6. Generator function allows you to generate many values over time, returning an object.
+ We can iterate this object, and we can pull values from the function one value at a time. When you call a generator function it returns an 
+ iterable object. We use * sign for a generator function with a new ‘yield’ keyword in ES6.
+ 
+ 
+ function *infiniteNumbers() {
+    let n=1;
+    while(true) {
+        yield n++;
+    }
+}
+  
+const numbers = infiniteNumbers(); // returns an iterable object
+  
+numbers.next(); // { value: 1, done: false}
+numbers.next(); // { value: 2, done: false}
+numbers.next(); // { value: 3, done: false}
+
+
+
+
+----------- Object.freeze
+Object.freeze() takes an object as an argument and returns the same object as an immutable object
+
+Once you have frozen the object you cannot change, add or delete object's properties, but you can assign another instance.
+
+const myObject = {'name': 'Full Stack Tutorials'};
+Object.freeze(myObject);
+myObject.name = 'Anonymous User'; // will throws an error in strict mode
+console.log(myObject.name); // Output: Full Stack Tutorials
+
+
+----- Two scenarios where rest operator used
+
+function getInfo(name, ...rest) {
+  console.log(name); // JavaScript
+  console.log(rest); // [ 'Frontend Developer', 'ES6' ]
+}
+getInfo("JavaScript", "Frontend Developer", "ES6");
+
+
+let arr = ["JavaScript", "Front-End Developer", "ES6"];
+let [name, ...rest] = arr;
+console.log(name); // JavaScript
+console.log(rest); // [ 'Front-End Developer', 'ES6' ]
+
+
+
+
+-----------------Remove duplicates items from an array using ES6 Set?
+The Set object lets you store unique values of any type, whether primitive values or object
+Here’s a one-liner to remove duplicates from an array. (ES6, of course!)
+
+
+const numbers = [1, 2, 3, 4, 5, 5, 5, 5, 5, 5];
+
+function removeDuplicates(array) {
+  return [...new Set(array)];
+}
+console.log(removeDuplicates(numbers)); // [1, 2, 3, 4, 5]
+
+
+
+
+
+
+Does TypeScript support static classes? If not, why?
+TypeScript doesn’t support static classes, unlike the popular object-oriented programming languages like C# and Java.
+
+These languages need static classes because all code, i.e., data and functions, need to be inside a class and cannot exist independently. 
+Static classes provide a way to allow these functions without associating them with any objects.
+
+In TypeScript, you can create any data and functions as simple objects without creating a containing class. 
+Hence TypeScript doesn’t need static classes. A singleton class is just a simple object in TypeScript.
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Explain the purpose of the never type in TypeScript.
+As the name suggests, the never type represents the type of values that never occur. For example, a function that never returns a value or that 
+always throws an exception can mark its return type as never.
+
+A function that doesn't return a value implicitly returns the value undefined in JavaScript. 
+Hence, even though we are saying it’s not returning anything, it’s returning ‘undefined’.
+ We usually ignore the return value in these cases. Such a function is inferred to have a void return type in TypeScript.
+
+// This function returns undefined
+function greet(name: string) {
+console.log(`Hello, ${name}`);
+}
+
+let greeting = greet("David");
+console.log(greeting);  // undefined
+In contrast, a function that has a never return type never returns. It doesn't return undefined, either. There are 2 cases where functions should return never type:
+
+In an unending loop e.g a while(true){} type loop.
+A function that throws an error e.g function foo(){throw new Exception('Error message')}
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Provide the TypeScript syntax to create function overloads.
+Function overloading allows us to define multiple functions with the same name, as long as their number of parameters or the types of parameters are different.
+
+The following example defines two overloads for the function buildDate. The first overload takes a number as a parameter, whereas the second takes three numbers as parameters. These are called overload signatures.
+
+The body of the function also called an implementation signature, follows the overload signatures. You can’t call this signature directly, as it’s not visible from the outside. It should be compatible with the overload signatures.
+
+function buildDate(timestamp: number): Date;
+function buildDate(m: number, d: number, y: number): Date;
+function buildDate(mOrTimestamp: number, d?: number, y?: number): Date {
+if (d !== undefined && y !== undefined) {
+  return new Date(y, mOrTimestamp, d);
+} else {
+  return new Date(mOrTimestamp);
+}
+}
+
+const d1 = buildDate(87654321);
+const d2 = buildDate(2, 2, 2);
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+Explain the various ways to control member visibility in TypeScript.
+TypeScript provides three keywords to control the visibility of class members, such as properties or methods.
+
+public: You can access a public member anywhere outside the class. All class members are public by default. 
+protected: A protected member is visible only to the subclasses of the class containing that member. Outside code that doesn’t extend the container class can’t access a protected member. 
+private: A private member is only visible inside the class. No outside code can access the private members of a class.
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+30. Doe
+function error(message: string): never {
+throw new Error(message);
+}
+
+Never returns nothing but void returns undefined
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+What are anonymous functions? Provide their syntax in TypeScript.
+An anonymous function is a function without a name. Anonymous functions are typically used as callback functions, i.e., they are passed around to other functions, only to be invoked by the other function at a later point in time. For example,
+
+setTimeout(function () {
+  console.log('Run after 2 seconds')
+}, 2000);
+
+You can invoke an anonymous function as soon as it’s created. It’s called ‘immediately invoked function execution (IIFE)’, For example:
+(function() {
+  console.log('Invoked immediately after creation');
+})()
+
+
+
+
+
+
+
+Closures:
+
+<h2>JavaScript Closures</h2>
+
+<p>Counting with a local variable.</p>
+
+<button type="button" onclick="myFunction()">Count!</button>
+
+<p id="demo">0</p>
+
+<script>
+const add = (function () {
+  let counter = 0;
+  return function () {counter += 1; return counter;}
+})();
+
+function myFunction(){
+  document.getElementById("demo").innerHTML = add();
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+The variable add is assigned to the return value of a self-invoking function.
+
+The self-invoking function only runs once. It sets the counter to zero (0), and returns a function expression.
+
+This way add becomes a function. The "wonderful" part is that it can access the counter in the parent scope.
+
+This is called a JavaScript closure. It makes it possible for a function to have "private" variables.
+
+The counter is protected by the scope of the anonymous function, and can only be changed using the add function.
+
+A closure is a function having access to the parent scope, even after the parent function has closed.

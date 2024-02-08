@@ -1,0 +1,189 @@
+Kafka Pending:
+
+Kafka Presentation:
+
+-- Topic Replication factor, if one broker is down then still we can access data from another servers.
+-- -- Kafka describe consumer groups and check current offset, log offset and lag concept -- 
+-- 2 consumer groups so total 4 consumers from each group consuming from same topic
+
+-- What is Event Driven archotecture?
+-- What is Kafka and its role in Event Driven Architecture
+-- Kafka Components 
+
+-- How to run Kafka without ZooKeeper using Kraft mode? What is Kraft mode? Advanatges of Kraft mode over zookeeper? --
+-- Kafka using Conduktor and creating topics, producers and consumers? --
+-- Kafka Producer without keys and with keys? --
+-- Kafka partition order --
+-- Kafka consumer group, create consumer group and run 3 consumers within same group and then how it behaves
+
+
+-- Kafka Retry mechanism ? 
+-- Kafka custom partitioner example? 
+-- Advanatges of Kafka over Rabbit MQ? 
+-- How to run multiple brokers in localhost?
+
+-- What is Kafka Streams? Kafka Streams example ? 
+-- Docker Compose
+-- Saving to Database
+-- How to maintain order in retry mechanism in Kafka -- Pending
+
+-- Include in PPT:
+
+Rabbit MQ vs Kafka -- Pending
+Kafka Points Doc  -- Pending
+How to decide number of partitions of a topic
+
+-- Kafka-with-key -- It always goes to one partition  id:
+-- Kafka without key -- Sticky partitioner -- where Kafka decides to send batch messages to one partition and next batch to another partition 
+
+
+-- Edit server.properties like setting default number of partitions
+
+
+
+Kafka Commands:
+
+-- Start Zookeeper -- 
+
+zookeeper-server-start.sh ~/kafka_2.13-3.0.0/config/zookeeper.properties
+
+---- Start Kafka: 
+
+kafka-server-start.sh ~/kafka_2.13-3.0.0/config/server.properties
+--- 
+
+
+
+
+Kafka-Local:
+
+-- .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+.\bin\windows\kafka-topics.bat --bootstrap-server localhost:9092 --list 
+
+.\bin\windows\kafka-topics.bat --create --topic first_topic --bootstrap-server localhost:9092 --replication-factor 3 --partitions 3
+
+.\bin\windows\kafka-topics.bat --create --topic user --bootstrap-server localhost:9092 --replication-factor 3 --partitions 3
+
+.\bin\windows\kafka-topics.bat --create --topic home-service --bootstrap-server localhost:9092 --replication-factor 3 --partitions 3
+
+.\bin\windows\kafka-topics.bat --create --topic takeaway-service --bootstrap-server localhost:9092 --replication-factor 3 --partitions 3
+
+.\bin\windows\kafka-run-class.bat kafka.tools.GetOffsetShell --broker-list broker1:9092 broker2:9093 broker3:9094 --topic order_topic --time -1
+
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic order_topic --formatter kafka.tools.DefaultMessageFormatter --property print.timestamp=true --property print.key=true --property print.value=true --property print.partition=true --from-beginning
+
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic order_topic --formatter kafka.tools.DefaultMessageFormatter --property print.timestamp=true --property print.key=true --property print.value=true --property print.partition=true --from-beginning
+
+.\bin\windows\kafka-consumer-groups.bat --bootstrap-server localhost:9092 --describe --group email-group
+
+.\bin\windows\kafka-consumer-groups.bat --bootstrap-server localhost:9092 --topic order_topic --formatter kafka.tools.DefaultMessageFormatter --property print.timestamp=true --property print.key=true --property print.value=true --property print.partition=true --from-beginning
+
+#For Checking messages after posting from postman in each partitioner
+
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic order_topic --formatter kafka.tools.DefaultMessageFormatter --property print.timestamp=true --property print.key=true --property print.value=true --property print.partition=true
+
+
+
+
+
+-----------------------------Kafka Topics:
+
+kafka-topics.sh 
+
+kafka-topics.sh --bootstrap-server localhost:9092 --list 
+
+kafka-topics.sh --bootstrap-server localhost:9092 --topic first_topic --create
+
+kafka-topics.sh --bootstrap-server localhost:9092 --topic second_topic --create --partitions 3
+
+kafka-topics.sh --bootstrap-server localhost:9092 --topic third_topic --create --partitions 3 --replication-factor 2
+
+# Create a topic (working)
+kafka-topics.sh --bootstrap-server localhost:9092 --topic third_topic --create --partitions 3 --replication-factor 1
+
+# List topics
+kafka-topics.sh --bootstrap-server localhost:9092 --list 
+
+# Describe a topic
+kafka-topics.sh --bootstrap-server localhost:9092 --topic first_topic --describe
+
+# Delete a topic 
+kafka-topics.sh --bootstrap-server localhost:9092 --topic first_topic --delete
+# (only works if delete.topic.enable=true)
+
+
+--------------------------- Kafka Producer Console
+
+
+kafka-topics.sh --bootstrap-server localhost:9092 --topic first_topic --create --partitions 1  --replication-factor 1
+
+# producing
+kafka-console-producer.sh --bootstrap-server localhost:9092 --topic first_topic 
+> Hello World
+>My name is Conduktor
+>I love Kafka
+>^C  (<- Ctrl + C is used to exit the producer)
+
+
+# producing with properties
+kafka-console-producer.sh --bootstrap-server localhost:9092 --topic first_topic --producer-property acks=all
+> some message that is acked
+> just for fun
+> fun learning!
+
+
+# producing to a non existing topic
+kafka-console-producer.sh --bootstrap-server localhost:9092 --topic new_topic
+> hello world!
+
+# our new topic only has 1 partition
+kafka-topics.sh --bootstrap-server localhost:9092 --list
+kafka-topics.sh --bootstrap-server localhost:9092 --topic new_topic --describe
+
+
+# edit config/server.properties or config/kraft/server.properties
+# num.partitions=3
+
+# produce against a non existing topic again
+kafka-console-producer.sh --bootstrap-server localhost:9092 --topic new_topic_2
+hello again!
+
+# this time our topic has 3 partitions
+kafka-topics.sh --bootstrap-server localhost:9092 --list
+kafka-topics.sh --bootstrap-server localhost:9092 --topic new_topic_2 --describe
+
+# overall, please create topics with the appropriate number of partitions before producing to them!
+
+
+# produce with keys
+kafka-console-producer.sh --bootstrap-server localhost:9092 --topic first_topic --property parse.key=true --property key.separator=:
+>example key:example value
+>name:Stephane
+
+
+
+
+
+------------------------- Kafka Consumer Console 
+
+
+
+# create a topic with 3 partitions
+kafka-topics.sh --bootstrap-server localhost:9092 --topic second_topic --create --partitions 3
+
+# consuming
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic second_topic
+
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic first_topic
+
+# other terminal
+kafka-console-producer.sh --bootstrap-server localhost:9092 --producer-property partitioner.class=org.apache.kafka.clients.producer.RoundRobinPartitioner --topic second_topic
+
+# consuming from beginning
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic second_topic --from-beginning
+
+# display key, values and timestamp in consumer
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic second_topic --formatter kafka.tools.DefaultMessageFormatter --property print.timestamp=true --property print.key=true --property print.value=true --property print.partition=true --from-beginning

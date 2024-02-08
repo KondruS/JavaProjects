@@ -1,0 +1,28 @@
+LDP Questions:
+
+Pretend that your application has performance issues.
+What actions will you take?
+How will you define a bottle-neck at different layers?
+What does code quality mean for you?
+How is it maintained at your project and what can be improved?
+Please describe which kind of tests are used at your project?
+How are they integrated into CI/CD process?
+What is the difference between HashSet and TreeSet? What data strucutres are used in these collections?
+What is Big O? Could you give an example of sorting algorithms for O(n^2), O(nlogn), O(n).
+What is AWS S3? What make is hight available? What is AZ (Availability Zone)?
+What is design patterns? What types of DP do you know? What is the difference between Decorator (Wrapper) and Adapter?
+What is the differenced between Spring and SpringBoot? 
+GIT. Please describe GIT branching strategy at your current project? Is it connected to CI processes?
+What is delegation? What is a difference between delegation and simple work assignment?
+What estimation techniques do you know? Which works best for you? IS it possible to use same technique for story and project/feature estimation?
+Diffeenct SDLC methodologies used in which scenarios ? Waterfall, Scrum, Agile, Safe Agile and Kanban
+Cloud advantages and difference between onpremise and cloud 
+
+
+
+
+Thnings to learn from JABE project side so Sumant/Srihari?
+
+1) How Code quality is achieved in project?
+2) Kafka queue and how it is configured in our project?
+3) 
